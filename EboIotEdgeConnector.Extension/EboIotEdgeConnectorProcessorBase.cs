@@ -15,7 +15,6 @@ namespace EboIotEdgeConnector.Extension
     {
         internal List<Prompt> Prompts = new List<Prompt>();
         internal IManagedEwsClient ManagedEwsClient = MongooseObjectFactory.Current.GetInstance<IManagedEwsClient>();
-        //internal RegistryManager RegistryManager;
 
         #region IsLicensed
         public override bool IsLicensed
@@ -46,27 +45,5 @@ namespace EboIotEdgeConnector.Extension
             EboEwsSettings = new EboEwsSettings();
         }
         #endregion
-
-        //#region AddDeviceAsync
-        ///// <summary>
-        ///// Adds a device to an Azure IoT Hub, and if it already exists, returns the existing.
-        ///// </summary>
-        ///// <param name="deviceId">The device ID of the device to be created in the Azure IoT Hub</param>
-        //internal async Task<Device> AddDeviceAsync(string deviceId)
-        //{
-        //    Logger.LogTrace(LogCategory.Processor, this.Name, "Getting Azure IOT Device");
-        //    Device device;
-        //    try
-        //    {
-        //        device = await RegistryManager.AddDeviceAsync(new Device(deviceId));
-        //    }
-        //    catch (DeviceAlreadyExistsException)
-        //    {
-        //        device = await RegistryManager.GetDeviceAsync(deviceId);
-        //    }
-        //    Logger.LogTrace(LogCategory.Processor, this.Name, "Generated device key: {0}", device.Authentication.SymmetricKey.PrimaryKey);
-        //    return device;
-        //}
-        //#endregion
     }
 }

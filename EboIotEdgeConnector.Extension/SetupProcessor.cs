@@ -23,16 +23,8 @@ namespace EboIotEdgeConnector.Extension
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
             var signals = SignalFileParser.Parse(SignalFileLocation);
-
             GetAndUpdateUnitsForSignals(signals);
-
             Cache.AddOrUpdateItem(signals, "CurrentSignalValues", CacheTenantId, 0);
-
-            //RegistryManager = RegistryManager.CreateFromConnectionString(IotHubSettings.AzureConnectionString);
-
-            //CreateAndMapDevices(devices);
-
-            //RegistryManager.Dispose();
             return Prompts;
         }
         #endregion
@@ -77,40 +69,5 @@ namespace EboIotEdgeConnector.Extension
             }
         }
         #endregion
-
-        //#region CreateAndMapDevices
-        //private void CreateAndMapDevices(IEnumerable<IGrouping<string, Signal>> devices)
-        //{
-        //    Logger.LogTrace(LogCategory.Processor, this.Name, $"Creating devices in the Azure IoT Hub and mapping to the corresponding device in the CSV file");
-        //    foreach (var device in devices)
-        //    {
-        //        var processorValue = this.FindOrCreateProcessorValue("EboIotEdgeConnectorDeviceMapping", CacheTenantId, device.Key);
-        //        string deviceId;
-        //        var isNewMapping = false;
-        //        if (string.IsNullOrEmpty(processorValue.Value))
-        //        {
-        //            deviceId = Guid.NewGuid().ToString();
-        //            deviceId = $"se-{deviceId}";
-        //            processorValue.Value = deviceId;
-        //            isNewMapping = true;
-        //        }
-        //        else
-        //        {
-        //            deviceId = processorValue.Value;
-        //        }
-
-        //        try
-        //        {
-        //            var iotDevice = AddDeviceAsync(deviceId).Result;
-        //            if (isNewMapping) ProcessorValueSource.Save();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Logger.LogError(LogCategory.Processor, this.Name, ex.ToString());
-        //            Prompts.Add(ex.ToPrompt());
-        //        }
-        //    }
-        //} 
-        //#endregion
     }
 }

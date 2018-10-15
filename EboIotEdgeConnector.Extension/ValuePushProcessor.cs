@@ -21,7 +21,6 @@ namespace EboIotEdgeConnector.Extension
         #region Execute_Subclass - Override
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
-            //RegistryManager = Microsoft.Azure.Devices.RegistryManager.CreateFromConnectionString(IotHubSettings.AzureConnectionString);
             try
             {
                 StartMqttClient().Wait();
@@ -41,7 +40,6 @@ namespace EboIotEdgeConnector.Extension
 
             }
             var rawSignals = ((List<Signal>)signals);
-
             
             // Read existing subscriptions
             if (!ReadExistingSubscriptions(rawSignals).Result)
@@ -65,13 +63,6 @@ namespace EboIotEdgeConnector.Extension
         private async Task<bool> ReadExistingSubscriptions(List<Signal> signals)
         {
             Logger.LogTrace(LogCategory.Processor, this.Name, $"Reading existing subscriptions..");
-            //var deviceMapping = ProcessorValueSource.Items.FirstOrDefault(a => a.Key == "EboIotEdgeConnectorDeviceMapping" && a.Group == CacheTenantId && a.Aggregate == currentDevice.Key);
-            //if (deviceMapping == null)
-            //{
-            //    Logger.LogInfo(LogCategory.Processor, this.Name, $"Azure IoT Hub Device Mapping does not exist for device {currentDevice.Key}, please make sure that the SetupProcessor has been successfully run.");
-            //    Prompts.Add(new Prompt { Message = $"Azure IoT Hub Device Mapping does not exist for device {currentDevice.Key}, please make sure that the SetupProcessor has been successfully run.", Severity = PromptSeverity.MayContinue });
-            //    return false;
-            //}
 
             var activeSubscriptions = Cache.RetrieveItem($"ActiveSubscriptions", () => new List<string>(), CacheTenantId, 0) as List<string>;
             var activeSubscriptionsToIterate = activeSubscriptions.ToList();
@@ -126,13 +117,6 @@ namespace EboIotEdgeConnector.Extension
         private async Task<bool> SubscribeAndReadNew(List<Signal> signals)
         {
             Logger.LogTrace(LogCategory.Processor, this.Name, $"Creating and reading new subscriptions..");
-            //var deviceMapping = ProcessorValueSource.Items.FirstOrDefault(a => a.Key == "EboIotEdgeConnectorDeviceMapping" && a.Group == CacheTenantId && a.Aggregate == currentDevice.Key);
-            //if (deviceMapping == null)
-            //{
-            //    Logger.LogInfo(LogCategory.Processor, this.Name, $"Azure IoT Hub Device Mapping does not exist for device {currentDevice.Key}, please make sure that the SetupProcessor has been successfully run.");
-            //    Prompts.Add(new Prompt {Message = $"Azure IoT Hub Device Mapping does not exist for device {currentDevice.Key}, please make sure that the SetupProcessor has been successfully run.", Severity = PromptSeverity.MayContinue});
-            //    return false;
-            //}
             var activeSubscriptions = Cache.RetrieveItem($"ActiveSubscriptions", () => new List<string>(), CacheTenantId, 0);
 
             var subscribedIds = new List<string>();
@@ -253,58 +237,15 @@ namespace EboIotEdgeConnector.Extension
             }
         }
         #endregion
-        #region SendMessageToEboIotEdgeConnector
-        private async Task SendMessageToEboIotEdgeConnector(IGrouping<string, Signal> currentDevice, DeviceData deviceMessage, List<Sensor> messages)
-        {
-            //var rawMessage = new Message(Encoding.UTF8.GetBytes(deviceMessage.ToJSON()));
 
-            //var azureDevice = AddDeviceAsync(deviceMapping.Value).Result;
-            //var accessKey = azureDevice.Authentication.SymmetricKey.PrimaryKey;
-            //var deviceConnectionString = $"{IotHubSettings.AzureConnectionString.Split(';')[0]};DeviceId={deviceMapping.Value};SharedAccessKey={accessKey}";
-            //Logger.LogTrace(LogCategory.Processor, this.Name, $"Connecting to IoT Hub for device {deviceConnectionString}");
-            //var deviceClient = DeviceClient.CreateFromConnectionString(deviceConnectionString);
-
-            //try
-            //{
-            //    Logger.LogDebug(LogCategory.Processor, this.Name, $"Sending message to Azure IoT Hub for device {currentDevice.Key}");
-            //    await deviceClient.SendEventAsync(rawMessage);
-            //    foreach (var sensor in messages)
-            //    {
-            //        var signal = currentDevice.FirstOrDefault(a => a.EwsId == sensor.Path);
-            //        if (signal == null)
-            //        {
-            //            Logger.LogInfo(LogCategory.Processor, this.Name, $"");
-            //            continue;
-            //        }
-
-            //        signal.LastSendTime = DateTimeOffset.Now;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Logger.LogError(LogCategory.Processor, this.Name, ex.ToString());
-            //    Prompts.Add(new Prompt
-            //    {
-            //        Message = "Error sending message to Azure IoT Hub.",
-            //        Severity = PromptSeverity.MayNotContinue
-            //    });
-            //}
-
-            //deviceClient.Dispose();
-        }
-        #endregion
-
-        #region HandleMqttApplicationMessageReceived
+        #region HandleMqttApplicationMessageReceived - Override
         public override void HandleMqttApplicationMessageReceived(string topic, string decodedMessage)
         {
             // In theory, this should not be receiving messages, just log this was unexpected
-
             Logger.LogInfo(LogCategory.Processor, this.Name, $"{this.Name} unexpectedely received a message..");
-            throw new NotImplementedException();
         }
         #endregion
-
-        #region MyRegion
+        #region SubscribeToMqttTopics - Override
         public override void SubscribeToMqttTopics()
         {
             // Not topics to subscribe to, intentionally blank

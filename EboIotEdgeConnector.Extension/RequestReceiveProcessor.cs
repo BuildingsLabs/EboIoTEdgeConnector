@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Mongoose.Common;
 using Mongoose.Common.Attributes;
 using Mongoose.Process;
@@ -14,32 +15,12 @@ namespace EboIotEdgeConnector.Extension
         #region Execute_Subclass - Override
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
-            //RegistryManager = Microsoft.Azure.Devices.RegistryManager.CreateFromConnectionString(IotHubSettings.AzureConnectionString);
-
-            //var deviceMappings = ProcessorValueSource.Items.Where(a => a.Key == "AzureDeviceMapping" && a.Group == IotHubSettings.IotHubName).ToList();
-
-            //if (!deviceMappings.Any())
-            //{
-            //    Logger.LogInfo(LogCategory.Processor, this.Name, "There are no mapped devices, please run this processor again when devices have been mapped (hint: run EboIotEdgeConnector.SetupProcessor)");
-            //    Prompts.Add(new Prompt {Message = "There are no mapped devices, please run this processor again when devices have been mapped (hint: run EboIotEdgeConnector.SetupProcessor)", Severity = PromptSeverity.MayNotContinue});
-            //    return Prompts;
-            //}
-
-            //foreach (var device in deviceMappings)
-            //{
-            //    var azureDevice = AddDeviceAsync(device.Value).Result;
-            //    var accessKey = azureDevice.Authentication.SymmetricKey.PrimaryKey;
-            //    var deviceConnectionString = $"{IotHubSettings.AzureConnectionString.Split(';')[0]};DeviceId={device.Value};SharedAccessKey={accessKey}";
-            //    Logger.LogTrace(LogCategory.Processor, this.Name, $"Connecting to IoT Hub for device {deviceConnectionString}");
-            //    var deviceClient = DeviceClient.CreateFromConnectionString(deviceConnectionString);
-            //    Task.Run(() => ReceiveCloudToDeviceAsync(deviceClient, device.Value));
-            //}
-
             StartMqttClient().Wait();
 
             for (;;)
             {
                 if (IsCancellationRequested) return Prompts;
+                Task.Delay(5000).Wait();
             }
         }
         #endregion
