@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AzureIotHub.Extension
+namespace EboIotEdgeConnector.IotEdge.Test
 {
-    public class Class1
+    public class EboIotEdgeConnectorModuleFixture
     {
     }
 }

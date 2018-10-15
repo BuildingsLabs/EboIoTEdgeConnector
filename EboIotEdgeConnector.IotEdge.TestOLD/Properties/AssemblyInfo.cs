@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AzureIotHub.Extension")]
+[assembly: AssemblyTitle("EboIotEdgeConnector.IotEdge.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AzureIotHub.Extension")]
+[assembly: AssemblyProduct("EboIotEdgeConnector.IotEdge.Test")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9fcdb00d-5839-40d5-ac04-28f7b5e7e08b")]
+[assembly: Guid("332e8e71-8125-4d35-945e-bc3e03ef7ad7")]
 
 // Version information for an assembly consists of the following four values:
 //
