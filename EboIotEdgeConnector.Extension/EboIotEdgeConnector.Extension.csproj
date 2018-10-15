@@ -194,7 +194,6 @@
     <Compile Include="EboIotEdgeConnectorProcessorBase.cs" />
     <Compile Include="EboIotEdgeConnectorProcessorWithMqttBase.cs" />
     <Compile Include="Models\EboEwsSettings.cs" />
-    <Compile Include="Models\IotHubSettings.cs" />
     <Compile Include="Models\MqttBroker.cs" />
     <Compile Include="Models\MqttCredentials.cs" />
     <Compile Include="Models\Signal.cs" />
