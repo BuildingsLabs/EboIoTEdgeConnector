@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Mongoose.Common;
 using Mongoose.Test;
 using Mongoose.Test.Processors;
@@ -24,7 +20,6 @@ namespace EboIotEdgeConnector.Extension.Test
             catch (Exception ex)
             {
                 Logger.LogError(LogCategory.Testing, ex);
-                throw new NotImplementedException();
             }
         }
         #endregion
@@ -39,6 +34,7 @@ namespace EboIotEdgeConnector.Extension.Test
                 UserName = "admin",
                 Password = "Admin!23"
             };
+
 
             return processor;
         } 

@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Ews.Common;
 using Mongoose.Common;
 using Mongoose.Common.Attributes;
 using Mongoose.Process;
 using Mongoose.Process.Ews;
-using MQTTnet.Extensions.ManagedClient;
+using MQTTnet;
+using MQTTnet.Protocol;
+//using MQTTnet.Extensions.ManagedClient;
 using SxL.Common;
 
 namespace EboIotEdgeConnector.Extension
@@ -16,8 +21,11 @@ namespace EboIotEdgeConnector.Extension
     public class ValuePushProcessor : EboIotEdgeConnectorProcessorWithMqttBase
     {
         private const int MaxItemsPerSubscription = 500;
-        private IManagedMqttClient _mqttClient;
 
+        #region ValuePushTopic
+        [Required, DefaultValue("eboiotedgeconnector/newvalues")]
+        public string ValuePushTopic { get; set; } 
+        #endregion
         #region Execute_Subclass - Override
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
@@ -32,29 +40,26 @@ namespace EboIotEdgeConnector.Extension
                 return Prompts;
             }
 
-            var signals = Cache.RetrieveItem("CurrentSignalValues", tenantId: CacheTenantId);
-            if (signals == null || !(signals is List<Signal>))
+            if (Signals == null)
             {
                 Prompts.Add(new Prompt { Message = "There are no signals in the cache, please run the SetupProcessor or verify that it has run successfully.", Severity = PromptSeverity.MayNotContinue });
                 return Prompts;
-
             }
-            var rawSignals = ((List<Signal>)signals);
             
             // Read existing subscriptions
-            if (!ReadExistingSubscriptions(rawSignals).Result)
+            if (!ReadExistingSubscriptions(Signals).Result)
             {
                 Prompts.Add(new Prompt { Message = $"Did not successfully read all existing subscriptions."});
             }
 
             // Subscribe and read new subscriptions
-            if (!SubscribeAndReadNew(rawSignals).Result)
+            if (!SubscribeAndReadNew(Signals).Result)
             {
                 Prompts.Add(new Prompt { Message = $"Did not successfully read all new subscriptions." });
             }
 
             // Update the cache with new values..
-            Cache.AddOrUpdateItem(rawSignals, "CurrentSignalValues", CacheTenantId, 0);
+            Cache.AddOrUpdateItem(Signals, "CurrentSignalValues", CacheTenantId, 0);
             return Prompts;
         }
         #endregion
@@ -187,19 +192,21 @@ namespace EboIotEdgeConnector.Extension
                 Sensors = messages
             };
 
-            //AddUpdatedValuesToMessage(currentDevice, results, messages);
-            //await ManagedMqttClient.PublishAsync(new ManagedMqttApplicationMessage())
-            //await SendMessageToEboIotEdgeConnector(currentDevice, deviceMessage, messages);
+            AddUpdatedValuesToMessage(results, messages);
+
+            var messageBuilder = new MqttApplicationMessageBuilder();
+            var message = messageBuilder.WithRetainFlag().WithAtLeastOnceQoS().WithTopic(ValuePushTopic).WithPayload(deviceMessage.ToJSON()).Build();
+            await ManagedMqttClient.PublishAsync(message);
             return true;
         }
         #endregion
 
         #region AddUpdatedValuesToMessage
-        private void AddUpdatedValuesToMessage(IGrouping<string, Signal> currentDevice, ReadResult<SubscriptionResultItem> results, List<Sensor> messages)
+        private void AddUpdatedValuesToMessage(ReadResult<SubscriptionResultItem> results, List<Sensor> messages)
         {
             foreach (var eventz in results.DataRead)
             {
-                var signal = currentDevice.FirstOrDefault(a => a.EwsId == eventz.ValueItemChangeEvent.Id);
+                var signal = Signals.FirstOrDefault(a => a.EwsId == eventz.ValueItemChangeEvent.Id);
                 if (signal == null)
                 {
                     Logger.LogInfo(LogCategory.Processor, this.Name, $"Signal with EWS ID of {eventz.ValueItemChangeEvent.Id} does not exist.. Skipping this..");
@@ -220,7 +227,7 @@ namespace EboIotEdgeConnector.Extension
                 signal.Value = eventz.ValueItemChangeEvent.Value;
             }
 
-            foreach (var signal in currentDevice)
+            foreach (var signal in Signals)
             {
                 if (signal.LastSendTime != null &&
                     signal.LastSendTime.Value.AddSeconds(signal.SendTime) > DateTimeOffset.Now) continue;

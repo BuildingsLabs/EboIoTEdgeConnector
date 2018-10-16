@@ -36,6 +36,13 @@ namespace EboIotEdgeConnector.Extension.Test
                 UserName = "admin",
                 Password = "Admin!23"
             };
+            processor.MqttBrokerSettings = new MqttBroker
+            {
+                BrokerAddress = "127.0.0.1",
+                IsEncryptedCommunication = false,
+                Port = 1883
+            };
+            processor.MqttClientId = "ValuePusher";
             var cache = MongooseObjectFactory.Current.GetInstance<ICache>();
             var signals = new List<Signal> {
                 new Signal
@@ -50,6 +57,13 @@ namespace EboIotEdgeConnector.Extension.Test
                     DatabasePath = "/Server 1/Fake Air Handler 1",
                     DeviceName = "DeviceTest1",
                     ItemId = "AV5",
+                    SendTime = 600
+                },
+                new Signal
+                {
+                    DatabasePath = "/Server 1/Fake Air Handler 1",
+                    DeviceName = "DeviceTest1",
+                    ItemId = "AV15",
                     SendTime = 600
                 },
                 new Signal

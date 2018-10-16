@@ -1,0 +1,67 @@
+{
+  "loaders": [
+    {
+      "type": "dotnetcore",
+      "name": "dotnetcore",
+      "configuration": {
+        "binding.path": "dotnetcore.dll",
+        "binding.coreclrpath": "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\1.1.6\\coreclr.dll",
+        "binding.trustedplatformassemblieslocation": "C:\\Program Files\\dotnet\\shared\\Microsoft.NETCore.App\\1.1.6\\"
+      }
+    }
+  ],
+  "modules": [
+    {
+      "name": "EBOIoTEdgeConnector",
+      "loader": {
+        "name": "dotnetcore",
+        "entrypoint": {
+          "assembly.name": "EboIotEdgeConnector.IotEdge",
+          "entry.type": "EboIotEdgeConnector.IotEdge.EboIotEdgeConnectorModule"
+        }
+      },
+      "args": {
+        "MqttBrokerAdress": "127.0.0.1",
+        "MqttBrokerPort": 1883,
+        "MqttClientId": "iotedgemoduleclient",
+        "UseSecureCommunication": false,
+        "MqttBrokerUserName": "admin",
+        "MqttBrokerPassword": "Admin!23",
+        "MqttValuePushTopic": "eboiotedgeconnector/newvalues",
+        "MqttValueSendTopic": "eboiotedgeconnector/sendvalues"
+      }
+    },
+    {
+      "name": "test_send_module",
+      "loader": {
+        "name": "dotnetcore",
+        "entrypoint": {
+          "assembly.name": "EboIotEdgeConnector.IotEdge",
+          "entry.type": "EboIotEdgeConnector.IotEdge.TestSendDataModule"
+        }
+      },
+      "args": "module configuration"
+    },
+    {
+      "name": "test_receive_module",
+      "loader": {
+        "name": "dotnetcore",
+        "entrypoint": {
+          "assembly.name": "EboIotEdgeConnector.IotEdge",
+          "entry.type": "EboIotEdgeConnector.IotEdge.TestReceiveDataModule"
+        }
+      },
+      "args": "module configuration"
+    }
+  ],
+  "links": [
+    {
+      "source": "EBOIoTEdgeConnector",
+      "sink": "test_receive_module"
+    },
+    {
+      "source": "test_send_module",
+      "sink": "EBOIoTEdgeConnector"
+    }
+  ]
+}

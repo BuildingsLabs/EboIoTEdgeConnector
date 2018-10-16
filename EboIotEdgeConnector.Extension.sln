@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EboIotEdgeConnector.Extensi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EboIotEdgeConnector.Extension.Test", "EboIotEdgeConnector.Extension.Test\EboIotEdgeConnector.Extension.Test.csproj", "{47F3F160-48A1-4926-8D7A-545B05CD14E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EboIotEdgeConnector.IotEdge", "EboIotEdgeConnector.IotEdge\EboIotEdgeConnector.IotEdge.csproj", "{617A320D-425F-481A-8DA8-B20615209B64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EboIotEdgeConnector.IotEdge", "EboIotEdgeConnector.IotEdge\EboIotEdgeConnector.IotEdge.csproj", "{617A320D-425F-481A-8DA8-B20615209B64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EboIotEdgeConnector.IotEdge.Test", "EboIotEdgeConnector.IotEdge.Test\EboIotEdgeConnector.IotEdge.Test.csproj", "{432BA83C-A500-4132-9FA9-8805DFDCA803}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EboIotEdgeConnector.IotEdge.Test", "EboIotEdgeConnector.IotEdge.Test\EboIotEdgeConnector.IotEdge.Test.csproj", "{432BA83C-A500-4132-9FA9-8805DFDCA803}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

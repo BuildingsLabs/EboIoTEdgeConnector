@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Mongoose.Common;
 using Mongoose.Test;
 using Mongoose.Test.Processors;
@@ -34,6 +35,52 @@ namespace EboIotEdgeConnector.Extension.Test
                 UserName = "admin",
                 Password = "Admin!23"
             };
+            processor.MqttBrokerSettings = new MqttBroker
+            {
+                BrokerAddress = "127.0.0.1",
+                IsEncryptedCommunication = false,
+                Port = 1883
+            };
+            processor.MqttClientId = "RequestReceiver";
+            var cache = MongooseObjectFactory.Current.GetInstance<ICache>();
+            var signals = new List<Signal> {
+                new Signal
+                {
+                    DatabasePath = "/Server 1/Fake Air Handler 1",
+                    DeviceName = "DeviceTest1",
+                    ItemId = "AV1",
+                    SendTime = 600
+                },
+                new Signal
+                {
+                    DatabasePath = "/Server 1/Fake Air Handler 1",
+                    DeviceName = "DeviceTest1",
+                    ItemId = "AV5",
+                    SendTime = 600
+                },
+                new Signal
+                {
+                    DatabasePath = "/Server 1/Fake Air Handler 1",
+                    DeviceName = "DeviceTest1",
+                    ItemId = "AV15",
+                    SendTime = 600
+                },
+                new Signal
+                {
+                    DatabasePath = "/Server 1/Fake Air Handler 2",
+                    DeviceName = "DeviceTest2",
+                    ItemId = "AV1",
+                    SendTime = 600
+                },
+                new Signal
+                {
+                    DatabasePath = "/Server 1/Fake Air Handler 2",
+                    DeviceName = "DeviceTest2",
+                    ItemId = "AV2",
+                    SendTime = 600
+                }
+            };
+            cache.AddOrUpdateItem(signals, "CurrentSignalValues", processor.CacheTenantId, 0);
             return processor;
         } 
         #endregion

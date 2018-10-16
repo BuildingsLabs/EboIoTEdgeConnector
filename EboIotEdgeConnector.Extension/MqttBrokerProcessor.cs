@@ -23,12 +23,25 @@ namespace EboIotEdgeConnector.Extension
         private List<Prompt> _prompts = new List<Prompt>();
         private IMqttServer _mqttServer;
 
+        #region IsLicensed
+        public override bool IsLicensed
+        {
+            get
+            {
+                #if DEBUG
+                return false;
+                #else
+                return true;
+                #endif
+            }
+        }
+        #endregion
         #region SecureCommunicationCertLocation
         [Tooltip("If a path is specified, secure communication will attempt to be used. If empty unsecure communication will be used.")]
         public string SecureCommunicationCertLocation { get; set; }
         #endregion
         #region BrokerPort
-        [DefaultValue(8883)]
+        [DefaultValue(1883)]
         public int BrokerPort { get; set; }
         #endregion
         #region EncryptedBrokerPort
@@ -39,7 +52,8 @@ namespace EboIotEdgeConnector.Extension
         public EboEwsSettings EboEwsSettings { get; set; }
         #endregion
 
-        #region MqttBrokerProcessor
+        #region Constructor
+
         public MqttBrokerProcessor()
         {
             EboEwsSettings = new EboEwsSettings();
@@ -50,18 +64,18 @@ namespace EboIotEdgeConnector.Extension
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
             // Sets up ALL MQTT logging
-            MqttNetGlobalLogger.LogMessagePublished += (s, e) =>
-            {
-                if (e.TraceMessage.Exception != null)
-                {
-                    Logger.LogError(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Message);
-                    Logger.LogError(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Exception.ToJSON());
-                }
-                else
-                {
-                    Logger.LogTrace(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Message.ToJSON());
-                }
-            };
+            //MqttNetGlobalLogger.LogMessagePublished += (s, e) =>
+            //{
+            //    if (e.TraceMessage.Exception != null)
+            //    {
+            //        Logger.LogError(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Message);
+            //        Logger.LogError(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Exception.ToJSON());
+            //    }
+            //    else
+            //    {
+            //        Logger.LogTrace(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Message.ToJSON());
+            //    }
+            //};
             StartMqttServer().Wait();
             MainLoop().Wait();
             return _prompts;
@@ -90,14 +104,22 @@ namespace EboIotEdgeConnector.Extension
         #region MainLoop
         private async Task MainLoop()
         {
-            for (; ; )
+            for (;;)
             {
-                if (IsCancellationRequested)
+                try
                 {
-                    await _mqttServer.StopAsync();
+                    if (IsCancellationRequested)
+                    {
+                        await _mqttServer.StopAsync();
+                        return;
+                    }
+                    await Task.Delay(5 * 1000, CancellationToken);
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError(LogCategory.Processor, this.Name, ex.ToString());
                     return;
                 }
-                await Task.Delay(5 * 1000, CancellationToken);
             }
         }
         #endregion
@@ -107,12 +129,14 @@ namespace EboIotEdgeConnector.Extension
         {
             // Start a MQTT server.
             Logger.LogInfo(LogCategory.Processor, this.Name, "Starting MQTT Server..");
+
             _mqttServer = new MqttFactory().CreateMqttServer();
 
             var optionsBuilder = new MqttServerOptionsBuilder()
                 .WithConnectionBacklog(100)
                 .WithDefaultEndpointPort(BrokerPort)
-                .WithConnectionValidator(AuthenticateUser);
+                .WithConnectionValidator(AuthenticateUser)
+                .WithStorage(new RetainedMqttMessageHandler());
 
             if (!string.IsNullOrEmpty(SecureCommunicationCertLocation))
             {

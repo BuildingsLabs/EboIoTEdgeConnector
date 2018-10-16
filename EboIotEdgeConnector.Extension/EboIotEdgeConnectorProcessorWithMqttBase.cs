@@ -5,16 +5,18 @@ using Mongoose.Common;
 using Mongoose.Common.Attributes;
 using MQTTnet;
 using MQTTnet.Client;
-using MQTTnet.Extensions.ManagedClient;
+using MQTTnet.ManagedClient;
+//using MQTTnet.Extensions.ManagedClient;
 using SxL.Common;
 
 namespace EboIotEdgeConnector.Extension
 {
     public abstract class EboIotEdgeConnectorProcessorWithMqttBase : EboIotEdgeConnectorProcessorBase
     {
-        internal IManagedMqttClient ManagedMqttClient { get; set; }
-
-        #region MqttBroker
+        #region ManagedMqttClient
+        internal IManagedMqttClient ManagedMqttClient;
+        #endregion
+        #region MqttBrokerSettings
         [Tooltip("The settings required to connect to the MQTT Broker for IoT Edge.")]
         public MqttBroker MqttBrokerSettings { get; set; }
         #endregion
@@ -22,14 +24,21 @@ namespace EboIotEdgeConnector.Extension
         public string MqttClientId { get; set; }
         #endregion
 
-        #region HandleMqttApplicationMessageReceived
+        #region Constructor
+        protected EboIotEdgeConnectorProcessorWithMqttBase()
+        {
+            MqttBrokerSettings = new MqttBroker();
+        } 
+        #endregion
+
+        #region HandleMqttApplicationMessageReceived - Abstract
         public abstract void HandleMqttApplicationMessageReceived(string topic, string decodedMessage);
         #endregion
-        #region SubscribeToMqttTopics
+        #region SubscribeToMqttTopics - Abstract
         public abstract void SubscribeToMqttTopics(); 
         #endregion
 
-        #region StartMqttClient
+        #region StartMqttClient - Virtual
         public virtual async Task StartMqttClient()
         {
             Logger.LogInfo(LogCategory.Processor, this.Name, "Starting MQTT client..");
@@ -71,7 +80,7 @@ namespace EboIotEdgeConnector.Extension
             await ManagedMqttClient.StartAsync(GetMqttClientOptions());
         }
         #endregion
-        #region GetMqttClientOptions
+        #region GetMqttClientOptions - Virtual
         public virtual ManagedMqttClientOptions GetMqttClientOptions()
         {
             var clientOptions = new MqttClientOptionsBuilder();
