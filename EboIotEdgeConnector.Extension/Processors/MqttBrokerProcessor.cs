@@ -64,18 +64,18 @@ namespace EboIotEdgeConnector.Extension
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
             // Sets up ALL MQTT logging
-            //MqttNetGlobalLogger.LogMessagePublished += (s, e) =>
-            //{
-            //    if (e.TraceMessage.Exception != null)
-            //    {
-            //        Logger.LogError(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Message);
-            //        Logger.LogError(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Exception.ToJSON());
-            //    }
-            //    else
-            //    {
-            //        Logger.LogTrace(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Message.ToJSON());
-            //    }
-            //};
+            MqttNetGlobalLogger.LogMessagePublished += (s, e) =>
+            {
+                if (e.TraceMessage.Exception != null)
+                {
+                    Logger.LogError(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Message);
+                    Logger.LogError(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Exception.ToJSON());
+                }
+                else
+                {
+                    Logger.LogTrace(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Message.ToJSON());
+                }
+            };
             StartMqttServer().Wait();
             MainLoop().Wait();
             return _prompts;

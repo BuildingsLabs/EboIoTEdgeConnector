@@ -11,11 +11,12 @@ namespace EboIotEdgeConnector.IotEdge
     {
         private CancellationTokenSource _cts = new CancellationTokenSource();
 
+        #region Create - IGatewayModule Member
         public void Create(Broker broker, byte[] configuration)
         {
             Task.Run(() =>
             {
-                for (;;)
+                for (; ; )
                 {
                     var valueToWrite = new MqttValueWrite
                     {
@@ -38,25 +39,25 @@ namespace EboIotEdgeConnector.IotEdge
                             }
                         }
                     };
-                    var message = new Message(valueToWrite.ToJson(),new Dictionary<string, string> ());
+                    var message = new Message(valueToWrite.ToJson(), new Dictionary<string, string>());
                     Console.WriteLine($"Sending message to Gateway Broker: {JsonConvert.SerializeObject(message)}");
                     broker.Publish(message);
                     Task.Delay(10000).Wait();
                 }
             }, _cts.Token);
-
-            //throw new NotImplementedException();
-        }
-
+        } 
+        #endregion
+        #region Destroy - IGatewayModule Member
         public void Destroy()
         {
             _cts.Cancel();
-            //throw new NotImplementedException();
         }
-
+        #endregion
+        #region Receive - IGatewayModule Member
         public void Receive(Message received_message)
         {
-            //throw new NotImplementedException();
-        }
+            //Intentionally Empty
+        } 
+        #endregion
     }
 }

@@ -18,14 +18,14 @@ namespace EboIotEdgeConnector.IotEdge
         private IManagedMqttClient _managedMqttClient;
         private ModuleConfiguration _moduleConfiguration;
         private Broker _broker;
-        internal Logger Logger;
+        private Logger _logger;
 
         #region Create - IGatewayModule Member
         public void Create(Broker broker, byte[] configuration)
         {
             _moduleConfiguration = ModuleConfiguration.FromJson(Encoding.UTF8.GetString(configuration));
             ConfigureLogging(_moduleConfiguration.LoggingLevel);
-            Logger.Debug($"Create Module Called with Configuration: {Encoding.UTF8.GetString(configuration)}");
+            _logger.Debug($"Create Module Called with Configuration: {Encoding.UTF8.GetString(configuration)}");
             _broker = broker;
 
             StartMqttClient().Wait();
@@ -34,18 +34,18 @@ namespace EboIotEdgeConnector.IotEdge
         #region Destroy - IGatewayModule Member
         public void Destroy()
         {
-            Logger.Debug("Destory Module Called..");
+            _logger.Debug("Destory Module Called..");
             _managedMqttClient.Dispose();
         } 
         #endregion
         #region Receive - IGatewayModule Member
         public async void Receive(Message receivedMessage)
         {
-            Logger.Debug($"IoT Edge Message Received from Broker: {JsonConvert.SerializeObject(receivedMessage)}");
+            _logger.Debug($"IoT Edge Message Received from Broker: {JsonConvert.SerializeObject(receivedMessage)}");
             try
             {
                 var messageString = Encoding.ASCII.GetString(receivedMessage.Content);
-                Logger.Debug($"Message: {messageString}");
+                _logger.Debug($"Message: {messageString}");
                 // TODO: Convert message to a MqttValueWrite Object
                 var fortesting = MqttValueWrite.FromJson(messageString);
                 //var valueWrite = new MqttValueWrite();
@@ -53,7 +53,7 @@ namespace EboIotEdgeConnector.IotEdge
             }
             catch (Exception ex)
             {
-                Logger.Error(ex.ToString());
+                _logger.Error(ex.ToString());
             }
         } 
         #endregion
@@ -61,7 +61,7 @@ namespace EboIotEdgeConnector.IotEdge
         #region StartMqttClient
         public virtual async Task StartMqttClient()
         {
-            Logger.Info("Starting MQTT client..");
+            _logger.Info("Starting MQTT client..");
             _managedMqttClient = new MqttFactory().CreateManagedMqttClient();
 
             _managedMqttClient.Connected += (sender, args) =>
@@ -79,15 +79,15 @@ namespace EboIotEdgeConnector.IotEdge
             {
                 var topic = a.ApplicationMessage.Topic;
                 var decodedString = Encoding.UTF8.GetString(a.ApplicationMessage.Payload);
-                Logger.Trace($"Message from topic '{topic}' received.");
-                Logger.Trace($"Decoded Message: {decodedString}");
+                _logger.Trace($"Message from topic '{topic}' received.");
+                _logger.Trace($"Decoded Message: {decodedString}");
                 HandleMqttApplicationMessageReceived(topic, decodedString);
             };
 
             // This just tells us that a message we sent was received succesfully by the broker.
             _managedMqttClient.ApplicationMessageProcessed += (s, a) =>
             {
-                Logger.Trace("Client Message Processed by Broker", a);
+                _logger.Trace("Client Message Processed by Broker", a);
                 if (a.HasSucceeded == false)
                 {
                     // TODO: What to do here?
@@ -127,19 +127,19 @@ namespace EboIotEdgeConnector.IotEdge
             {
                 try
                 {
-                    Logger.Trace($"Sending updated values to Gateway Broker: {decodedMessageString}");
+                    _logger.Trace($"Sending updated values to Gateway Broker: {decodedMessageString}");
                     var properties = new Dictionary<string, string>();
                     var message = new Message(decodedMessageString, properties);
                     _broker.Publish(message);
                 }
                 catch (Exception e)
                 {
-                    Logger.Error(e.ToString);
+                    _logger.Error(e.ToString);
                 }
             }
             else
             {
-                Logger.Info($"Unknown topic received: {topic}. Ignoring this.");
+                _logger.Info($"Unknown topic received: {topic}. Ignoring this.");
             }
         }
         #endregion
@@ -178,19 +178,19 @@ namespace EboIotEdgeConnector.IotEdge
             config.AddRule(minLoggingLevel, LogLevel.Fatal, logfile);
             NLog.LogManager.Configuration = config;
 
-            Logger = NLog.LogManager.GetCurrentClassLogger();
+            _logger = NLog.LogManager.GetCurrentClassLogger();
 
             // Configure logging for MQTT client.
             MqttNetGlobalLogger.LogMessagePublished += (s, e) =>
             {
                 if (e.TraceMessage.Exception != null)
                 {
-                    Logger.Error(e.TraceMessage.Source, e.TraceMessage.Message);
-                    Logger.Error(e.TraceMessage.Source, e.TraceMessage.Exception.ToString());
+                    _logger.Error(e.TraceMessage.Source, e.TraceMessage.Message);
+                    _logger.Error(e.TraceMessage.Source, e.TraceMessage.Exception.ToString());
                 }
                 else
                 {
-                    Logger.Debug(e.TraceMessage.Source, e.TraceMessage.Message);
+                    _logger.Debug(e.TraceMessage.Source, e.TraceMessage.Message);
                 }
             };
         }

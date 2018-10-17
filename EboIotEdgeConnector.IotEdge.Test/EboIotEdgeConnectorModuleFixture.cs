@@ -1,8 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using NUnit.Framework.Internal;
+﻿using NUnit.Framework;
 
 namespace EboIotEdgeConnector.IotEdge.Test
 {
@@ -18,9 +14,8 @@ namespace EboIotEdgeConnector.IotEdge.Test
         [Test]
         public void ConnectorModuleTest()
         {
+            var module = new EboIotEdgeConnectorModule();
             Assert.AreEqual(1, 1);
-        }
-
-      
+        }    
     }
 }

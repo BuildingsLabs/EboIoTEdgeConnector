@@ -46,7 +46,6 @@ namespace EboIotEdgeConnector.Extension
             }
 
         }
-
         #endregion
 
         #region IsLicensed

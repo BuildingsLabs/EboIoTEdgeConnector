@@ -2,7 +2,7 @@
 
 namespace EboIotEdgeConnector.IotEdge
 {
-    public partial class ModuleConfiguration
+    public class ModuleConfiguration
     {
         #region MqttBrokerAdress
         [JsonProperty("MqttBrokerAdress")]

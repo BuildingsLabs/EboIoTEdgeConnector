@@ -6,7 +6,6 @@ using Mongoose.Common.Attributes;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.ManagedClient;
-//using MQTTnet.Extensions.ManagedClient;
 using SxL.Common;
 
 namespace EboIotEdgeConnector.Extension
