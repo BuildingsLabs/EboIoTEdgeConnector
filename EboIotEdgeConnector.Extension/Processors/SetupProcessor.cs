@@ -24,7 +24,7 @@ namespace EboIotEdgeConnector.Extension
         {
             var signals = SignalFileParser.Parse(SignalFileLocation);
             GetAndUpdateUnitsForSignals(signals);
-            Cache.AddOrUpdateItem(signals, "CurrentSignalValues", CacheTenantId, 0);
+            Signals = signals;
             return Prompts;
         }
         #endregion

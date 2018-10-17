@@ -1,5 +1,0 @@
-a;b;c;d;e;f;f;g
-DeviceTest1;AV1;/Server 1/Fake Air Handler 1;Bla;Analog insignal;25.2;TRUE;30
-DeviceTest1;AV5;/Server 1/Fake Air Handler 1;Bla;Analog insignal;25.2;FALSE;30
-DeviceTest2;AV2;/Server 1/Fake Air Handler 2;Bla;Analog insignal;25.2;FALSE;60
-DeviceTest2;AV3;/Server 1/Fake Air Handler 2;Bla;Analog insignal;25.2;TRUE;60

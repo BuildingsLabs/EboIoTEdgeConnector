@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using Newtonsoft.Json;
 
 namespace EboIotEdgeConnector.IotEdge
 {
@@ -14,7 +12,7 @@ namespace EboIotEdgeConnector.IotEdge
         [JsonProperty("MqttBrokerPort")]
         public int MqttBrokerPort { get; set; }
         #endregion
-        #region MyRegion
+        #region MqttClientId
         [JsonProperty("MqttClientId")]
         public string MqttClientId { get; set; } 
         #endregion
@@ -36,29 +34,15 @@ namespace EboIotEdgeConnector.IotEdge
         #endregion
         #region MqttValueSendTopic
         [JsonProperty("MqttValueSendTopic")]
-        public string MqttValueSendTopic { get; set; } 
+        public string MqttValueSendTopic { get; set; }
         #endregion
-    }
-    public partial class ModuleConfiguration
-    {
-        public static ModuleConfiguration FromJson(string json) => JsonConvert.DeserializeObject<ModuleConfiguration>(json, EboIotEdgeConnector.IotEdge.Converter.Settings);
-    }
+        #region LoggingLevel
+        [JsonProperty("LoggingLevel")]
+        public string LoggingLevel { get; set; }
+        #endregion
 
-    public static class Serialize
-    {
-        public static string ToJson(this ModuleConfiguration self) => JsonConvert.SerializeObject(self, EboIotEdgeConnector.IotEdge.Converter.Settings);
-        public static string ToJson(this MqttValueWrite self) => JsonConvert.SerializeObject(self, EboIotEdgeConnector.IotEdge.Converter.Settings);
-    }
-
-    internal static class Converter
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters = {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
+        #region FromJson
+        public static ModuleConfiguration FromJson(string json) => JsonConvert.DeserializeObject<ModuleConfiguration>(json, JsonConverter.Settings);
+        #endregion
     }
 }

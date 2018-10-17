@@ -4,20 +4,11 @@ namespace EboIotEdgeConnector.Extension
 {
     public class Signal
     {
-        #region DeviceName
-        public string DeviceName { get; set; }
-        #endregion
-        #region ItemId
-        public string ItemId { get; set; }
+        #region PointName
+        public string PointName { get; set; }
         #endregion
         #region DatabasePath
         public string DatabasePath { get; set; }
-        #endregion
-        #region Description
-        public string Description { get; set; }
-        #endregion
-        #region Type
-        public string Type { get; set; }
         #endregion
         #region Value
         public string Value { get; set; }
@@ -35,7 +26,7 @@ namespace EboIotEdgeConnector.Extension
         public DateTimeOffset? LastSendTime { get; set; }
         #endregion
         #region EwsId
-        public string EwsId => $"01{DatabasePath}/{ItemId}"; 
+        public string EwsId => $"01{DatabasePath}/{PointName}"; 
         #endregion
     }
 }

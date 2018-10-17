@@ -28,9 +28,8 @@ namespace EboIotEdgeConnector.Extension.Test
         #region CreateTestableProcessor - IProcessorTestFixture Member
         public SetupProcessor CreateTestableProcessor()
         {
-            //        [Required, DefaultValue("HostName=SEIoTPoC.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XtXJdAR0IuPrO7JNtJWUtx5lZk2BXlDQ649PRQODxn0=")]
             var processor = this.CreateProccessorInstanceWithDefaultValues();
-            processor.SignalFileLocation = $"{Assembly.GetExecutingAssembly().Location.Replace("\\bin\\Debug\\EboIotEdgeConnector.Extension.Test.dll", string.Empty)}\\Files\\test.csv";
+            processor.SignalFileLocation = $"{Assembly.GetExecutingAssembly().Location.Replace("\\bin\\Debug\\EboIotEdgeConnector.Extension.Test.dll", string.Empty)}\\Files\\test_object_config.csv";
             processor.EboEwsSettings = new EboEwsSettings
             {
                 Address = "http://localhost:8020/EcoStruxure/DataExchange",

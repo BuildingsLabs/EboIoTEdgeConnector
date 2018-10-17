@@ -47,13 +47,13 @@ namespace EboIotEdgeConnector.Extension
         {
             try
             {
-                if (!bool.TryParse(fields[6], out var sendOnUpdate))
+                if (!bool.TryParse(fields[3], out var sendOnUpdate))
                 {
                     Logger.LogInfo(LogCategory.Processor, "SignalFileParser",
                         "'SendOnUpdate' is not a valid boolean, default to false..");
                 }
 
-                if (!int.TryParse(fields[7], out int sendTime))
+                if (!int.TryParse(fields[4], out int sendTime))
                 {
                     Logger.LogInfo(LogCategory.Processor, "SignalFileParser",
                         "'SendTime' is not a valid integer, default to false..");
@@ -62,12 +62,9 @@ namespace EboIotEdgeConnector.Extension
 
                 signals.Add(new Signal
                 {
-                    DeviceName = fields[0],
-                    ItemId = fields[1],
-                    DatabasePath = fields[2],
-                    Description = fields[3],
-                    Type = fields[4],
-                    Value = fields[5],
+                    PointName = fields[0],
+                    DatabasePath = fields[1],
+                    Value = fields[2],
                     SendOnUpdate = sendOnUpdate,
                     SendTime = sendTime
                 });

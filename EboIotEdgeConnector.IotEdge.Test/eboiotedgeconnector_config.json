@@ -28,7 +28,8 @@
         "MqttBrokerUserName": "admin",
         "MqttBrokerPassword": "Admin!23",
         "MqttValuePushTopic": "eboiotedgeconnector/newvalues",
-        "MqttValueSendTopic": "eboiotedgeconnector/sendvalues"
+        "MqttValueSendTopic": "eboiotedgeconnector/sendvalues",
+        "LoggingLevel":  "Trace" 
       }
     },
     {

@@ -23,11 +23,11 @@ namespace EboIotEdgeConnector.IotEdge
         #region Create - IGatewayModule Member
         public void Create(Broker broker, byte[] configuration)
         {
-            ConfigureLogging();
-            Logger.Debug("Create Module Called..");
-            _broker = broker;
-            Logger.Trace(Encoding.UTF8.GetString(configuration));
             _moduleConfiguration = ModuleConfiguration.FromJson(Encoding.UTF8.GetString(configuration));
+            ConfigureLogging(_moduleConfiguration.LoggingLevel);
+            Logger.Debug($"Create Module Called with Configuration: {Encoding.UTF8.GetString(configuration)}");
+            _broker = broker;
+
             StartMqttClient().Wait();
         } 
         #endregion
@@ -41,8 +41,7 @@ namespace EboIotEdgeConnector.IotEdge
         #region Receive - IGatewayModule Member
         public async void Receive(Message receivedMessage)
         {
-            Logger.Debug($"IoT Edge Message Received from Broker..");
-            Logger.Debug(JsonConvert.SerializeObject(receivedMessage));
+            Logger.Debug($"IoT Edge Message Received from Broker: {JsonConvert.SerializeObject(receivedMessage)}");
             try
             {
                 var messageString = Encoding.ASCII.GetString(receivedMessage.Content);
@@ -145,15 +144,43 @@ namespace EboIotEdgeConnector.IotEdge
         }
         #endregion
         #region ConfigureLogging
-        private void ConfigureLogging()
+        private void ConfigureLogging(string loggingLevel)
         {
+            // Set logging level
+            LogLevel minLoggingLevel;
+            switch (loggingLevel)
+            {
+                case "Fatal":
+                    minLoggingLevel = LogLevel.Fatal;
+                    break;
+                case "Error":
+                    minLoggingLevel = LogLevel.Error;
+                    break;
+                case "Warn":
+                    minLoggingLevel = LogLevel.Warn;
+                    break;
+                case "Info":
+                    minLoggingLevel = LogLevel.Info;
+                    break;
+                case "Debug":
+                    minLoggingLevel = LogLevel.Debug;
+                    break;
+                case "Trace":
+                    minLoggingLevel = LogLevel.Trace;
+                    break;
+                default:
+                    minLoggingLevel = LogLevel.Info;
+                    break;
+            }
+
             var config = new NLog.Config.LoggingConfiguration();
             var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "EboIoTEdgeConnectorLog.log" };
-            config.AddRule(LogLevel.Trace, LogLevel.Fatal, logfile);
+            config.AddRule(minLoggingLevel, LogLevel.Fatal, logfile);
             NLog.LogManager.Configuration = config;
 
             Logger = NLog.LogManager.GetCurrentClassLogger();
 
+            // Configure logging for MQTT client.
             MqttNetGlobalLogger.LogMessagePublished += (s, e) =>
             {
                 if (e.TraceMessage.Exception != null)

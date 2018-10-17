@@ -39,8 +39,14 @@ namespace EboIotEdgeConnector.Extension
                 }
 
             }
-            set => Cache.AddOrUpdateItem(value, "CurrentSignalValues", CacheTenantId, 0);
-        } 
+            set
+            {
+                Cache.AddOrUpdateItem(value, "CurrentSignalValues", CacheTenantId, 0);
+                _signals = value;
+            }
+
+        }
+
         #endregion
 
         #region IsLicensed

@@ -48,36 +48,31 @@ namespace EboIotEdgeConnector.Extension.Test
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 1",
-                    DeviceName = "DeviceTest1",
-                    ItemId = "AV1",
+                    PointName = "AV1",
                     SendTime = 600
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 1",
-                    DeviceName = "DeviceTest1",
-                    ItemId = "AV5",
+                    PointName = "AV5",
                     SendTime = 600
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 1",
-                    DeviceName = "DeviceTest1",
-                    ItemId = "AV15",
+                    PointName = "AV15",
                     SendTime = 600
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 2",
-                    DeviceName = "DeviceTest2",
-                    ItemId = "AV1",
+                    PointName = "AV1",
                     SendTime = 600
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 2",
-                    DeviceName = "DeviceTest2",
-                    ItemId = "AV2",
+                    PointName = "AV2",
                     SendTime = 600
                 }
             };

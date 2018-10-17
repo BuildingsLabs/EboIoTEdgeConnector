@@ -218,7 +218,6 @@ namespace EboIotEdgeConnector.Extension
                     messages.Add(new Sensor
                     {
                         Path = signal.EwsId,
-                        Type = signal.Type,
                         Unit = signal.Unit,
                         Value = eventz.ValueItemChangeEvent.Value
                     });
@@ -236,7 +235,6 @@ namespace EboIotEdgeConnector.Extension
                     messages.Add(new Sensor
                     {
                         Path = signal.EwsId,
-                        Type = signal.Type,
                         Unit = signal.Unit,
                         Value = signal.Value
                     });

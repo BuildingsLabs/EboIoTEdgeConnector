@@ -135,7 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Files\MHC Signaler-Extended.csv" />
+    <None Include="Files\test_object_config.csv" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -32,18 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="EboIotEdgeConnectorProcessorBase.cs" />
-    <Compile Include="EboIotEdgeConnectorProcessorWithMqttBase.cs" />
+    <Compile Include="Processors\EboIotEdgeConnectorProcessorBase.cs" />
+    <Compile Include="Processors\EboIotEdgeConnectorProcessorWithMqttBase.cs" />
     <Compile Include="Models\EboEwsSettings.cs" />
     <Compile Include="Models\MqttBroker.cs" />
     <Compile Include="Models\MqttValueWrite.cs" />
     <Compile Include="Models\Signal.cs" />
-    <Compile Include="MqttBrokerProcessor.cs" />
-    <Compile Include="RequestReceiveProcessor.cs" />
+    <Compile Include="Processors\MqttBrokerProcessor.cs" />
+    <Compile Include="Processors\RequestReceiveProcessor.cs" />
     <Compile Include="RetainedMqttMessageHandler.cs" />
-    <Compile Include="SetupProcessor.cs" />
+    <Compile Include="Processors\SetupProcessor.cs" />
     <Compile Include="SignalFileParser.cs" />
-    <Compile Include="ValuePushProcessor.cs" />
+    <Compile Include="Processors\ValuePushProcessor.cs" />
     <Compile Include="Models\Converter.cs" />
     <Compile Include="Models\DeviceData.cs" />
     <Compile Include="Models\ParseStringConverter.cs" />

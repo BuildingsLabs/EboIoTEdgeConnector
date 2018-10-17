@@ -12,13 +12,13 @@ namespace EboIotEdgeConnector.IotEdge.Test
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-
+            
         }
 
         [Test]
         public void ConnectorModuleTest()
         {
-
+            Assert.AreEqual(1, 1);
         }
 
       
