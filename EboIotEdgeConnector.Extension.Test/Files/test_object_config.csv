@@ -1,3 +1,4 @@
+sep=;
 ;;;;;; This is a comment ;;;;;;
 Point Name;Database Path;Value;Send On Update;Send Time
 AV1;/Server 1/Fake Air Handler 1;25.2;TRUE;30
