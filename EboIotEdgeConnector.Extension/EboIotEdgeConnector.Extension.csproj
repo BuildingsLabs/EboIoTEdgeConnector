@@ -40,7 +40,6 @@
     <Compile Include="Processors\EboIotEdgeConnectorProcessorWithMqttBase.cs" />
     <Compile Include="Models\EboEwsSettings.cs" />
     <Compile Include="Models\MqttBroker.cs" />
-    <Compile Include="Models\MqttValueWrite.cs" />
     <Compile Include="Models\Signal.cs" />
     <Compile Include="Processors\MqttBrokerProcessor.cs" />
     <Compile Include="Processors\RequestReceiveProcessor.cs" />
