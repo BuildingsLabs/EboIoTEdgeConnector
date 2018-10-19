@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Ews.Client;
+using Ews.Common;
 using Mongoose.Common;
 using Mongoose.Common.Attributes;
 using Mongoose.Common.Data;
@@ -23,14 +24,14 @@ namespace EboIotEdgeConnector.Extension
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
             var signals = SignalFileParser.Parse(SignalFileLocation);
-            GetAndUpdateUnitsForSignals(signals);
+            GetAndUpdateUnitsAndTypeForSignals(signals);
             Signals = signals;
             return Prompts;
         }
         #endregion
 
         #region GetAndUpdateUnitsForSignals
-        private void GetAndUpdateUnitsForSignals(List<Signal> signals)
+        private void GetAndUpdateUnitsAndTypeForSignals(List<Signal> signals)
         {
             Logger.LogTrace(LogCategory.Processor, this.Name, "Getting units for all signals..");
             while (signals.Any())
@@ -49,6 +50,8 @@ namespace EboIotEdgeConnector.Extension
                         }
                         else
                         {
+                            Enum.TryParse(value.Type, true, out EwsValueTypeEnum type);
+                            deviceSignal.Type = type;
                             deviceSignal.Unit = value.Unit;
                         }
                     }

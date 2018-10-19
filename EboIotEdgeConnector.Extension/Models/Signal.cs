@@ -1,4 +1,5 @@
 ﻿using System;
+using Ews.Common;
 
 namespace EboIotEdgeConnector.Extension
 {
@@ -23,10 +24,29 @@ namespace EboIotEdgeConnector.Extension
         public int SendTime { get; set; }
         #endregion
         #region LastSendTime
-        public DateTimeOffset? LastSendTime { get; set; }
+        public DateTime? LastSendTime { get; set; }
+        #endregion
+        #region LastUpdateTime
+        public DateTime? LastUpdateTime { get; set; }
         #endregion
         #region EwsId
-        public string EwsId => $"01{DatabasePath}/{PointName}"; 
+        public string EwsId => $"01{DatabasePath}";
+        #endregion
+        #region EwsIdForWrite
+        public string EwsIdForWrite {
+            get
+            {
+                // TODO: As more of these types of things are discovered, add them here..
+                if (EwsId.Contains("/IO Bus/"))
+                {
+                    return $"11{DatabasePath}/RequestedValue";
+                }
+                return EwsId;
+            }
+        }
+        #endregion
+        #region Type
+        public EwsValueTypeEnum Type { get; set; }
         #endregion
     }
 }

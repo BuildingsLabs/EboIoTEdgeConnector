@@ -3,13 +3,13 @@ using Newtonsoft.Json;
 
 namespace EboIotEdgeConnector.Extension
 {
-    internal class ParseStringConverter : JsonConverter
+    internal class ParseStringConverter : Newtonsoft.Json.JsonConverter
     {
         #region CanConvert - Override
         public override bool CanConvert(Type t) => t == typeof(long) || t == typeof(long?); 
         #endregion
         #region ReadJson - Override
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type t, object existingValue, Newtonsoft.Json.JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.Null) return null;
             var value = serializer.Deserialize<string>(reader);
@@ -22,7 +22,7 @@ namespace EboIotEdgeConnector.Extension
         } 
         #endregion
         #region WriteJson - Override
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object untypedValue, Newtonsoft.Json.JsonSerializer serializer)
         {
             if (untypedValue == null)
             {

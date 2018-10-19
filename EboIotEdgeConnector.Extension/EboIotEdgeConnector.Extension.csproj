@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Models\Actuation.cs" />
+    <Compile Include="Models\ExceptionElement.cs" />
+    <Compile Include="Models\IotEdgeMessage.cs" />
+    <Compile Include="Models\Observation.cs" />
     <Compile Include="Processors\EboIotEdgeConnectorProcessorBase.cs" />
     <Compile Include="Processors\EboIotEdgeConnectorProcessorWithMqttBase.cs" />
     <Compile Include="Models\EboEwsSettings.cs" />
@@ -44,11 +48,9 @@
     <Compile Include="Processors\SetupProcessor.cs" />
     <Compile Include="SignalFileParser.cs" />
     <Compile Include="Processors\ValuePushProcessor.cs" />
-    <Compile Include="Models\Converter.cs" />
-    <Compile Include="Models\DeviceData.cs" />
+    <Compile Include="Models\JsonConverter.cs" />
     <Compile Include="Models\ParseStringConverter.cs" />
-    <Compile Include="Models\Sensor.cs" />
-    <Compile Include="Models\Serialize.cs" />
+    <Compile Include="Models\ModelSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,11 +64,11 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Ews.Client, Version=2.4.7.0, Culture=neutral, PublicKeyToken=223885051a9a1eff, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ews.Client.2.4.7\lib\net452\Ews.Client.dll</HintPath>
+    <Reference Include="Ews.Client, Version=2.4.8.0, Culture=neutral, PublicKeyToken=223885051a9a1eff, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ews.Client.2.4.8\lib\net452\Ews.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Ews.Common, Version=2.4.7.0, Culture=neutral, PublicKeyToken=223885051a9a1eff, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ews.Common.2.4.7\lib\net452\Ews.Common.dll</HintPath>
+    <Reference Include="Ews.Common, Version=2.4.8.0, Culture=neutral, PublicKeyToken=223885051a9a1eff, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ews.Common.2.4.8\lib\net452\Ews.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -93,14 +95,14 @@
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Mongoose.Common, Version=2.4.7.0, Culture=neutral, PublicKeyToken=223885051a9a1eff, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mongoose.Common.2.4.7\lib\net452\Mongoose.Common.dll</HintPath>
+    <Reference Include="Mongoose.Common, Version=2.4.8.0, Culture=neutral, PublicKeyToken=223885051a9a1eff, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mongoose.Common.2.4.8\lib\net452\Mongoose.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Mongoose.Ews.Server.Data, Version=2.4.7.0, Culture=neutral, PublicKeyToken=223885051a9a1eff, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mongoose.Ews.Server.Data.2.4.7\lib\net452\Mongoose.Ews.Server.Data.dll</HintPath>
+    <Reference Include="Mongoose.Ews.Server.Data, Version=2.4.8.0, Culture=neutral, PublicKeyToken=223885051a9a1eff, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mongoose.Ews.Server.Data.2.4.8\lib\net452\Mongoose.Ews.Server.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Mongoose.Process, Version=2.4.7.0, Culture=neutral, PublicKeyToken=223885051a9a1eff, processorArchitecture=MSIL">
-      <HintPath>..\packages\Mongoose.Process.2.4.7\lib\net452\Mongoose.Process.dll</HintPath>
+    <Reference Include="Mongoose.Process, Version=2.4.8.0, Culture=neutral, PublicKeyToken=223885051a9a1eff, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mongoose.Process.2.4.8\lib\net452\Mongoose.Process.dll</HintPath>
     </Reference>
     <Reference Include="MQTTnet, Version=2.7.5.0, Culture=neutral, PublicKeyToken=b69712f52770c0a7, processorArchitecture=MSIL">
       <HintPath>..\packages\MQTTnet.2.7.5\lib\net461\MQTTnet.dll</HintPath>
@@ -117,13 +119,16 @@
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SxL.Common, Version=2.4.7.0, Culture=neutral, PublicKeyToken=223885051a9a1eff, processorArchitecture=MSIL">
-      <HintPath>..\packages\SxL.Common.2.4.7\lib\net452\SxL.Common.dll</HintPath>
+    <Reference Include="SxL.Common, Version=2.4.8.0, Culture=neutral, PublicKeyToken=223885051a9a1eff, processorArchitecture=MSIL">
+      <HintPath>..\packages\SxL.Common.2.4.8\lib\net452\SxL.Common.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>

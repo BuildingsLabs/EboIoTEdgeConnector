@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Ews.Common;
 using Mongoose.Common;
 using Mongoose.Test;
 using Mongoose.Test.Processors;
@@ -47,33 +48,66 @@ namespace EboIotEdgeConnector.Extension.Test
             var signals = new List<Signal> {
                 new Signal
                 {
-                    DatabasePath = "/Server 1/Fake Air Handler 1",
+                    DatabasePath = "/Server 1/Fake Air Handler 1/AV1",
                     PointName = "AV1",
-                    SendTime = 600
+                    SendTime = 600,
+                    Type = EwsValueTypeEnum.Double
                 },
                 new Signal
                 {
-                    DatabasePath = "/Server 1/Fake Air Handler 1",
+                    DatabasePath = "/Server 1/Fake Air Handler 1/AV5",
                     PointName = "AV5",
-                    SendTime = 600
+                    SendTime = 600,
+                    Type = EwsValueTypeEnum.Double
                 },
                 new Signal
                 {
-                    DatabasePath = "/Server 1/Fake Air Handler 1",
+                    DatabasePath = "/Server 1/Fake Air Handler 1/AV15",
                     PointName = "AV15",
-                    SendTime = 600
+                    SendTime = 600,
+                    Type = EwsValueTypeEnum.Double
                 },
                 new Signal
                 {
-                    DatabasePath = "/Server 1/Fake Air Handler 2",
+                    DatabasePath = "/Server 1/Fake Air Handler 1/BV1",
+                    PointName = "BV1",
+                    SendTime = 600,
+                    Type = EwsValueTypeEnum.Boolean
+                },
+                new Signal
+                {
+                    DatabasePath = "/Server 1/Fake Air Handler 1/IV1",
+                    PointName = "IV1",
+                    SendTime = 600,
+                    Type = EwsValueTypeEnum.Long
+                },
+                new Signal
+                {
+                    DatabasePath = "/Server 1/Fake Air Handler 1/SV1",
+                    PointName = "SV1",
+                    SendTime = 600,
+                    Type = EwsValueTypeEnum.String
+                },
+                new Signal
+                {
+                    DatabasePath = "/Server 1/Fake Air Handler 1/DTV1",
+                    PointName = "DTV1",
+                    SendTime = 600,
+                    Type = EwsValueTypeEnum.DateTime
+                },
+                new Signal
+                {
+                    DatabasePath = "/Server 1/Fake Air Handler 2/AV1",
                     PointName = "AV1",
-                    SendTime = 600
+                    SendTime = 600,
+                    Type = EwsValueTypeEnum.Double
                 },
                 new Signal
                 {
-                    DatabasePath = "/Server 1/Fake Air Handler 2",
+                    DatabasePath = "/Server 1/Fake Air Handler 2/AV2",
                     PointName = "AV2",
-                    SendTime = 600
+                    SendTime = 600,
+                    Type = EwsValueTypeEnum.Double
                 }
             };
             cache.AddOrUpdateItem(signals, "CurrentSignalValues", processor.CacheTenantId, 0);

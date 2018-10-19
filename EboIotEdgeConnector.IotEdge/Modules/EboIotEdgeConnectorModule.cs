@@ -44,12 +44,10 @@ namespace EboIotEdgeConnector.IotEdge
             _logger.Debug($"IoT Edge Message Received from Broker: {JsonConvert.SerializeObject(receivedMessage)}");
             try
             {
+                // Let's forward it along to Smart Connector.
                 var messageString = Encoding.ASCII.GetString(receivedMessage.Content);
                 _logger.Debug($"Message: {messageString}");
-                // TODO: Convert message to a MqttValueWrite Object
-                var fortesting = MqttValueWrite.FromJson(messageString);
-                //var valueWrite = new MqttValueWrite();
-                await _managedMqttClient.PublishAsync(_moduleConfiguration.MqttValueSendTopic, fortesting.ToJson(), MqttQualityOfServiceLevel.AtLeastOnce, true);
+                await _managedMqttClient.PublishAsync(_moduleConfiguration.MqttValueSendTopic, messageString, MqttQualityOfServiceLevel.AtLeastOnce, true);
             }
             catch (Exception ex)
             {
@@ -64,16 +62,6 @@ namespace EboIotEdgeConnector.IotEdge
             _logger.Info("Starting MQTT client..");
             _managedMqttClient = new MqttFactory().CreateManagedMqttClient();
 
-            _managedMqttClient.Connected += (sender, args) =>
-            {
-                // TODO: Anything we should be sending every time when we connect to the broker?
-            };
-
-            _managedMqttClient.Disconnected += async (sender, args) =>
-            {
-                // TODO: Anything we should be doing every time we disconnect (Managed client will automatically reconnect)
-            };
-
             // This is event is hit when we receive a message from the broker.
             _managedMqttClient.ApplicationMessageReceived += (s, a) =>
             {
@@ -84,7 +72,7 @@ namespace EboIotEdgeConnector.IotEdge
                 HandleMqttApplicationMessageReceived(topic, decodedString);
             };
 
-            // This just tells us that a message we sent was received succesfully by the broker.
+            // This just tells us that a message we sent was received successfully by the broker.
             _managedMqttClient.ApplicationMessageProcessed += (s, a) =>
             {
                 _logger.Trace("Client Message Processed by Broker", a);
@@ -96,7 +84,6 @@ namespace EboIotEdgeConnector.IotEdge
             };
 
             await _managedMqttClient.SubscribeAsync(new List<TopicFilter> { new TopicFilterBuilder().WithTopic(_moduleConfiguration.MqttValuePushTopic).WithAtLeastOnceQoS().Build() });
-
             await _managedMqttClient.StartAsync(GetMqttClientOptions());
         }
         #endregion
@@ -122,9 +109,9 @@ namespace EboIotEdgeConnector.IotEdge
         #region HandleMqttApplicationMessageReceived
         private void HandleMqttApplicationMessageReceived(string topic, string decodedMessageString)
         {
-            // TODO: Convert to schema if needed.. but in theory will just be forwarded from the MQTT message
             if (topic == _moduleConfiguration.MqttValuePushTopic)
             {
+                // This message was received in theory from Smart Connector in the correct format. Forward it to the IoT Edge Broker
                 try
                 {
                     _logger.Trace($"Sending updated values to Gateway Broker: {decodedMessageString}");

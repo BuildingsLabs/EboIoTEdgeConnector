@@ -14,15 +14,12 @@ using SxL.Common;
 
 namespace EboIotEdgeConnector.Extension
 {
-    [ConfigurationDefaults("Value Push Processor", "This processor gets runtime values from EBO, and pushes them to Azure as defined by the signal CSV file.")]
+    [ConfigurationDefaults("Value Push Processor",
+        "This processor gets runtime values from EBO, and pushes them to Azure as defined by the signal CSV file.")]
     public class ValuePushProcessor : EboIotEdgeConnectorProcessorWithMqttBase
     {
         private const int MaxItemsPerSubscription = 500;
 
-        #region ValuePushTopic
-        [Required, DefaultValue("eboiotedgeconnector/newvalues")]
-        public string ValuePushTopic { get; set; } 
-        #endregion
         #region Execute_Subclass - Override
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
@@ -39,24 +36,28 @@ namespace EboIotEdgeConnector.Extension
 
             if (Signals == null)
             {
-                Prompts.Add(new Prompt { Message = "There are no signals in the cache, please run the SetupProcessor or verify that it has run successfully.", Severity = PromptSeverity.MayNotContinue });
+                Prompts.Add(new Prompt
+                {
+                    Message = "There are no signals in the cache, please run the SetupProcessor or verify that it has run successfully.",
+                    Severity = PromptSeverity.MayNotContinue
+                });
                 return Prompts;
             }
-            
+
             // Read existing subscriptions
             if (!ReadExistingSubscriptions(Signals).Result)
             {
-                Prompts.Add(new Prompt { Message = $"Did not successfully read all existing subscriptions."});
+                Prompts.Add(new Prompt {Message = $"Did not successfully read all existing subscriptions."});
             }
 
             // Subscribe and read new subscriptions
             if (!SubscribeAndReadNew(Signals).Result)
             {
-                Prompts.Add(new Prompt { Message = $"Did not successfully read all new subscriptions." });
+                Prompts.Add(new Prompt {Message = $"Did not successfully read all new subscriptions."});
             }
 
             // Update the cache with new values..
-            Cache.AddOrUpdateItem(Signals, "CurrentSignalValues", CacheTenantId, 0);
+            Signals = Signals;
             return Prompts;
         }
         #endregion
@@ -110,6 +111,7 @@ namespace EboIotEdgeConnector.Extension
                     Cache.DeleteItem($"ActiveSubscriptions#{sub}", CacheTenantId);
                 }
             }
+
             // Save any changes to cache
             Cache.AddOrUpdateItem(activeSubscriptions, $"ActiveSubscriptions", CacheTenantId, 0);
             return true;
@@ -163,6 +165,7 @@ namespace EboIotEdgeConnector.Extension
                     break;
                 }
             }
+
             return true;
 
             // TODO: How to handle subscriptions to value items that keep failing?
@@ -178,30 +181,32 @@ namespace EboIotEdgeConnector.Extension
                 return false;
             }
 
-            var messages = new List<Sensor>();
-            var deviceMessage = new DeviceData
+            var devices = results.DataRead.GroupBy(a => a.ValueItemChangeEvent.Id.Remove(a.ValueItemChangeEvent.Id.LastIndexOf('/')).Remove(0,2));
+
+            foreach (var device in devices)
             {
-                //DeviceId = deviceMapping.Value,
-                EventTime = DateTimeOffset.Now,
-                Format = "vkcore0.1",
-                PowerSource = "net230",
-                //RoomId = currentDevice.Key,
-                Sensors = messages
-            };
+                var observations = new List<Observation>();
+                var deviceMessage = new IotEdgeMessage
+                {
+                    Format = "rec2.3",
+                    Observations = observations,
+                    DeviceId = device.Key
+                };
 
-            AddUpdatedValuesToMessage(results, messages);
+                AddUpdatedValuesToMessage(observations, device.Key, device.ToList());
 
-            var messageBuilder = new MqttApplicationMessageBuilder();
-            var message = messageBuilder.WithRetainFlag().WithAtLeastOnceQoS().WithTopic(ValuePushTopic).WithPayload(deviceMessage.ToJSON()).Build();
-            await ManagedMqttClient.PublishAsync(message);
+                var messageBuilder = new MqttApplicationMessageBuilder();
+                var message = messageBuilder.WithRetainFlag().WithAtLeastOnceQoS().WithTopic(ValuePushTopic).WithPayload(deviceMessage.ToJson()).Build();
+                await ManagedMqttClient.PublishAsync(message);
+            }
+
             return true;
         }
         #endregion
-
         #region AddUpdatedValuesToMessage
-        private void AddUpdatedValuesToMessage(ReadResult<SubscriptionResultItem> results, List<Sensor> messages)
+        private void AddUpdatedValuesToMessage(List<Observation> observations, string devicePath, List<SubscriptionResultItem> pointsToAdd)
         {
-            foreach (var eventz in results.DataRead)
+            foreach (var eventz in pointsToAdd)
             {
                 var signal = Signals.FirstOrDefault(a => a.EwsId == eventz.ValueItemChangeEvent.Id);
                 if (signal == null)
@@ -210,31 +215,21 @@ namespace EboIotEdgeConnector.Extension
                     continue;
                 }
 
+                signal.Value = eventz.ValueItemChangeEvent.Value;
+                signal.LastUpdateTime = eventz.ValueItemChangeEvent.TimeStamp.ToUniversalTime();
                 if (signal.SendOnUpdate)
                 {
-                    messages.Add(new Sensor
-                    {
-                        Path = signal.EwsId,
-                        Unit = signal.Unit,
-                        Value = eventz.ValueItemChangeEvent.Value
-                    });
+                    HandleAddingToObservationsList(observations, signal);
                 }
-
-                signal.Value = eventz.ValueItemChangeEvent.Value;
             }
 
-            foreach (var signal in Signals)
+            // TODO: Maybe only send updates for time at the end?
+            foreach (var signal in Signals.Where(a => a.DatabasePath.Remove(a.DatabasePath.LastIndexOf('/')) == devicePath))
             {
-                if (signal.LastSendTime != null &&
-                    signal.LastSendTime.Value.AddSeconds(signal.SendTime) > DateTimeOffset.Now) continue;
-                if (messages.All(a => a.Path != signal.EwsId))
+                if (signal.LastSendTime != null && signal.LastSendTime.Value.AddSeconds(signal.SendTime) > DateTimeOffset.Now) continue;
+                if (observations.All(a => $"{devicePath}/{a.SensorId}" != signal.DatabasePath))
                 {
-                    messages.Add(new Sensor
-                    {
-                        Path = signal.EwsId,
-                        Unit = signal.Unit,
-                        Value = signal.Value
-                    });
+                    HandleAddingToObservationsList(observations, signal);
                 }
             }
         }
@@ -243,7 +238,7 @@ namespace EboIotEdgeConnector.Extension
         #region HandleMqttApplicationMessageReceived - Override
         public override void HandleMqttApplicationMessageReceived(string topic, string decodedMessage)
         {
-            // In theory, this should not be receiving messages, just log this was unexpected
+            // In theory, this should not be receiving observations, just log this was unexpected
             Logger.LogInfo(LogCategory.Processor, this.Name, $"{this.Name} unexpectedely received a message..");
         }
         #endregion
@@ -251,7 +246,7 @@ namespace EboIotEdgeConnector.Extension
         public override void SubscribeToMqttTopics()
         {
             // Not topics to subscribe to, intentionally blank
-        } 
+        }
         #endregion
     }
 }

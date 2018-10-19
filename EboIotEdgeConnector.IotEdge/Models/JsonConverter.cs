@@ -4,7 +4,7 @@ using Newtonsoft.Json.Converters;
 
 namespace EboIotEdgeConnector.IotEdge
 {
-    public static class JsonConverter
+    internal static class JsonConverter
     {
         #region Settings
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
@@ -14,7 +14,7 @@ namespace EboIotEdgeConnector.IotEdge
             Converters = {
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
-        }; 
+        };
         #endregion
     }
 }

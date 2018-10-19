@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Threading.Tasks;
+using Ews.Common;
 using Mongoose.Common;
 using Mongoose.Common.Attributes;
 using MQTTnet;
@@ -22,6 +26,10 @@ namespace EboIotEdgeConnector.Extension
         #region MqttClientId
         public string MqttClientId { get; set; }
         #endregion
+        #region ValuePushTopic
+        [Required, DefaultValue("eboiotedgeconnector/newvalues")]
+        public string ValuePushTopic { get; set; }
+        #endregion
 
         #region Constructor
         protected EboIotEdgeConnectorProcessorWithMqttBase()
@@ -34,7 +42,80 @@ namespace EboIotEdgeConnector.Extension
         public abstract void HandleMqttApplicationMessageReceived(string topic, string decodedMessage);
         #endregion
         #region SubscribeToMqttTopics - Abstract
-        public abstract void SubscribeToMqttTopics(); 
+        public abstract void SubscribeToMqttTopics();
+        #endregion
+
+        #region ToConvertedTypeValue - Static
+        public static (bool wasValidValue, dynamic value) ToConvertedTypeValue(Signal signal)
+        {
+            switch (signal.Type)
+            {
+                case EwsValueTypeEnum.DateTime:
+                    if (!DateTime.TryParse(signal.Value, out DateTime dateTimeResult))
+                    {
+                        return (false, signal.Value);
+                    }
+                    else
+                    {
+                        return (true, dateTimeResult);
+                    }
+                case EwsValueTypeEnum.Boolean:
+                    if (signal.Value == "0") signal.Value = "false";
+                    if (signal.Value == "1") signal.Value = "true";
+                    if (!bool.TryParse(signal.Value, out bool boolResult))
+                    {
+                        return (false, signal.Value);
+                    }
+                    else
+                    {
+                        return (true, boolResult);
+                    }
+                case EwsValueTypeEnum.String:
+                    return (true, signal.Value);
+                case EwsValueTypeEnum.Double:
+                    if (!double.TryParse(signal.Value, out double doubleResult))
+                    {
+                        return (false, signal.Value);
+                    }
+                    else
+                    {
+                        return (true, doubleResult);
+                    }
+                case EwsValueTypeEnum.Long:
+                case EwsValueTypeEnum.Integer:
+                    if (!int.TryParse(signal.Value, out int intResult))
+                    {
+                        return (false, signal.Value);
+                    }
+                    else
+                    {
+                        return (true, intResult);
+                    }
+                case EwsValueTypeEnum.Duration:
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+        #endregion
+        #region HandleAddingToObservationsList
+        public virtual void HandleAddingToObservationsList(List<Observation> observations, Signal signal)
+        {
+            var toSetValue = ToConvertedTypeValue(signal);
+            if (toSetValue.wasValidValue == true)
+            {
+                observations.Add(new Observation
+                {
+                    SensorId = signal.PointName,
+                    ObservationTime = signal.LastUpdateTime.Value.ToUniversalTime(),
+                    Value = toSetValue.value
+                });
+                signal.LastSendTime = DateTime.UtcNow;
+            }
+            else
+            {
+                Logger.LogInfo(LogCategory.Processor, this.Name, $"Value of signal could not be converted to it's correct type: {signal.ToJSON()}");
+            }
+        }
         #endregion
 
         #region StartMqttClient - Virtual

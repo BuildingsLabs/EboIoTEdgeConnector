@@ -65,47 +65,104 @@ namespace EboIotEdgeConnector.Extension
                 if (Signals == null)
                 {
                     Logger.LogInfo(LogCategory.Processor, this.Name, $"There are no Signals in the in-memory cache. Please check that the Setup Processor has been run.");
+                    return;
                 }
-                var message = JsonConvert.DeserializeObject<MqttValueWrite>(decodedString);
-                if (message == null) return;
-                var toSet = new List<ValueTypeStateless>();
-                foreach (var option in message.ValuesToWrite)
-                {
-                    if (Signals.Select(a => a.EwsId).Contains(option.Id))
-                    {
-                        toSet.Add(option);
-                    }
-                    else
-                    {
-                        Logger.LogInfo(LogCategory.Processor, this.Name, $"{option.Id} does not exist in the list of monitored values. Skipping.");
-                    }
-                }
+                var iotEdgeMessage = JsonConvert.DeserializeObject<IotEdgeMessage>(decodedString);
+                if (iotEdgeMessage == null || !iotEdgeMessage.Actuations.Any()) return;
 
-                //var successfulWrites = new MqttDeviceConfig { MqttDeviceConfigOptions = new List<ValueTypeStateless>() };
-
-                if (toSet.Any())
-                {
-                    var setValues = ManagedEwsClient.SetValues(EboEwsSettings, toSet.ToArray());
-
-                    foreach (var result in setValues.SetValuesResults.Where(b => !b.Success))
-                    {
-                        Logger.LogError(LogCategory.Processor, this.Name, $"Did not successfully set value {result.Id} with error message {result.Message}");
-                    }
-
-                    //foreach (var result in setValues.SetValuesResults.Where(b => b.Success))
-                    //{
-                    //    successfulWrites.MqttDeviceConfigOptions.Add(message.MqttDeviceConfigOptions.FirstOrDefault(b => b.Id == result.Id));
-                    //}
-                }
-
-                // TODO: Do I need to write back that it was successfull in some way?
-                //if (successfulWrites.MqttDeviceConfigOptions.Any()) await ManagedMqttClient.PublishAsync($"/devices/{EboIotDevice.GoogleIotDeviceId}/state", successfulOptions.ToJSON());
+                var toSet = GetListOfValuesToSetInEbo(iotEdgeMessage);
+                SetValuesInEbo(toSet, iotEdgeMessage);
+                SendConfirmationResponseToIotEdge(iotEdgeMessage);
             }
             catch (Exception ex)
             {
                 Logger.LogError(LogCategory.Processor, this.Name, ex.ToJSON());
             }
-        } 
+        }
+        #endregion
+        #region GetListOfValuesToSetInEbo
+        private List<(ValueTypeStateless valueTypeStateless, Signal signal)> GetListOfValuesToSetInEbo(IotEdgeMessage iotEdgeMessage)
+        {
+            var toSet = new List<(ValueTypeStateless valueTypeStateless, Signal signal)>();
+            foreach (var option in iotEdgeMessage.Actuations)
+            {
+                var theSignalToSet = Signals.FirstOrDefault(a => a.DatabasePath == $"{iotEdgeMessage.DeviceId}/{option.ActuatorId}");
+
+                if (theSignalToSet == null)
+                {
+                    Logger.LogInfo(LogCategory.Processor, this.Name, $"{iotEdgeMessage.DeviceId}/{option.ActuatorId} does not exist in the list of monitored values. Skipping.");
+                    if (iotEdgeMessage.Exceptions == null) iotEdgeMessage.Exceptions = new List<ExceptionElement>();
+                    iotEdgeMessage.Exceptions.Add(new ExceptionElement
+                    {
+                        ExceptionTime = DateTimeOffset.UtcNow,
+                        Exception = $"{iotEdgeMessage.DeviceId}/{option.ActuatorId} does not exist in the list of monitored values. Please make sure that the configuration CSV file contains this point",
+                        Retry = 1,
+                        SensorId = option.ActuatorId
+                    });
+                }
+                else
+                {
+                    toSet.Add(new ValueTuple<ValueTypeStateless, Signal>(
+                        new ValueTypeStateless { Id = theSignalToSet.EwsIdForWrite, Value = option.Value },
+                        theSignalToSet));
+                }
+            }
+
+            return toSet;
+        }
+        #endregion
+        #region SetValuesInEbo
+        private void SetValuesInEbo(List<(ValueTypeStateless valueTypeStateless, Signal signal)> toSet, IotEdgeMessage iotEdgeMessage)
+        {
+            if (toSet.Any())
+            {
+                SetValuesResponse setValues;
+                try
+                {
+                    setValues = ManagedEwsClient.SetValues(EboEwsSettings,toSet.Select(a => a.valueTypeStateless).ToArray());
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError(LogCategory.Processor, this.Name, ex.ToString());
+                    return;
+                }
+
+                foreach (var result in setValues.SetValuesResults.Where(b => !b.Success))
+                {
+                    var signal = toSet.FirstOrDefault(a => a.signal.EwsIdForWrite == result.Id).signal;
+                    Logger.LogError(LogCategory.Processor, this.Name, $"Did not successfully set value {result.Id} with error message {result.Message}");
+                    if (iotEdgeMessage.Exceptions == null) iotEdgeMessage.Exceptions = new List<ExceptionElement>();
+                    iotEdgeMessage.Exceptions.Add(new ExceptionElement
+                    {
+                        ExceptionTime = DateTimeOffset.UtcNow,
+                        Exception = result.Message,
+                        Retry = 1,
+                        SensorId = signal.PointName
+                    });
+                }
+
+                foreach (var result in setValues.SetValuesResults.Where(b => b.Success))
+                {
+                    var signal = toSet.FirstOrDefault(a => a.signal.EwsIdForWrite == result.Id).signal;
+                    var valueTypeStateless = toSet.FirstOrDefault(a => a.valueTypeStateless.Id == signal.EwsIdForWrite).valueTypeStateless;
+                    signal.Value = valueTypeStateless.Value;
+                    signal.LastUpdateTime = DateTime.UtcNow.ToUniversalTime();
+                    if (iotEdgeMessage.Observations == null) iotEdgeMessage.Observations = new List<Observation>();
+                    HandleAddingToObservationsList(iotEdgeMessage.Observations, signal);
+                }
+            }
+        }
+        #endregion
+        #region SendConfirmationResponseToIotEdge
+        private void SendConfirmationResponseToIotEdge(IotEdgeMessage iotEdgeMessage)
+        {
+            iotEdgeMessage.Actuations = null;
+            var messageBuilder = new MqttApplicationMessageBuilder();
+            var message = messageBuilder.WithRetainFlag().WithAtLeastOnceQoS().WithTopic(ValuePushTopic).WithPayload(iotEdgeMessage.ToJson()).Build();
+            ManagedMqttClient.PublishAsync(message).Wait();
+            // Update the cache with new values..
+            Signals = Signals;
+        }
         #endregion
     }
 }
