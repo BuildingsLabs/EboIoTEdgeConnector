@@ -26,9 +26,9 @@ namespace EboIotEdgeConnector.Extension
                 {
                     if (_signals == null)
                     {
-                        var signals = Cache.RetrieveItem("CurrentSignalValues", tenantId: CacheTenantId);
-                        if (signals == null || !(signals is List<Signal>)) return null;
-                        _signals = (List<Signal>)signals;
+                        var signals = Cache.RetrieveItem<List<Signal>>("CurrentSignalValues", tenantId: CacheTenantId);
+                        if (signals == null) return null;
+                        _signals = signals;
                     }
                     return _signals;
                 }
@@ -44,7 +44,6 @@ namespace EboIotEdgeConnector.Extension
                 Cache.AddOrUpdateItem(value, "CurrentSignalValues", CacheTenantId, 0);
                 _signals = value;
             }
-
         }
         #endregion
 

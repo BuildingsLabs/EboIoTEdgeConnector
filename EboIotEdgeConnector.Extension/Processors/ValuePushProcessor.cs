@@ -220,7 +220,7 @@ namespace EboIotEdgeConnector.Extension
                 }
             }
 
-            // TODO: Maybe only send updates for time at the end?
+            // TODO: Update this to only check for values in the current subscription by using SubscriptionReader to CachedSubscribedItems
             foreach (var signal in Signals.Where(a => a.DatabasePath.Remove(a.DatabasePath.LastIndexOf('/')) == devicePath))
             {
                 if (signal.LastSendTime != null && signal.LastSendTime.Value.AddSeconds(signal.SendTime) > DateTimeOffset.Now) continue;

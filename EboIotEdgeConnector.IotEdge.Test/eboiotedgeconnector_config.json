@@ -21,7 +21,7 @@
         }
       },
       "args": {
-        "MqttBrokerAdress": "127.0.0.1",
+        "MqttBrokerAddress": "127.0.0.1",
         "MqttBrokerPort": 1883,
         "MqttClientId": "iotedgemoduleclient",
         "UseSecureCommunication": false,

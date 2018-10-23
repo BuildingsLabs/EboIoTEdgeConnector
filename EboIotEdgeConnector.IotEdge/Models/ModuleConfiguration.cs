@@ -4,9 +4,9 @@ namespace EboIotEdgeConnector.IotEdge
 {
     public class ModuleConfiguration
     {
-        #region MqttBrokerAdress
-        [JsonProperty("MqttBrokerAdress")]
-        public string MqttBrokerAdress { get; set; }
+        #region MqttBrokerAddress
+        [JsonProperty("MqttBrokerAddress")]
+        public string MqttBrokerAddress { get; set; }
         #endregion
         #region MqttBrokerPort
         [JsonProperty("MqttBrokerPort")]

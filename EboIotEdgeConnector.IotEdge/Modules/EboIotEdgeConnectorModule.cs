@@ -100,7 +100,7 @@ namespace EboIotEdgeConnector.IotEdge
                 .WithAutoReconnectDelay(TimeSpan.FromSeconds(5))
                 .WithClientOptions(clientOptions
                     .WithClientId(_moduleConfiguration.MqttClientId)
-                    .WithTcpServer(_moduleConfiguration.MqttBrokerAdress, _moduleConfiguration.MqttBrokerPort)
+                    .WithTcpServer(_moduleConfiguration.MqttBrokerAddress, _moduleConfiguration.MqttBrokerPort)
                     .WithCredentials(_moduleConfiguration.MqttBrokerUserName, _moduleConfiguration.MqttBrokerPassword).Build())
                 .Build();
             return options;
