@@ -190,10 +190,11 @@ namespace EboIotEdgeConnector.Extension
                     DeviceId = device.Key
                 };
 
-                AddUpdatedValuesToMessage(observations, device.Key, device.ToList());
+                AddUpdatedValuesToMessage(observations, device.Key, device.ToList(), si.CachedSubscribedItems);
 
                 var messageBuilder = new MqttApplicationMessageBuilder();
                 var message = messageBuilder.WithRetainFlag().WithAtLeastOnceQoS().WithTopic(ValuePushTopic).WithPayload(deviceMessage.ToJson()).Build();
+
                 await ManagedMqttClient.PublishAsync(message);
             }
 
@@ -201,7 +202,7 @@ namespace EboIotEdgeConnector.Extension
         }
         #endregion
         #region AddUpdatedValuesToMessage
-        private void AddUpdatedValuesToMessage(List<Observation> observations, string devicePath, List<SubscriptionResultItem> pointsToAdd)
+        private void AddUpdatedValuesToMessage(List<Observation> observations, string devicePath, List<SubscriptionResultItem> pointsToAdd, List<string> pointsMonitoredBySub)
         {
             foreach (var eventz in pointsToAdd)
             {
@@ -220,8 +221,7 @@ namespace EboIotEdgeConnector.Extension
                 }
             }
 
-            // TODO: Update this to only check for values in the current subscription by using SubscriptionReader to CachedSubscribedItems
-            foreach (var signal in Signals.Where(a => a.DatabasePath.Remove(a.DatabasePath.LastIndexOf('/')) == devicePath))
+            foreach (var signal in Signals.Where(a => pointsMonitoredBySub.Contains(a.EwsId)))
             {
                 if (signal.LastSendTime != null && signal.LastSendTime.Value.AddSeconds(signal.SendTime) > DateTimeOffset.Now) continue;
                 if (observations.All(a => $"{devicePath}/{a.SensorId}" != signal.DatabasePath))

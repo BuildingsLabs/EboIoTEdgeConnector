@@ -107,7 +107,6 @@ namespace EboIotEdgeConnector.Extension
                         theSignalToSet));
                 }
             }
-
             return toSet;
         }
         #endregion
