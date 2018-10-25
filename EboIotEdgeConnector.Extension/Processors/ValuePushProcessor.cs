@@ -72,6 +72,7 @@ namespace EboIotEdgeConnector.Extension
             var activeSubscriptionsToIterate = activeSubscriptions.ToList();
             foreach (var sub in activeSubscriptionsToIterate)
             {
+                if (IsCancellationRequested) return false;
                 var subscription = Cache.RetrieveItem($"ActiveSubscriptions#{sub}", CacheTenantId);
                 Logger.LogDebug(LogCategory.Processor, $"Reading existing subscription: {sub}");
                 try
@@ -135,6 +136,7 @@ namespace EboIotEdgeConnector.Extension
 
             while (unsubscribedIds.Any())
             {
+                if (IsCancellationRequested) return false;
                 try
                 {
                     CheckCancellationToken();

@@ -34,6 +34,7 @@ namespace EboIotEdgeConnector.Extension
             Logger.LogTrace(LogCategory.Processor, this.Name, "Getting units for all signals..");
             while (signals.Any())
             {
+                if (IsCancellationRequested) return;
                 try
                 {
                     var response = ManagedEwsClient.GetItems(EboEwsSettings, signals.Take(500).Select(a => a.EwsId).ToArray());
