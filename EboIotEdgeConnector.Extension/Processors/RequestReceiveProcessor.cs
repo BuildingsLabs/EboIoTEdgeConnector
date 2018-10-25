@@ -162,6 +162,7 @@ namespace EboIotEdgeConnector.Extension
             iotEdgeMessage.Actuations = null;
             var messageBuilder = new MqttApplicationMessageBuilder();
             var message = messageBuilder.WithRetainFlag().WithAtLeastOnceQoS().WithTopic(ValuePushTopic).WithPayload(iotEdgeMessage.ToJson()).Build();
+            Logger.LogTrace(LogCategory.Processor, this.Name, $"Sending Message to MQTT Broker: {iotEdgeMessage.ToJson()}");
             ManagedMqttClient.PublishAsync(message).Wait();
             // Update the cache with new values..
             Signals = Signals;

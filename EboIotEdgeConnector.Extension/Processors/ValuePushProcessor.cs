@@ -87,9 +87,9 @@ namespace EboIotEdgeConnector.Extension
                         SubscriptionEventType = EwsSubscriptionEventTypeEnum.ValueItemChanged,
                         SubscriptionId = sub
                     };
-
+                    var results = si.ReadData();
                     // Attempt to update the values by reading the subscription, if this fails return all Prompts
-                    if (!await UpdateValues(si))
+                    if (!await UpdateValues(si, results))
                     {
                         if (!si.IsResubscribeRequired) return false;
                         activeSubscriptions.Remove(sub);
@@ -123,22 +123,30 @@ namespace EboIotEdgeConnector.Extension
         private async Task<bool> SubscribeAndReadNew(List<Signal> signals)
         {
             Logger.LogTrace(LogCategory.Processor, this.Name, $"Creating and reading new subscriptions..");
-            var activeSubscriptions = Cache.RetrieveItem($"ActiveSubscriptions", () => new List<string>(), CacheTenantId, 0);
+            var activeSubscriptions = Cache.RetrieveItem($"ActiveSubscriptions", () => new List<string>(), CacheTenantId, 0) as List<string>;
 
             var subscribedIds = new List<string>();
 
             foreach (var subscription in activeSubscriptions)
             {
-                if (Cache.RetrieveItem($"ActiveSubscriptions#{subscription}", CacheTenantId) is List<string> currentSub) subscribedIds.AddRange(currentSub);
+                var itemsToAdd = Cache.RetrieveItem<List<string>>($"ActiveSubscriptions#{subscription}", null, CacheTenantId);
+                if (itemsToAdd != null)
+                {
+                    subscribedIds.AddRange(itemsToAdd);
+                }
             }
 
             var unsubscribedIds = signals.Select(a => a.EwsId).Where(a => !subscribedIds.Contains(a)).ToList();
+
+            Logger.LogDebug(LogCategory.Processor, this.Name, $"Found {unsubscribedIds.Count} points that are not currently subscribed to.");
+            Logger.LogTrace(LogCategory.Processor, this.Name, $"Unsubscribed Point Ids: {unsubscribedIds.ToJSON()}");
 
             while (unsubscribedIds.Any())
             {
                 if (IsCancellationRequested) return false;
                 try
                 {
+                    var idsToSubscribeTo = unsubscribedIds.Take(MaxItemsPerSubscription).ToList();
                     CheckCancellationToken();
                     var si = new SubscriptionReader
                     {
@@ -146,11 +154,14 @@ namespace EboIotEdgeConnector.Extension
                         UserName = EboEwsSettings.UserName,
                         Password = EboEwsSettings.Password,
                         SubscriptionEventType = EwsSubscriptionEventTypeEnum.ValueItemChanged,
-                        Ids = signals.Select(a => a.EwsId).Take(MaxItemsPerSubscription).ToList()
+                        Ids = idsToSubscribeTo
                     };
 
                     // Attempt to update the values by reading the subscription, if this fails return all false as this could go on forever.
-                    if (!await UpdateValues(si)) return false;
+                    var results = si.ReadData();
+                    // If all the ids we subscribed to failed, just continue on.. nothing to see here..
+                    if (si.FailedSubscribedItems.Count == idsToSubscribeTo.Count) return true;
+                    if (!await UpdateValues(si, results)) return false;
 
                     Cache.AddOrUpdateItem(si.SubscribedItems, $"ActiveSubscriptions#{si.SubscriptionId}", CacheTenantId, 0);
                     unsubscribedIds = unsubscribedIds.Skip(MaxItemsPerSubscription).ToList();
@@ -177,9 +188,8 @@ namespace EboIotEdgeConnector.Extension
         }
         #endregion
         #region UpdateValues
-        private async Task<bool> UpdateValues(SubscriptionReader si)
+        private async Task<bool> UpdateValues(SubscriptionReader si, ReadResult<SubscriptionResultItem> results)
         {
-            var results = si.ReadData();
             if (!results.Success)
             {
                 Prompts.AddRange(results.Prompts);
@@ -202,7 +212,7 @@ namespace EboIotEdgeConnector.Extension
 
                 var messageBuilder = new MqttApplicationMessageBuilder();
                 var message = messageBuilder.WithRetainFlag().WithAtLeastOnceQoS().WithTopic(ValuePushTopic).WithPayload(deviceMessage.ToJson()).Build();
-
+                Logger.LogTrace(LogCategory.Processor, this.Name, $"Sending Message to MQTT Broker: {deviceMessage.ToJson()}");
                 await ManagedMqttClient.PublishAsync(message);
             }
 
@@ -229,7 +239,9 @@ namespace EboIotEdgeConnector.Extension
                 }
             }
 
-            foreach (var signal in Signals.Where(a => pointsMonitoredBySub.Contains(a.EwsId)))
+            Signals = Signals;
+
+            foreach (var signal in Signals.Where(a => pointsMonitoredBySub.Contains(a.EwsId) && a.DatabasePath.Remove(a.DatabasePath.LastIndexOf('/')) == devicePath))
             {
                 if (signal.LastSendTime != null && signal.LastSendTime.Value.AddSeconds(signal.SendTime) > DateTimeOffset.Now) continue;
                 if (observations.All(a => $"{devicePath}/{a.SensorId}" != signal.DatabasePath))

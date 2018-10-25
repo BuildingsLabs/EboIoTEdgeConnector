@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Ews.Common;
@@ -100,6 +101,13 @@ namespace EboIotEdgeConnector.Extension
         #region HandleAddingToObservationsList
         public virtual void HandleAddingToObservationsList(List<Observation> observations, Signal signal)
         {
+            // This means a value has never come back from EWS for this singal, it could be an invalid point ID or some other reason..
+            if (!signal.LastUpdateTime.HasValue)
+            {
+                Logger.LogDebug(LogCategory.Processor, this.Name, $"Signal {signal.EwsId} has never gotten an updated value from the EWS server, skipping this one..");
+                return;
+            }
+
             var toSetValue = ToConvertedTypeValue(signal);
             if (toSetValue.wasValidValue == true)
             {
@@ -113,7 +121,8 @@ namespace EboIotEdgeConnector.Extension
             }
             else
             {
-                Logger.LogInfo(LogCategory.Processor, this.Name, $"Value of signal could not be converted to it's correct type: {signal.ToJSON()}");
+                Logger.LogInfo(LogCategory.Processor, this.Name, $"A value of '{signal.Value}' is not a valid {signal.Type}. Signal with ID {signal.EwsId}");
+                Logger.LogTrace(LogCategory.Processor, this.Name, $"Value of signal could not be converted to it's correct type: {signal.ToJSON()}");
             }
         }
         #endregion

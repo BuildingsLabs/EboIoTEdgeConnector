@@ -139,6 +139,8 @@ namespace EboIotEdgeConnector.Extension.Test
         public void ExecuteTest()
         {
             this.RunExecuteTest();
+            this.RunExecuteTest();
+            this.RunExecuteTest();
         } 
         #endregion
     }
