@@ -107,6 +107,13 @@ namespace EboIotEdgeConnector.Extension.Test
                     PointName = "AV2",
                     SendTime = 600,
                     Type = EwsValueTypeEnum.Double
+                },
+                new Signal
+                {
+                    DatabasePath = "/Server 1/Fake Air Handler 2/AVss2",
+                    PointName = "AV2",
+                    SendTime = 600,
+                    Type = EwsValueTypeEnum.Double
                 }
             };
             cache.AddOrUpdateItem(signals, "CurrentSignalValues", processor.CacheTenantId, 0);

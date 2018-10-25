@@ -154,6 +154,8 @@ namespace EboIotEdgeConnector.Extension
 
                     // Add any prompts generated from reader to the list of prompts
                     Prompts.AddRange(si.ReadData().Prompts);
+
+                    if (si.FailedSubscribedItems.Any()) Logger.LogInfo(LogCategory.Processor, this.Name, $"Some items failed to be subscribed to: {si.FailedSubscribedItems.ToJSON()}");
                 }
 
                 catch (Exception ex)
