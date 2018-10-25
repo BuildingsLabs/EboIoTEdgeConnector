@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Ews.Common;
 using Mongoose.Common;
 using Mongoose.Common.Attributes;
+using Mongoose.Process;
 using Mongoose.Process.Ews;
 using MQTTnet;
 using SxL.Common;
@@ -13,7 +14,7 @@ namespace EboIotEdgeConnector.Extension
 {
     [ConfigurationDefaults("Value Push Processor",
         "This processor gets runtime values from EBO, and pushes them to Azure as defined by the signal CSV file.")]
-    public class ValuePushProcessor : EboIotEdgeConnectorProcessorWithMqttBase
+    public class ValuePushProcessor : EboIotEdgeConnectorProcessorWithMqttBase, ILongRunningProcess
     {
         private const int MaxItemsPerSubscription = 500;
 
@@ -53,6 +54,9 @@ namespace EboIotEdgeConnector.Extension
                 Prompts.Add(new Prompt {Message = $"Did not successfully read all new subscriptions."});
             }
 
+            ManagedMqttClient.StopAsync().Wait();
+            ManagedMqttClient.Dispose();
+    
             // Update the cache with new values..
             Signals = Signals;
             return Prompts;

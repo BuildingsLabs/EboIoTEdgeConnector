@@ -29,7 +29,11 @@ namespace EboIotEdgeConnector.Extension
 
             for (;;)
             {
-                if (IsCancellationRequested) return Prompts;
+                if (IsCancellationRequested)
+                {
+                    ManagedMqttClient.StopAsync().Wait();
+                    return Prompts;
+                }
                 Task.Delay(5000).Wait();
             }
         }

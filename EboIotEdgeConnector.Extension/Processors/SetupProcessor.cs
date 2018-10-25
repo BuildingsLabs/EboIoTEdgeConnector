@@ -5,12 +5,13 @@ using System.Linq;
 using Ews.Common;
 using Mongoose.Common;
 using Mongoose.Common.Attributes;
+using Mongoose.Process;
 using SxL.Common;
 
 namespace EboIotEdgeConnector.Extension
 {
     [ConfigurationDefaults("Setup Processor", "This processor parses the signal CSV file, and stores the result in the in-memory cache for use by the other processors.")]
-    public class SetupProcessor : EboIotEdgeConnectorProcessorBase
+    public class SetupProcessor : EboIotEdgeConnectorProcessorBase, ILongRunningProcess
     {
         #region SignalFileLocation
         [Required]
