@@ -50,42 +50,54 @@ namespace EboIotEdgeConnector.Extension.Test
                     DatabasePath = "/Server 1/Fake Air Handler 1/AV1",
                     PointName = "AV1",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Double
+                    Type = EwsValueTypeEnum.Double,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 1/AV5",
                     PointName = "AV5",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Double
+                    Type = EwsValueTypeEnum.Double,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 1/AV15",
                     PointName = "AV15",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Double
+                    Type = EwsValueTypeEnum.Double,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 2/AV1",
                     PointName = "AV1",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Double
+                    Type = EwsValueTypeEnum.Double,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 2/AV2",
                     PointName = "AV2",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Double
+                    Type = EwsValueTypeEnum.Double,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/BigDataAS/IO Bus/DO-FA-12/Digital Output",
                     PointName = "Digital Output",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Boolean
+                    Type = EwsValueTypeEnum.Boolean,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 }
             };
             cache.AddOrUpdateItem(signals, "CurrentSignalValues", processor.CacheTenantId, 0);

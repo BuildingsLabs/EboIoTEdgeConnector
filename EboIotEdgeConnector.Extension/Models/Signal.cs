@@ -1,5 +1,6 @@
 ﻿using System;
 using Ews.Common;
+using Newtonsoft.Json;
 
 namespace EboIotEdgeConnector.Extension
 {
@@ -47,6 +48,16 @@ namespace EboIotEdgeConnector.Extension
         #endregion
         #region Type
         public EwsValueTypeEnum Type { get; set; }
+        #endregion
+        #region Writeable
+        public EwsValueWriteableEnum Writeable { get; set; }
+        [JsonIgnore]
+        public bool? IsWriteable => Writeable == EwsValueWriteableEnum.Writeable;
+        #endregion
+        #region Forceable
+        public EwsValueForceableEnum Forceable { get; set; }
+        [JsonIgnore]
+        public bool? IsForceable => Forceable == EwsValueForceableEnum.Forceable;
         #endregion
     }
 }

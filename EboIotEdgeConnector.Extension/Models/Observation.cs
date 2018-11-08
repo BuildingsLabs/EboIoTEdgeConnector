@@ -15,7 +15,15 @@ namespace EboIotEdgeConnector.Extension
         #endregion
         #region SensorId
         [JsonProperty("sensorId")]
-        public string SensorId { get; set; } 
+        public string SensorId { get; set; }
+        #endregion
+        #region Writeable
+        [JsonProperty("writeable", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Writeable { get; set; }
+        #endregion
+        #region Forceable
+        [JsonProperty("forceable", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Forceable { get; set; }
         #endregion
     }
 }

@@ -99,7 +99,7 @@ namespace EboIotEdgeConnector.Extension
         }
         #endregion
         #region HandleAddingToObservationsList
-        public virtual void HandleAddingToObservationsList(List<Observation> observations, Signal signal)
+        public virtual void HandleAddingToObservationsList(List<Observation> observations, Signal signal, bool sendAdditionalProperties = false)
         {
             // This means a value has never come back from EWS for this singal, it could be an invalid point ID or some other reason..
             if (!signal.LastUpdateTime.HasValue)
@@ -115,7 +115,9 @@ namespace EboIotEdgeConnector.Extension
                 {
                     SensorId = signal.PointName,
                     ObservationTime = signal.LastUpdateTime.Value.ToUniversalTime(),
-                    Value = toSetValue.value
+                    Value = toSetValue.value,
+                    Writeable = sendAdditionalProperties ? signal.IsWriteable : null,
+                    Forceable = sendAdditionalProperties ? signal.IsForceable : null
                 });
                 signal.LastSendTime = DateTime.UtcNow;
             }

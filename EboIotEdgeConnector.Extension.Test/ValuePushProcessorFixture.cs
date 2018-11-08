@@ -50,70 +50,90 @@ namespace EboIotEdgeConnector.Extension.Test
                     DatabasePath = "/Server 1/Fake Air Handler 1/AV1",
                     PointName = "AV1",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Double
+                    Type = EwsValueTypeEnum.Double,
+                    Writeable = EwsValueWriteableEnum.ReadOnly,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 1/AV5",
                     PointName = "AV5",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Double
+                    Type = EwsValueTypeEnum.Double,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 1/AV15",
                     PointName = "AV15",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Double
+                    Type = EwsValueTypeEnum.Double,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 1/BV1",
                     PointName = "BV1",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Boolean
+                    Type = EwsValueTypeEnum.Boolean,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 1/IV1",
                     PointName = "IV1",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Long
+                    Type = EwsValueTypeEnum.Long,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 1/SV1",
                     PointName = "SV1",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.String
+                    Type = EwsValueTypeEnum.String,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 1/DTV1",
                     PointName = "DTV1",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.DateTime
+                    Type = EwsValueTypeEnum.DateTime,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 2/AV1",
                     PointName = "AV1",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Double
+                    Type = EwsValueTypeEnum.Double,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 2/AV2",
                     PointName = "AV2",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Double
+                    Type = EwsValueTypeEnum.Double,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 },
                 new Signal
                 {
                     DatabasePath = "/Server 1/Fake Air Handler 2/AVss2",
                     PointName = "AV2",
                     SendTime = 600,
-                    Type = EwsValueTypeEnum.Double
+                    Type = EwsValueTypeEnum.Double,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
                 }
             };
             cache.AddOrUpdateItem(signals, "CurrentSignalValues", processor.CacheTenantId, 0);

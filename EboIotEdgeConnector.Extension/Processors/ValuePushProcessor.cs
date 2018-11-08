@@ -12,8 +12,7 @@ using SxL.Common;
 
 namespace EboIotEdgeConnector.Extension
 {
-    [ConfigurationDefaults("Value Push Processor",
-        "This processor gets runtime values from EBO, and pushes them to Azure as defined by the signal CSV file.")]
+    [ConfigurationDefaults("Value Push Processor", "This processor gets runtime values from EBO, and pushes them to Azure as defined by the signal CSV file.")]
     public class ValuePushProcessor : EboIotEdgeConnectorProcessorWithMqttBase, ILongRunningProcess
     {
         private const int MaxItemsPerSubscription = 500;
@@ -161,7 +160,7 @@ namespace EboIotEdgeConnector.Extension
                     var results = si.ReadData();
                     // If all the ids we subscribed to failed, just continue on.. nothing to see here..
                     if (si.FailedSubscribedItems.Count == idsToSubscribeTo.Count) return true;
-                    if (!await UpdateValues(si, results)) return false;
+                    if (!await UpdateValues(si, results, true)) return false;
 
                     Cache.AddOrUpdateItem(si.SubscribedItems, $"ActiveSubscriptions#{si.SubscriptionId}", CacheTenantId, 0);
                     unsubscribedIds = unsubscribedIds.Skip(MaxItemsPerSubscription).ToList();
@@ -188,7 +187,12 @@ namespace EboIotEdgeConnector.Extension
         }
         #endregion
         #region UpdateValues
-        private async Task<bool> UpdateValues(SubscriptionReader si, ReadResult<SubscriptionResultItem> results)
+        /// <summary>
+        /// Sends the Observations to the MQTT broker
+        /// </summary>
+        /// <param name="sendAdditionalProperties">If true, the 'Writeable' and 'Forceable' properties will be sent in the Observation</param>
+        /// <returns></returns>
+        private async Task<bool> UpdateValues(SubscriptionReader si, ReadResult<SubscriptionResultItem> results, bool sendAdditionalProperties = false)
         {
             if (!results.Success)
             {
@@ -208,7 +212,7 @@ namespace EboIotEdgeConnector.Extension
                     DeviceId = device.Key
                 };
 
-                AddUpdatedValuesToMessage(observations, device.Key, device.ToList(), si.CachedSubscribedItems);
+                AddUpdatedValuesToMessage(observations, device.Key, device.ToList(), si.CachedSubscribedItems, sendAdditionalProperties);
 
                 var messageBuilder = new MqttApplicationMessageBuilder();
                 var message = messageBuilder.WithRetainFlag().WithAtLeastOnceQoS().WithTopic(ValuePushTopic).WithPayload(deviceMessage.ToJson()).Build();
@@ -220,7 +224,7 @@ namespace EboIotEdgeConnector.Extension
         }
         #endregion
         #region AddUpdatedValuesToMessage
-        private void AddUpdatedValuesToMessage(List<Observation> observations, string devicePath, List<SubscriptionResultItem> pointsToAdd, List<string> pointsMonitoredBySub)
+        private void AddUpdatedValuesToMessage(List<Observation> observations, string devicePath, List<SubscriptionResultItem> pointsToAdd, List<string> pointsMonitoredBySub, bool sendAdditionalProperties = false)
         {
             foreach (var eventz in pointsToAdd)
             {
@@ -235,7 +239,7 @@ namespace EboIotEdgeConnector.Extension
                 signal.LastUpdateTime = eventz.ValueItemChangeEvent.TimeStamp.ToUniversalTime();
                 if (signal.SendOnUpdate)
                 {
-                    HandleAddingToObservationsList(observations, signal);
+                    HandleAddingToObservationsList(observations, signal, sendAdditionalProperties);
                 }
             }
 
@@ -246,7 +250,7 @@ namespace EboIotEdgeConnector.Extension
                 if (signal.LastSendTime != null && signal.LastSendTime.Value.AddSeconds(signal.SendTime) > DateTimeOffset.Now) continue;
                 if (observations.All(a => $"{devicePath}/{a.SensorId}" != signal.DatabasePath))
                 {
-                    HandleAddingToObservationsList(observations, signal);
+                    HandleAddingToObservationsList(observations, signal, sendAdditionalProperties);
                 }
             }
         }

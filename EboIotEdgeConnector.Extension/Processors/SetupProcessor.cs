@@ -22,14 +22,14 @@ namespace EboIotEdgeConnector.Extension
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
             var signals = SignalFileParser.Parse(SignalFileLocation);
-            GetAndUpdateUnitsAndTypeForSignals(signals);
+            GetAndUpdateInitialPropertiesForSignals(signals);
             Signals = signals;
             return Prompts;
         }
         #endregion
 
         #region GetAndUpdateUnitsForSignals
-        private void GetAndUpdateUnitsAndTypeForSignals(List<Signal> signals)
+        private void GetAndUpdateInitialPropertiesForSignals(List<Signal> signals)
         {
             Logger.LogTrace(LogCategory.Processor, this.Name, "Getting units for all signals..");
             while (signals.Any())
@@ -50,8 +50,12 @@ namespace EboIotEdgeConnector.Extension
                         else
                         {
                             Enum.TryParse(value.Type, true, out EwsValueTypeEnum type);
+                            Enum.TryParse(value.Writeable, true, out EwsValueWriteableEnum writeable);
+                            Enum.TryParse(value.Forceable, true, out EwsValueForceableEnum forceable);
                             deviceSignal.Type = type;
                             deviceSignal.Unit = value.Unit;
+                            deviceSignal.Writeable = writeable;
+                            deviceSignal.Forceable = forceable;
                         }
                     }
 
