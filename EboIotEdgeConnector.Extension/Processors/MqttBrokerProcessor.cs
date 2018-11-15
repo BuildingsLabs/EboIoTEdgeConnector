@@ -17,7 +17,7 @@ using SxL.Common;
 
 namespace EboIotEdgeConnector.Extension
 {
-    [ConfigurationDefaults("Mqtt Broker Processor", "This processor stands up an MQTT broker, which will broker requests between Smart Connector and the IoT Edge.")]
+    [ConfigurationDefaults("MQTT Broker Processor", "This processor stands up an MQTT broker, which will broker requests between Smart Connector and the IoT Edge.")]
     public class MqttBrokerProcessor : Processor, ILongRunningProcess
     {
         private List<Prompt> _prompts = new List<Prompt>();

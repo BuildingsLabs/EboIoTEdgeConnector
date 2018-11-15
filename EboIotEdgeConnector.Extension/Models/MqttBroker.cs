@@ -8,11 +8,11 @@ namespace EboIotEdgeConnector.Extension
     public class MqttBroker : ITraversable
     {
         #region BrokerAddress
-        [Tooltip("The MQTT broker address."), DefaultValue("localhost"), Required]
+        [Tooltip("The MQTT broker address."), DefaultValue("127.0.0.1"), Required]
         public string BrokerAddress { get; set; }
         #endregion
         #region Port
-        [Tooltip("The port of the MQTT Broker"), DefaultValue(8883), Required]
+        [Tooltip("The port of the MQTT Broker"), DefaultValue(1883), Required]
         public int Port { get; set; }
         #endregion
         #region IsEncryptedCommunication
