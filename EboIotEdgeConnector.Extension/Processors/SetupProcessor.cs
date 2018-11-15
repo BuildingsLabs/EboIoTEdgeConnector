@@ -22,8 +22,19 @@ namespace EboIotEdgeConnector.Extension
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
             var signals = SignalFileParser.Parse(SignalFileLocation);
-            GetAndUpdateInitialPropertiesForSignals(signals);
-            Signals = signals;
+
+            try
+            {
+                EvaluatePerformanceImpact(signals);
+            }
+            catch (Exception ex)
+            {
+                Prompts.Add(ex.ToPrompt());
+                return Prompts;
+            }
+
+            GetAndUpdateInitialPropertiesForSignals(Signals);
+
             return Prompts;
         }
         #endregion
@@ -72,6 +83,33 @@ namespace EboIotEdgeConnector.Extension
                 }
 
                 signals = signals.Skip(500).ToList();
+            }
+        }
+        #endregion
+        #region EvaluatePerformanceImpact
+        /// <summary>
+        /// Due to some performance issues with version of EBO prior to 2.0, we will limit the amount of points that can be consumed out of EBO versions
+        /// prior to 2.0 to 100. No limit for point count in version 2.0 and above.
+        /// </summary>
+        private void EvaluatePerformanceImpact(List<Signal> signals)
+        {
+            var eboVersion = new Version(ManagedEwsClient.GetWebServiceInformation(EboEwsSettings).GetWebServiceInformationSystem.Version);
+            if (eboVersion.Major > 1)
+            {
+                Signals = signals;
+            }
+            else
+            {
+                if (signals.Count > 100)
+                {
+                    Prompts.Add(new Prompt
+                    {
+                        Severity = PromptSeverity.MayContinue,
+                        Message = $"Due to performance concerns, only 100 points out of {signals.Count} can be consumed when using EBO versions prior to 2.0. Please update your EBO to version 2.0 or greater to get the full functionality of the EBO IoT Edge Smart Connector Extension."
+                    });
+                }
+
+                Signals = signals.Take(100).ToList();
             }
         }
         #endregion
