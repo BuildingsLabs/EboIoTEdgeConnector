@@ -40,6 +40,10 @@ namespace EboIotEdgeConnector.IotEdge
         [JsonProperty("LoggingLevel")]
         public string LoggingLevel { get; set; }
         #endregion
+        #region ActuationSource
+        [JsonProperty("ActuationSource")]
+        public string ActuationSource { get; set; }
+        #endregion
 
         #region FromJson
         public static ModuleConfiguration FromJson(string json) => JsonConvert.DeserializeObject<ModuleConfiguration>(json, JsonConverter.Settings);

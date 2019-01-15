@@ -41,17 +41,24 @@ namespace EboIotEdgeConnector.IotEdge
         #region Receive - IGatewayModule Member
         public async void Receive(Message receivedMessage)
         {
-            _logger.Debug($"IoT Edge Message Received from Broker: {JsonConvert.SerializeObject(receivedMessage)}");
-            try
+            if (receivedMessage.Properties.TryGetValue("source", out var messageSource) && messageSource == _moduleConfiguration.ActuationSource)
             {
-                // Let's forward it along to Smart Connector.
-                var messageString = Encoding.ASCII.GetString(receivedMessage.Content);
-                _logger.Debug($"Message: {messageString}");
-                await _managedMqttClient.PublishAsync(_moduleConfiguration.MqttValueSendTopic, messageString, MqttQualityOfServiceLevel.AtLeastOnce, true);
+                _logger.Debug($"IoT Edge Message Received from Broker: {JsonConvert.SerializeObject(receivedMessage)}");
+                try
+                {
+                    // Let's forward it along to Smart Connector.
+                    var messageString = Encoding.ASCII.GetString(receivedMessage.Content);
+                    _logger.Debug($"Message: {messageString}");
+                    await _managedMqttClient.PublishAsync(_moduleConfiguration.MqttValueSendTopic, messageString, MqttQualityOfServiceLevel.AtLeastOnce, true);
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex.ToString());
+                }
             }
-            catch (Exception ex)
+            else
             {
-                _logger.Error(ex.ToString());
+                _logger.Debug("IoT Edge Message Received from unknown source");
             }
         } 
         #endregion
