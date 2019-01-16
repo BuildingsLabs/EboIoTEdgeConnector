@@ -29,7 +29,11 @@
         "MqttBrokerPassword": "Admin!23",
         "MqttValuePushTopic": "eboiotedgeconnector/newvalues",
         "MqttValueSendTopic": "eboiotedgeconnector/sendvalues",
-        "LoggingLevel":  "Trace" 
+        "LoggingLevel": "Trace",
+        "ExpectedSources": {
+          "test_send_module",
+          "rec-actuation",
+        } 
       }
     },
     {
