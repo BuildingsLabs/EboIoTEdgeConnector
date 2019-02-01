@@ -42,6 +42,7 @@ namespace EboIotEdgeConnector.Extension
         #region GetAndUpdateUnitsForSignals
         private void GetAndUpdateInitialPropertiesForSignals(List<Signal> signals)
         {
+            var newSignals = new List<Signal>();
             Logger.LogTrace(LogCategory.Processor, this.Name, "Getting units for all signals..");
             while (signals.Any())
             {
@@ -67,12 +68,13 @@ namespace EboIotEdgeConnector.Extension
                             deviceSignal.Unit = value.Unit;
                             deviceSignal.Writeable = writeable;
                             deviceSignal.Forceable = forceable;
+                            newSignals.Add(deviceSignal);
                         }
                     }
 
                     foreach (var value in response.GetItemsErrorResults.ToList())
                     {
-                        Logger.LogInfo(LogCategory.Processor, this.Name, $"Error getting value: {value.Id} - {value.Message}");
+                        Prompts.Add(new Prompt {Message = $"Error getting value, this value will not be pushed: {value.Id} - {value.Message}", Severity = PromptSeverity.MayNotContinue});
                     }
                 }
                 catch (Exception ex)
@@ -84,6 +86,8 @@ namespace EboIotEdgeConnector.Extension
 
                 signals = signals.Skip(500).ToList();
             }
+
+            Signals = newSignals;
         }
         #endregion
         #region EvaluatePerformanceImpact
