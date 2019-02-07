@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace EboIotEdgeConnector.IotEdge
 {
@@ -39,6 +40,10 @@ namespace EboIotEdgeConnector.IotEdge
         #region LoggingLevel
         [JsonProperty("LoggingLevel")]
         public string LoggingLevel { get; set; }
+        #endregion
+        #region ExpectedSources
+        [JsonProperty("ExpectedSources")]
+        public List<string> ExpectedSources { get; set; } 
         #endregion
 
         #region FromJson

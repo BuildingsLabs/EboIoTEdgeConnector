@@ -44,6 +44,18 @@ namespace EboIotEdgeConnector.IotEdge
             _logger.Debug($"IoT Edge Message Received from Broker: {JsonConvert.SerializeObject(receivedMessage)}");
             try
             {
+                if (!receivedMessage.Properties.ContainsKey("source"))
+                {
+                    _logger.Debug("IoT Edge Message received from unknown source");
+                    return;
+                }
+
+                if (!_moduleConfiguration.ExpectedSources.Contains(receivedMessage.Properties["source"]))
+                {
+                    _logger.Debug($"IoT Edge Message received from a non-expected source: {receivedMessage.Properties["source"]}");
+                    return;
+                }
+
                 // Let's forward it along to Smart Connector.
                 var messageString = Encoding.ASCII.GetString(receivedMessage.Content);
                 _logger.Debug($"Message: {messageString}");

@@ -5,7 +5,7 @@ Random;BV1;/Server 1/Fake Air Handler 1/BV1;The Description;Boolean Value;;TRUE;
 Random;SV1;/Server 1/Fake Air Handler 1/SV1;The Description;String Value;;TRUE;30
 Random;IV1;/Server 1/Fake Air Handler 1/IV1;The Description;Integer Value;;TRUE;30
 Random;DTV1;/Server 1/Fake Air Handler 1/DTV1;The Description;DateTime Value;;TRUE;30
-Random;AV5;/Server 1/Fake Air Handler 1/AV5;The Description;Analog Value;;FALSE;30
+Random;AV1234;/Server 1/Fake Air Handler 1/AV5;The Description;Analog Value;;FALSE;30
 Random;AV2;/Server 1/Fake Air Handler 2/AV2;The Description;Analog Value;;FALSE;60
 Random;AV3;/Server 1/Fake Air Handler 2/AV3;The Description;Analog Value;;TRUE;60
 Random;Digital Output;/BigDataAS/IO Bus/DO-FA-12/Digital Output;The Description;Digital Output;;TRUE;60

@@ -260,7 +260,7 @@ namespace EboIotEdgeConnector.Extension
         public override void HandleMqttApplicationMessageReceived(string topic, string decodedMessage)
         {
             // In theory, this should not be receiving observations, just log this was unexpected
-            Logger.LogInfo(LogCategory.Processor, this.Name, $"{this.Name} unexpectedely received a message..");
+            Logger.LogInfo(LogCategory.Processor, this.Name, $"{this.Name} unexpectedly received a message..");
         }
         #endregion
         #region SubscribeToMqttTopics - Override
