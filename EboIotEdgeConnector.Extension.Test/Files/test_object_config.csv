@@ -1,5 +1,5 @@
 ;;;;;; This is a comment ;;;;;;
-Device Name;Point Name;Database Path;Description;Type;Value;Send On Update;Send Time
+Device Name;Point Name;Point Path;Description;Type;Value;Send On Update;Send Time
 Random;AV1;/Server 1/Fake Air Handler 1/AV1;The Description;Analog Value;;TRUE;30
 Random;BV1;/Server 1/Fake Air Handler 1/BV1;The Description;Boolean Value;;TRUE;30
 Random;SV1;/Server 1/Fake Air Handler 1/SV1;The Description;String Value;;TRUE;30
