@@ -31,13 +31,6 @@ namespace EboIotEdgeConnector.Extension
         public string ValuePushTopic { get; set; }
         #endregion
 
-        #region Constructor
-        protected EboIotEdgeConnectorProcessorWithMqttBase()
-        {
-            MqttBrokerSettings = new MqttBroker();
-        } 
-        #endregion
-
         #region HandleMqttApplicationMessageReceived - Abstract
         public abstract void HandleMqttApplicationMessageReceived(string topic, string decodedMessage);
         #endregion

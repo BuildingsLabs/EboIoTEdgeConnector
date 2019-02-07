@@ -52,14 +52,6 @@ namespace EboIotEdgeConnector.Extension
         public EboEwsSettings EboEwsSettings { get; set; }
         #endregion
 
-        #region Constructor
-
-        public MqttBrokerProcessor()
-        {
-            EboEwsSettings = new EboEwsSettings();
-        }
-        #endregion
-
         #region Execute_Subclass - Override
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
