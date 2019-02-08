@@ -100,14 +100,14 @@ namespace EboIotEdgeConnector.Extension
                 return;
             }
 
-            var toSetValue = ToConvertedTypeValue(signal);
-            if (toSetValue.wasValidValue == true)
+            var (wasValidValue, value) = ToConvertedTypeValue(signal);
+            if (wasValidValue)
             {
                 observations.Add(new Observation
                 {
                     SensorId = signal.PointName,
                     ObservationTime = signal.LastUpdateTime.Value.ToUniversalTime(),
-                    Value = toSetValue.value,
+                    Value = value,
                     Writeable = sendAdditionalProperties ? signal.IsWriteable : null,
                     Forceable = sendAdditionalProperties ? signal.IsForceable : null
                 });

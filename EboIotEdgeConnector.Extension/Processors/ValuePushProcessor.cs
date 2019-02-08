@@ -247,12 +247,14 @@ namespace EboIotEdgeConnector.Extension
 
             foreach (var signal in Signals.Where(a => pointsMonitoredBySub.Contains(a.EwsId) && a.DatabasePath.Remove(a.DatabasePath.LastIndexOf('/')) == devicePath))
             {
-                if (signal.LastSendTime != null && signal.LastSendTime.Value.AddSeconds(signal.SendTime) > DateTimeOffset.Now) continue;
+                if (signal.LastSendTime != null && signal.LastSendTime.Value.AddSeconds(signal.SendTime) > DateTime.UtcNow) continue;
                 if (observations.All(a => $"{devicePath}/{a.SensorId}" != signal.DatabasePath))
                 {
                     HandleAddingToObservationsList(observations, signal, sendAdditionalProperties);
                 }
             }
+
+            Signals = Signals;
         }
         #endregion
 

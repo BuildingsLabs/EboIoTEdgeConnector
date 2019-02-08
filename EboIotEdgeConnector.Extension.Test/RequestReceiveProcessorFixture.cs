@@ -98,7 +98,16 @@ namespace EboIotEdgeConnector.Extension.Test
                     Type = EwsValueTypeEnum.Boolean,
                     Writeable = EwsValueWriteableEnum.Writeable,
                     Forceable = EwsValueForceableEnum.Forceable
-                }
+                },
+                new Signal
+                {
+                    DatabasePath = "/Server 1/Fake Air Handler 1/MANÖVER",
+                    PointName = "MANÖVER",
+                    SendTime = 600,
+                    Type = EwsValueTypeEnum.Double,
+                    Writeable = EwsValueWriteableEnum.Writeable,
+                    Forceable = EwsValueForceableEnum.Forceable
+                },
             };
             cache.AddOrUpdateItem(signals, "CurrentSignalValues", processor.CacheTenantId, 0);
             return processor;
