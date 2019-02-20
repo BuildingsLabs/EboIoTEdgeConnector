@@ -30,10 +30,10 @@
         "MqttValuePushTopic": "eboiotedgeconnector/newvalues",
         "MqttValueSendTopic": "eboiotedgeconnector/sendvalues",
         "LoggingLevel": "Trace",
-        "ExpectedSources": {
+        "ExpectedSources": [
           "test_send_module",
-          "rec-actuation",
-        } 
+          "rec-actuation"
+        ]
       }
     },
     {
