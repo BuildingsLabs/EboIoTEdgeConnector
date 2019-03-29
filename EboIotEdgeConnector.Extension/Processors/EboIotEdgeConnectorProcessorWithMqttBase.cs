@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using Ews.Common;
@@ -30,6 +31,11 @@ namespace EboIotEdgeConnector.Extension
         [Required, DefaultValue("eboiotedgeconnector/newvalues")]
         public string ValuePushTopic { get; set; }
         #endregion
+
+        public EboIotEdgeConnectorProcessorWithMqttBase()
+        {
+            MqttBrokerSettings = new MqttBroker();
+        }
 
         #region HandleMqttApplicationMessageReceived - Abstract
         public abstract void HandleMqttApplicationMessageReceived(string topic, string decodedMessage);
@@ -66,7 +72,7 @@ namespace EboIotEdgeConnector.Extension
                 case EwsValueTypeEnum.String:
                     return (true, signal.Value);
                 case EwsValueTypeEnum.Double:
-                    if (!double.TryParse(signal.Value, out double doubleResult))
+                    if (!double.TryParse(signal.Value, NumberStyles.Any, CultureInfo.InvariantCulture, out double doubleResult))
                     {
                         return (false, signal.Value);
                     }

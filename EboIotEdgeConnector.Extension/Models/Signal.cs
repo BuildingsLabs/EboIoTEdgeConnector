@@ -31,7 +31,12 @@ namespace EboIotEdgeConnector.Extension
         public DateTime? LastUpdateTime { get; set; }
         #endregion
         #region EwsId
-        public string EwsId => $"01{DatabasePath}";
+        private string _ewsId;
+        public string EwsId
+        {
+            get => !string.IsNullOrEmpty(_ewsId) ? _ewsId : $"01{DatabasePath}";
+            set => _ewsId = value;
+        }
         #endregion
         #region EwsIdForWrite
         public string EwsIdForWrite {

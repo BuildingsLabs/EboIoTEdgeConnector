@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
 using Ews.Common;
@@ -8,6 +9,7 @@ using Mongoose.Common.Attributes;
 using Mongoose.Process;
 using Mongoose.Process.Ews;
 using MQTTnet;
+using MQTTnet.Extensions.ManagedClient;
 using SxL.Common;
 
 namespace EboIotEdgeConnector.Extension
@@ -53,6 +55,13 @@ namespace EboIotEdgeConnector.Extension
                 Prompts.Add(new Prompt {Message = $"Did not successfully read all new subscriptions."});
             }
 
+            Logger.LogTrace(LogCategory.Processor, this.Name, "Waiting for all messages be be published...");
+            while (ManagedMqttClient.PendingApplicationMessagesCount > 0)
+            {
+                Logger.LogTrace(LogCategory.Processor, this.Name, $"{ManagedMqttClient.PendingApplicationMessagesCount} messages left waiting to be published..");
+                if (this.IsCancellationRequested) return new List<Prompt>();
+                Task.Delay(1000).Wait();
+            }
             ManagedMqttClient.StopAsync().Wait();
             ManagedMqttClient.Dispose();
     
@@ -237,6 +246,7 @@ namespace EboIotEdgeConnector.Extension
 
                 signal.Value = eventz.ValueItemChangeEvent.Value;
                 signal.LastUpdateTime = eventz.ValueItemChangeEvent.TimeStamp.ToUniversalTime();
+                // TODO: What to do if State is Error?
                 if (signal.SendOnUpdate)
                 {
                     HandleAddingToObservationsList(observations, signal, sendAdditionalProperties);

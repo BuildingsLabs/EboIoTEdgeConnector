@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Ews.Client;
 using Ews.Common;
 using Mongoose.Common;
 using Mongoose.Common.Attributes;
@@ -25,15 +26,23 @@ namespace EboIotEdgeConnector.Extension
 
             try
             {
-                EvaluatePerformanceImpact(signals);
+                if (!EvaluatePerformanceImpact(signals))
+                {
+                    Prompts.Add(new Prompt
+                    {
+                        Message = "Could not successfully evaluate performance, cannot continue.",
+                        Severity = PromptSeverity.MayNotContinue
+                    });
+                    return Prompts;
+                }
+
+                GetAndUpdateInitialPropertiesForSignals(Signals);
             }
             catch (Exception ex)
             {
                 Prompts.Add(ex.ToPrompt());
                 return Prompts;
             }
-
-            GetAndUpdateInitialPropertiesForSignals(Signals);
 
             return Prompts;
         }
@@ -50,27 +59,14 @@ namespace EboIotEdgeConnector.Extension
                 try
                 {
                     var response = ManagedEwsClient.GetItems(EboEwsSettings, signals.Take(500).Select(a => a.EwsId).ToArray());
-                    var successfulValues = response.GetItemsItems.ValueItems.ToList();
+                    var successfulValues = response.GetItemsItems.ValueItems?.ToList();
+                    AddSuccessfulSignalsToCache(signals, successfulValues, newSignals);
 
-                    foreach (var value in successfulValues)
-                    {
-                        var deviceSignal = signals.FirstOrDefault(a => a.EwsId == value.Id);
-                        if (deviceSignal == null)
-                        {
-                            Logger.LogInfo(LogCategory.Processor, this.Name, $"Returned value does not exist in the list known signals..");
-                        }
-                        else
-                        {
-                            Enum.TryParse(value.Type, true, out EwsValueTypeEnum type);
-                            Enum.TryParse(value.Writeable, true, out EwsValueWriteableEnum writeable);
-                            Enum.TryParse(value.Forceable, true, out EwsValueForceableEnum forceable);
-                            deviceSignal.Type = type;
-                            deviceSignal.Unit = value.Unit;
-                            deviceSignal.Writeable = writeable;
-                            deviceSignal.Forceable = forceable;
-                            newSignals.Add(deviceSignal);
-                        }
-                    }
+                    var valuesToRetry = UpdateInvalidEwsIdsForRetry(signals, response);
+
+                    response = ManagedEwsClient.GetItems(EboEwsSettings, valuesToRetry.Select(a => a.EwsId).ToArray());
+                    successfulValues = response.GetItemsItems.ValueItems?.ToList();
+                    AddSuccessfulSignalsToCache(signals, successfulValues, newSignals);
 
                     foreach (var value in response.GetItemsErrorResults.ToList())
                     {
@@ -95,25 +91,83 @@ namespace EboIotEdgeConnector.Extension
         /// Due to some performance issues with version of EBO prior to 2.0, we will limit the amount of points that can be consumed out of EBO versions
         /// prior to 2.0 to 100. No limit for point count in version 2.0 and above.
         /// </summary>
-        private void EvaluatePerformanceImpact(List<Signal> signals)
+        private bool EvaluatePerformanceImpact(List<Signal> signals)
         {
-            var eboVersion = new Version(ManagedEwsClient.GetWebServiceInformation(EboEwsSettings).GetWebServiceInformationSystem.Version);
-            if (eboVersion.Major > 1)
+            try
             {
-                Signals = signals;
-            }
-            else
-            {
-                if (signals.Count > 100)
+                var response = ManagedEwsClient.GetWebServiceInformation(EboEwsSettings);
+                var eboVersion = new Version(response.GetWebServiceInformationSystem.Version);
+                if (eboVersion.Major > 1)
                 {
-                    Prompts.Add(new Prompt
-                    {
-                        Severity = PromptSeverity.MayContinue,
-                        Message = $"Due to performance concerns, only 100 points out of {signals.Count} can be consumed when using EBO versions prior to 2.0. Please update your EBO to version 2.0 or greater to get the full functionality of the EBO IoT Edge Smart Connector Extension."
-                    });
+                    Signals = signals;
                 }
+                else
+                {
+                    if (signals.Count > 100)
+                    {
+                        Prompts.Add(new Prompt
+                        {
+                            Severity = PromptSeverity.MayContinue,
+                            Message = $"Due to performance concerns, only 100 points out of {signals.Count} can be consumed when using EBO versions prior to 2.0. Please update your EBO to version 2.0 or greater to get the full functionality of the EBO IoT Edge Smart Connector Extension."
+                        });
+                    }
 
-                Signals = signals.Take(100).ToList();
+                    Signals = signals.Take(100).ToList();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(LogCategory.Processor, this.Name, ex.ToString());
+                return false;
+            }     
+        }
+        #endregion
+        #region UpdateInvalidEwsIdsForRetry
+        private List<Signal> UpdateInvalidEwsIdsForRetry(List<Signal> signals, GetItemsResponse response)
+        {
+            var valuesToRetry = new List<Signal>();
+            // We don't know if these are 01 EWS IDs or 11.. So for all invalid IDs, we must now try to 11 to see what happens.
+            if (response.GetItemsErrorResults != null && response.GetItemsErrorResults.ToList().Any())
+            {
+                foreach (var value in response.GetItemsErrorResults.ToList().Where(a => a.Message == "INVALID_ID"))
+                {
+                    var deviceSignal = signals.FirstOrDefault(a => a.EwsId == value.Id);
+                    if (deviceSignal == null)
+                    {
+                        Logger.LogInfo(LogCategory.Processor, this.Name, $"Returned value does not exist in the list known signals..");
+                    }
+                    else
+                    {
+                        deviceSignal.EwsId = $"11{deviceSignal.DatabasePath}";
+                    }
+                    valuesToRetry.Add(deviceSignal);
+                }
+            }
+            return valuesToRetry;
+        }
+        #endregion
+        #region AddSuccessfulSignalsToCache
+        private void AddSuccessfulSignalsToCache(List<Signal> signals, List<ValueItemType> successfulValues, List<Signal> newSignals)
+        {
+            foreach (var value in successfulValues)
+            {
+                var deviceSignal = signals.FirstOrDefault(a => a.EwsId == value.Id);
+                if (deviceSignal == null)
+                {
+                    Logger.LogInfo(LogCategory.Processor, this.Name, $"Returned value does not exist in the list known signals..");
+                }
+                else
+                {
+                    Enum.TryParse(value.Type, true, out EwsValueTypeEnum type);
+                    Enum.TryParse(value.Writeable, true, out EwsValueWriteableEnum writeable);
+                    Enum.TryParse(value.Forceable, true, out EwsValueForceableEnum forceable);
+                    deviceSignal.Type = type;
+                    deviceSignal.Unit = value.Unit;
+                    deviceSignal.Writeable = writeable;
+                    deviceSignal.Forceable = forceable;
+                    newSignals.Add(deviceSignal);
+                }
             }
         }
         #endregion

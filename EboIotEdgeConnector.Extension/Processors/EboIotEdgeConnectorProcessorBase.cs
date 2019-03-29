@@ -15,6 +15,13 @@ namespace EboIotEdgeConnector.Extension
         internal List<Prompt> Prompts = new List<Prompt>();
         internal IManagedEwsClient ManagedEwsClient = MongooseObjectFactory.Current.GetInstance<IManagedEwsClient>();
 
+        #region EboEwsSettings
+        protected EboIotEdgeConnectorProcessorBase()
+        {
+            EboEwsSettings = new EboEwsSettings();
+        } 
+        #endregion
+
         #region Signals
         private List<Signal> _signals;
         [ConfigurationIgnore]
