@@ -36,7 +36,7 @@ namespace EboIotEdgeConnector.Extension
                     return Prompts;
                 }
 
-                GetAndUpdateInitialPropertiesForSignals(Signals);
+                GetAndUpdateInitialPropertiesForSignals(signals);
             }
             catch (Exception ex)
             {
