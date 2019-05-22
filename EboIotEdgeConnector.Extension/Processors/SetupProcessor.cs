@@ -22,6 +22,7 @@ namespace EboIotEdgeConnector.Extension
         #region Execute_Subclass - Override
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
+            ResetCache();
             var signals = SignalFileParser.Parse(SignalFileLocation);
 
             try
@@ -48,6 +49,20 @@ namespace EboIotEdgeConnector.Extension
         }
         #endregion
 
+        #region ResetCache
+        /// <summary>
+        /// Resets the in-memory cache, so that old subscriptions don't continue to be read
+        /// </summary>
+        private void ResetCache()
+        {
+            Signals = null;
+            var cacheKeys = Cache.Keys(CacheTenantId);
+            foreach (var key in cacheKeys.Where(a => a.StartsWith("ActiveSubscriptions")))
+            {
+                Cache.DeleteItem(key, CacheTenantId);
+            }
+        } 
+        #endregion
         #region GetAndUpdateUnitsForSignals
         private void GetAndUpdateInitialPropertiesForSignals(List<Signal> signals)
         {
