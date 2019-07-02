@@ -14,6 +14,8 @@ namespace EboIotEdgeConnector.Extension
     [ConfigurationDefaults("Setup Processor", "This processor parses the signal CSV file, and stores the result in the in-memory cache for use by the other processors.")]
     public class SetupProcessor : EboIotEdgeConnectorProcessorBase, ILongRunningProcess
     {
+        private List<Signal> _signalsToUse;
+
         #region SignalFileLocation
         [Required]
         public string SignalFileLocation { get; set; }
@@ -37,7 +39,7 @@ namespace EboIotEdgeConnector.Extension
                     return Prompts;
                 }
 
-                GetAndUpdateInitialPropertiesForSignals(signals);
+                GetAndUpdateInitialPropertiesForSignals(_signalsToUse);
             }
             catch (Exception ex)
             {
@@ -114,7 +116,7 @@ namespace EboIotEdgeConnector.Extension
                 var eboVersion = new Version(response.GetWebServiceInformationSystem.Version);
                 if (eboVersion.Major > 1)
                 {
-                    Signals = signals;
+                    _signalsToUse = signals;
                 }
                 else
                 {
@@ -127,7 +129,7 @@ namespace EboIotEdgeConnector.Extension
                         });
                     }
 
-                    Signals = signals.Take(100).ToList();
+                    _signalsToUse = signals.Take(100).ToList();
                 }
                 return true;
             }
@@ -174,9 +176,12 @@ namespace EboIotEdgeConnector.Extension
                 }
                 else
                 {
-                    Enum.TryParse(value.Type, true, out EwsValueTypeEnum type);
-                    Enum.TryParse(value.Writeable, true, out EwsValueWriteableEnum writeable);
-                    Enum.TryParse(value.Forceable, true, out EwsValueForceableEnum forceable);
+                    var tryParse = Enum.TryParse(value.Type, true, out EwsValueTypeEnum type);
+                    if (!tryParse) Logger.LogInfo(LogCategory.Processor, this.Name, $"{value.Type} could not be parsed into a valid EwsValueTypeEnum, default of 'DateTime' will be used for ID {value.Id}.");
+                    tryParse = Enum.TryParse(value.Writeable, true, out EwsValueWriteableEnum writeable);
+                    if (!tryParse) Logger.LogInfo(LogCategory.Processor, this.Name, $"{value.Writeable} could not be parsed into a valid EwsValueWriteableEnum, default of 'ReadOnly' will be used for ID {value.Id}.");
+                    tryParse = Enum.TryParse(value.Forceable, true, out EwsValueForceableEnum forceable);
+                    if (!tryParse) Logger.LogInfo(LogCategory.Processor, this.Name, $"{value.Forceable} could not be parsed into a valid EwsValueForceableEnum, default of 'NotForceable' will be used for ID {value.Id}.");
                     deviceSignal.Type = type;
                     deviceSignal.Unit = value.Unit;
                     deviceSignal.Writeable = writeable;
