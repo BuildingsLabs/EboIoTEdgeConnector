@@ -66,7 +66,7 @@ namespace EboIotEdgeConnector.Extension
             MqttNetGlobalLogger.LogMessagePublished += (s, e) =>
             {
                 if (e.TraceMessage.Exception != null)
-                {
+                { 
                     Logger.LogError(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Message);
                     Logger.LogError(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Exception.ToJSON());
                 }

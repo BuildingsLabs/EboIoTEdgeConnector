@@ -35,7 +35,6 @@ namespace EboIotEdgeConnector.Extension.Test
                 Password = "Admin!23"
             };
 
-
             return processor;
         } 
         #endregion
