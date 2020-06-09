@@ -8,6 +8,7 @@ using Mongoose.Common.Attributes;
 using Mongoose.Process;
 using Mongoose.Process.Ews;
 using MQTTnet;
+using MQTTnet.Extensions.ManagedClient;
 using SxL.Common;
 
 namespace EboIotEdgeConnector.Extension
@@ -207,7 +208,8 @@ namespace EboIotEdgeConnector.Extension
                 return false;
             }
 
-            var devices = results.DataRead.GroupBy(a => a.ValueItemChangeEvent.Id.Remove(a.ValueItemChangeEvent.Id.LastIndexOf('/')).Remove(0,2));
+            var signalChanges = results.DataRead.GroupBy(a => a.ValueItemChangeEvent.Id.Remove(a.ValueItemChangeEvent.Id.LastIndexOf('/')).Remove(0,2)).ToList();
+            var devices = Signals.GroupBy(a => a.DatabasePath.Remove(a.DatabasePath.LastIndexOf('/')));
 
             foreach (var device in devices)
             {
@@ -218,13 +220,14 @@ namespace EboIotEdgeConnector.Extension
                     Observations = observations,
                     DeviceId = device.Key
                 };
-
-                AddUpdatedValuesToMessage(observations, device.Key, device.ToList(), si.CachedSubscribedItems, sendAdditionalProperties);
+                var signalChangesForDevice = signalChanges.FirstOrDefault(a => a.Key == device.Key);
+                AddUpdatedValuesToMessage(observations, device.Key, signalChangesForDevice == null || !signalChangesForDevice.ToList().Any() ? new List<SubscriptionResultItem>() : signalChangesForDevice.ToList(), si.CachedSubscribedItems, sendAdditionalProperties);
 
                 var messageBuilder = new MqttApplicationMessageBuilder();
+                var managedMessageBuilder = new ManagedMqttApplicationMessageBuilder();
                 var message = messageBuilder.WithRetainFlag().WithAtLeastOnceQoS().WithTopic(ValuePushTopic).WithPayload(deviceMessage.ToJson()).Build();
                 Logger.LogTrace(LogCategory.Processor, this.Name, $"Sending Message to MQTT Broker: {deviceMessage.ToJson()}");
-                await ManagedMqttClient.PublishAsync(message);
+                await ManagedMqttClient.PublishAsync(managedMessageBuilder.WithApplicationMessage(message).Build());
             }
 
             return true;
@@ -247,6 +250,7 @@ namespace EboIotEdgeConnector.Extension
                 // TODO: What to do if State is Error?
                 if (signal.SendOnUpdate)
                 {
+                    Logger.LogTrace(LogCategory.Processor, this.Name, $"Adding {signal.ToJSON()} to the message for device: {devicePath}.");
                     HandleAddingToObservationsList(observations, signal, sendAdditionalProperties);
                 }
             }
@@ -258,6 +262,7 @@ namespace EboIotEdgeConnector.Extension
                 if (signal.LastSendTime != null && signal.LastSendTime.Value.AddSeconds(signal.SendTime) > DateTime.UtcNow) continue;
                 if (observations.All(a => $"{devicePath}/{a.SensorId}" != signal.DatabasePath))
                 {
+                    Logger.LogTrace(LogCategory.Processor, this.Name, $"Adding {signal.ToJSON()} to the message device: {devicePath}..");
                     HandleAddingToObservationsList(observations, signal, sendAdditionalProperties);
                 }
             }

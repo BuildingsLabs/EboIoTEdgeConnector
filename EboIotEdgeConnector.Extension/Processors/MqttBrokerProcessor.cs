@@ -67,12 +67,12 @@ namespace EboIotEdgeConnector.Extension
             {
                 if (e.TraceMessage.Exception != null)
                 { 
-                    Logger.LogError(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Message);
-                    Logger.LogError(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Exception.ToJSON());
+                    Logger.LogError(LogCategory.Processor, this.Name, e.LogMessage.Source, e.LogMessage.Message);
+                    Logger.LogError(LogCategory.Processor, this.Name, e.LogMessage.Source, e.LogMessage.Exception.ToJSON());
                 }
                 else
                 {
-                    Logger.LogTrace(LogCategory.Processor, this.Name, e.TraceMessage.Source, e.TraceMessage.Message.ToJSON());
+                    Logger.LogTrace(LogCategory.Processor, this.Name, e.LogMessage.Source, e.LogMessage.Message.ToJSON());
                 }
             };
             StartMqttServer().Wait();
@@ -149,37 +149,7 @@ namespace EboIotEdgeConnector.Extension
                 var certificate = new X509Certificate(SecureCommunicationCertLocation, "");
                 options.TlsEndpointOptions.Certificate = certificate.Export(X509ContentType.Cert);
             }
-
-            _mqttServer.Started += (s, a) =>
-            {
-                //Logger.LogTrace(LogCategory.Processor, this.Name, "MQTT Started", a.ToJSON());
-            };
-
-            _mqttServer.ApplicationMessageReceived += async (s, a) =>
-            {
-                Logger.LogTrace(LogCategory.Processor, this.Name, "MQTT Server Received Message", a.ToJSON());
-            };
-
-            _mqttServer.ClientSubscribedTopic += async (s, a) =>
-            {
-                //Logger.LogTrace(LogCategory.Processor, this.Name, "MQTT Client Subscribed to Topic", a.ToJSON());
-            };
-
-            _mqttServer.ClientUnsubscribedTopic += async (s, a) =>
-            {
-                //Logger.LogTrace(LogCategory.Processor, this.Name, "MQTT Client Unsubscribed to Topic", a.ToJSON());
-            };
-
-            _mqttServer.ClientConnected += async (s, a) =>
-            {
-                //Logger.LogTrace(LogCategory.Processor, this.Name, "MQTT Client Connected", a.ToJSON());
-            };
-
-            _mqttServer.ClientDisconnected += async (s, a) =>
-            {
-                //Logger.LogTrace(LogCategory.Processor, this.Name, "MQTT Client Disconnected", a.ToJSON());
-            };
-
+            
             await _mqttServer.StartAsync(options);
         }
         #endregion

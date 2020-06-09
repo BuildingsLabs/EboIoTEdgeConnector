@@ -6,6 +6,7 @@ using Ews.Client;
 using Ews.Common;
 using Mongoose.Common;
 using Mongoose.Common.Attributes;
+using Mongoose.Common.Data;
 using Mongoose.Process;
 using SxL.Common;
 
@@ -58,6 +59,9 @@ namespace EboIotEdgeConnector.Extension
         private void ResetCache()
         {
             Signals = null;
+            //var savedSettings = this.FindOrCreateProcessorValue("SavedSignalSettings", "EboIotEdgeConnectorGroup");
+            //ProcessorValueSource.Delete(savedSettings);
+            //ProcessorValueSource.Save();
             var cacheKeys = Cache.Keys(CacheTenantId);
             foreach (var key in cacheKeys.Where(a => a.StartsWith("ActiveSubscriptions")))
             {
@@ -101,6 +105,9 @@ namespace EboIotEdgeConnector.Extension
             }
 
             Signals = newSignals;
+            //var savedSettings = this.FindOrCreateProcessorValue("SavedSignalSettings", "EboIotEdgeConnectorGroup");
+            //savedSettings.Value = newSignals.ToJSON();
+            //ProcessorValueSource.Save();
         }
         #endregion
         #region EvaluatePerformanceImpact

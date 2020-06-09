@@ -9,6 +9,7 @@ using Mongoose.Common;
 using Mongoose.Common.Attributes;
 using Mongoose.Process;
 using MQTTnet;
+using MQTTnet.Extensions.ManagedClient;
 using Newtonsoft.Json;
 using SxL.Common;
 
@@ -56,7 +57,7 @@ namespace EboIotEdgeConnector.Extension
         public override async void SubscribeToMqttTopics()
         {
             Logger.LogTrace(LogCategory.Processor, this.Name, $"Subscribing to topic: {ValueReceiveTopic}");
-            await ManagedMqttClient.SubscribeAsync(new List<TopicFilter> {new TopicFilterBuilder().WithTopic(ValueReceiveTopic).WithAtLeastOnceQoS().Build()});
+            await ManagedMqttClient.SubscribeAsync(new MqttTopicFilterBuilder().WithTopic(ValueReceiveTopic).WithAtLeastOnceQoS().Build());
         }
         #endregion
 
@@ -161,9 +162,10 @@ namespace EboIotEdgeConnector.Extension
         {
             iotEdgeMessage.Actuations = null;
             var messageBuilder = new MqttApplicationMessageBuilder();
+            var managedMessageBuilder = new ManagedMqttApplicationMessageBuilder();
             var message = messageBuilder.WithRetainFlag().WithAtLeastOnceQoS().WithTopic(ValuePushTopic).WithPayload(iotEdgeMessage.ToJson()).Build();
             Logger.LogTrace(LogCategory.Processor, this.Name, $"Sending Message to MQTT Broker: {iotEdgeMessage.ToJson()}");
-            ManagedMqttClient.PublishAsync(message).Wait();
+            ManagedMqttClient.PublishAsync(managedMessageBuilder.WithApplicationMessage(message).Build()).Wait();
             // Update the cache with new values..
             Signals = Signals;
         }

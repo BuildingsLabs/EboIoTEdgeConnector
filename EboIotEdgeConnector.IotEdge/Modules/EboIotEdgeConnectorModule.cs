@@ -4,7 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Devices.Gateway;
 using MQTTnet;
-using MQTTnet.Client;
+using MQTTnet.Client.Options;
+using MQTTnet.Client.Receiving;
 using MQTTnet.Diagnostics;
 using MQTTnet.Extensions.ManagedClient;
 using MQTTnet.Protocol;
@@ -13,7 +14,7 @@ using NLog;
 
 namespace EboIotEdgeConnector.IotEdge
 {
-    public class EboIotEdgeConnectorModule : IGatewayModule
+    public class EboIotEdgeConnectorModule : IGatewayModule, IApplicationMessageProcessedHandler, IMqttApplicationMessageReceivedHandler
     {
         private IManagedMqttClient _managedMqttClient;
         private ModuleConfiguration _moduleConfiguration;
@@ -73,32 +74,42 @@ namespace EboIotEdgeConnector.IotEdge
         {
             _logger.Info("Starting MQTT client..");
             _managedMqttClient = new MqttFactory().CreateManagedMqttClient();
+            _managedMqttClient.ApplicationMessageProcessedHandler = this;
 
-            // This is event is hit when we receive a message from the broker.
-            _managedMqttClient.ApplicationMessageReceived += (s, a) =>
-            {
-                var topic = a.ApplicationMessage.Topic;
-                var decodedString = Encoding.UTF8.GetString(a.ApplicationMessage.Payload);
-                _logger.Trace($"Message from topic '{topic}' received.");
-                _logger.Trace($"Decoded Message: {decodedString}");
-                HandleMqttApplicationMessageReceived(topic, decodedString);
-            };
 
+            await _managedMqttClient.SubscribeAsync(new MqttTopicFilterBuilder().WithTopic(_moduleConfiguration.MqttValuePushTopic).WithAtLeastOnceQoS().Build());
+            await _managedMqttClient.StartAsync(GetMqttClientOptions());
+        }
+        #endregion
+        #region HandleApplicationMessageProcessedAsync - IApplicationMessageProcessedHandler Member
+        public async Task HandleApplicationMessageProcessedAsync(ApplicationMessageProcessedEventArgs eventArgs)
+        {
             // This just tells us that a message we sent was received successfully by the broker.
-            _managedMqttClient.ApplicationMessageProcessed += (s, a) =>
+            await Task.Run(() =>
             {
-                _logger.Trace("Client Message Processed by Broker", a);
-                if (a.HasSucceeded == false)
+                _logger.Trace("Client Message Processed by Broker", eventArgs);
+                if (eventArgs.HasSucceeded == false)
                 {
                     // TODO: What to do here?
                     // Add to a file? And retry later?
                 }
-            };
-
-            await _managedMqttClient.SubscribeAsync(new List<TopicFilter> { new TopicFilterBuilder().WithTopic(_moduleConfiguration.MqttValuePushTopic).WithAtLeastOnceQoS().Build() });
-            await _managedMqttClient.StartAsync(GetMqttClientOptions());
+            });
         }
         #endregion
+        #region HandleApplicationMessageReceivedAsync - IMqttApplicationMessageReceivedHandler Member
+        public async Task HandleApplicationMessageReceivedAsync(MqttApplicationMessageReceivedEventArgs eventArgs)
+        {
+            await Task.Run(() =>
+            {
+                var topic = eventArgs.ApplicationMessage.Topic;
+                var decodedString = Encoding.UTF8.GetString(eventArgs.ApplicationMessage.Payload);
+                _logger.Trace($"Message from topic '{topic}' received.");
+                _logger.Trace($"Decoded Message: {decodedString}");
+                HandleMqttApplicationMessageReceived(topic, decodedString);
+            });
+        }
+        #endregion
+
         #region GetMqttClientOptions
         private ManagedMqttClientOptions GetMqttClientOptions()
         {
@@ -194,5 +205,7 @@ namespace EboIotEdgeConnector.IotEdge
             };
         }
         #endregion
+
+
     }
 }

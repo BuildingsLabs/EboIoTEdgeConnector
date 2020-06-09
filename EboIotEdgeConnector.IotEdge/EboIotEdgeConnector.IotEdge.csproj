@@ -7,8 +7,8 @@
     
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Devices.Gateway.Module.NetStandard" Version="1.0.5" />
-    <PackageReference Include="MQTTnet" Version="2.8.5" />
-    <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="2.8.5" />
+    <PackageReference Include="MQTTnet" Version="3.0.11" />
+    <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="3.0.11" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="NLog" Version="4.5.11" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />

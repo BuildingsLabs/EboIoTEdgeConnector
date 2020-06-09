@@ -9,13 +9,14 @@ using Ews.Common;
 using Mongoose.Common;
 using Mongoose.Common.Attributes;
 using MQTTnet;
-using MQTTnet.Client;
+using MQTTnet.Client.Options;
+using MQTTnet.Client.Receiving;
 using MQTTnet.Extensions.ManagedClient;
 using SxL.Common;
 
 namespace EboIotEdgeConnector.Extension
 {
-    public abstract class EboIotEdgeConnectorProcessorWithMqttBase : EboIotEdgeConnectorProcessorBase
+    public abstract class EboIotEdgeConnectorProcessorWithMqttBase : EboIotEdgeConnectorProcessorBase, IApplicationMessageProcessedHandler, IMqttApplicationMessageReceivedHandler
     {
         #region ManagedMqttClient
         internal IManagedMqttClient ManagedMqttClient;
@@ -32,10 +33,12 @@ namespace EboIotEdgeConnector.Extension
         public string ValuePushTopic { get; set; }
         #endregion
 
+        #region Constructor
         public EboIotEdgeConnectorProcessorWithMqttBase()
         {
             MqttBrokerSettings = new MqttBroker();
-        }
+        } 
+        #endregion
 
         #region HandleMqttApplicationMessageReceived - Abstract
         public abstract void HandleMqttApplicationMessageReceived(string topic, string decodedMessage);
@@ -132,38 +135,6 @@ namespace EboIotEdgeConnector.Extension
         {
             Logger.LogInfo(LogCategory.Processor, this.Name, "Starting MQTT client..");
             ManagedMqttClient = new MqttFactory().CreateManagedMqttClient();
-
-            ManagedMqttClient.Connected += (sender, args) =>
-            {
-                // TODO: Anything we should be sending every time when we connect to the broker?
-            };
-
-            ManagedMqttClient.Disconnected += async (sender, args) =>
-            {
-                // TODO: Anything we should be doing every time we disconnect (Managed client will automatically reconnect)
-            };
-
-            // This is event is hit when we receive a message from the broker.
-            ManagedMqttClient.ApplicationMessageReceived += (s, a) =>
-            {
-                var topic = a.ApplicationMessage.Topic;
-                var decodedString = Encoding.UTF8.GetString(a.ApplicationMessage.Payload);
-                Logger.LogTrace(LogCategory.Processor, this.Name, $"Message from topic '{topic}' received.");
-                Logger.LogTrace(LogCategory.Processor, this.Name, $"Decoded Message: {decodedString}");
-                HandleMqttApplicationMessageReceived(topic, decodedString);
-            };
-
-            // This just tells us that a message we sent was received succesfully by the broker.
-            ManagedMqttClient.ApplicationMessageProcessed += (s, a) =>
-            {
-                Logger.LogTrace(LogCategory.Processor, this.Name, "Client Message Processed by Broker", a.ToJSON());
-                if (a.HasSucceeded == false)
-                {
-                    // TODO: What to do here?
-                    // Add to a file? And retry later?
-                }
-            };
-
             SubscribeToMqttTopics();
 
             await ManagedMqttClient.StartAsync(GetMqttClientOptions());
@@ -187,6 +158,35 @@ namespace EboIotEdgeConnector.Extension
                 .Build();
             return options;
         }
+        #endregion
+        #region HandleApplicationMessageProcessedAsync - IApplicationMessageProcessedHandler Member
+        public async Task HandleApplicationMessageProcessedAsync(ApplicationMessageProcessedEventArgs eventArgs)
+        {
+            // This just tells us that a message we sent was received successfully by the broker.
+            await Task.Run(() =>
+            {
+                Logger.LogTrace(LogCategory.Processor, this.Name, "Client Message Processed by Broker", eventArgs.ToJSON());
+                if (eventArgs.HasSucceeded == false)
+                {
+                    // TODO: What to do here?
+                    // Add to a file? And retry later?
+                }
+            });
+        }
+        #endregion
+        #region HandleApplicationMessageReceivedAsync - IMqttApplicationMessageReceivedHandler
+        public async Task HandleApplicationMessageReceivedAsync(MqttApplicationMessageReceivedEventArgs eventArgs)
+        {
+            // This is event is hit when we receive a message from the broker.
+            await Task.Run(() =>
+            {
+                var topic = eventArgs.ApplicationMessage.Topic;
+                var decodedString = Encoding.UTF8.GetString(eventArgs.ApplicationMessage.Payload);
+                Logger.LogTrace(LogCategory.Processor, this.Name, $"Message from topic '{topic}' received.");
+                Logger.LogTrace(LogCategory.Processor, this.Name, $"Decoded Message: {decodedString}");
+                HandleMqttApplicationMessageReceived(topic, decodedString);
+            });
+        } 
         #endregion
     }
 }
