@@ -135,6 +135,9 @@ namespace EboIotEdgeConnector.Extension
         {
             Logger.LogInfo(LogCategory.Processor, this.Name, "Starting MQTT client..");
             ManagedMqttClient = new MqttFactory().CreateManagedMqttClient();
+            ManagedMqttClient.ApplicationMessageProcessedHandler = this;
+            ManagedMqttClient.ApplicationMessageReceivedHandler = this;
+            
             SubscribeToMqttTopics();
 
             await ManagedMqttClient.StartAsync(GetMqttClientOptions());
@@ -155,6 +158,7 @@ namespace EboIotEdgeConnector.Extension
                     .WithClientId(MqttClientId)
                     .WithTcpServer(MqttBrokerSettings.BrokerAddress, MqttBrokerSettings.Port)
                     .WithCredentials(EboEwsSettings.UserName, EboEwsSettings.Password).Build())
+                .WithStorage(new ClientRetainedMessageHandler(this.Name))
                 .Build();
             return options;
         }
