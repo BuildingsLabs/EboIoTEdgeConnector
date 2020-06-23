@@ -75,6 +75,7 @@ namespace EboIotEdgeConnector.IotEdge
             _logger.Info("Starting MQTT client..");
             _managedMqttClient = new MqttFactory().CreateManagedMqttClient();
             _managedMqttClient.ApplicationMessageProcessedHandler = this;
+            _managedMqttClient.ApplicationMessageReceivedHandler = this;
 
 
             await _managedMqttClient.SubscribeAsync(new MqttTopicFilterBuilder().WithTopic(_moduleConfiguration.MqttValuePushTopic).WithAtLeastOnceQoS().Build());
@@ -205,7 +206,5 @@ namespace EboIotEdgeConnector.IotEdge
             };
         }
         #endregion
-
-
     }
 }
