@@ -61,6 +61,8 @@ namespace EboIotEdgeConnector.Extension
                 if (this.IsCancellationRequested) return new List<Prompt>();
                 Task.Delay(1000).Wait();
             }
+
+            Logger.LogTrace(LogCategory.Processor, this.Name, "Stopping Managed MQTT Client..");
             ManagedMqttClient.StopAsync().Wait();
             ManagedMqttClient.Dispose();
     
@@ -223,11 +225,14 @@ namespace EboIotEdgeConnector.Extension
                 var signalChangesForDevice = signalChanges.FirstOrDefault(a => a.Key == device.Key);
                 AddUpdatedValuesToMessage(observations, device.Key, signalChangesForDevice == null || !signalChangesForDevice.ToList().Any() ? new List<SubscriptionResultItem>() : signalChangesForDevice.ToList(), si.CachedSubscribedItems, sendAdditionalProperties);
 
-                var messageBuilder = new MqttApplicationMessageBuilder();
-                var managedMessageBuilder = new ManagedMqttApplicationMessageBuilder();
-                var message = messageBuilder.WithRetainFlag().WithAtLeastOnceQoS().WithTopic(ValuePushTopic).WithPayload(deviceMessage.ToJson()).Build();
-                Logger.LogTrace(LogCategory.Processor, this.Name, $"Sending Message to MQTT Broker: {deviceMessage.ToJson()}");
-                await ManagedMqttClient.PublishAsync(managedMessageBuilder.WithApplicationMessage(message).Build());
+                if (deviceMessage.Observations != null && deviceMessage.Observations.Count > 0)
+                {
+                    var messageBuilder = new MqttApplicationMessageBuilder();
+                    var managedMessageBuilder = new ManagedMqttApplicationMessageBuilder();
+                    var message = messageBuilder.WithRetainFlag().WithAtLeastOnceQoS().WithTopic(ValuePushTopic).WithPayload(deviceMessage.ToJson()).Build();
+                    Logger.LogTrace(LogCategory.Processor, this.Name, $"Sending Message to MQTT Broker: {deviceMessage.ToJson()}");
+                    await ManagedMqttClient.PublishAsync(managedMessageBuilder.WithApplicationMessage(message).Build());
+                }
             }
 
             return true;
