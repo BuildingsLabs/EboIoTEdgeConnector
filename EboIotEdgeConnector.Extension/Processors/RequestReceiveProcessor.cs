@@ -30,14 +30,24 @@ namespace EboIotEdgeConnector.Extension
 
             for (;;)
             {
-                if (IsCancellationRequested)
-                {
-                    ManagedMqttClient.StopAsync().Wait();
-                    return Prompts;
-                }
+                CheckCancellationToken();
                 Task.Delay(5000).Wait();
             }
         }
+        #endregion
+        #region CleanupBeforeCancellation
+        protected override void CleanupBeforeCancellation()
+        {
+            try
+            {
+                ManagedMqttClient.StopAsync().Wait();
+                ManagedMqttClient.StopAsync().Dispose();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(LogCategory.Processor, this.Name, "Managed MQTT Client failed to stop..");
+            }
+        } 
         #endregion
 
         #region HandleMqttApplicationMessageReceived - Override

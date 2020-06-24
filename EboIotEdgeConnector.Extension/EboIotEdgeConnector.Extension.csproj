@@ -36,6 +36,7 @@
     <Compile Include="Models\ExceptionElement.cs" />
     <Compile Include="Models\IotEdgeMessage.cs" />
     <Compile Include="Models\Observation.cs" />
+    <Compile Include="ClientRetainedMessageHandler.cs" />
     <Compile Include="Processors\EboIotEdgeConnectorProcessorBase.cs" />
     <Compile Include="Processors\EboIotEdgeConnectorProcessorWithMqttBase.cs" />
     <Compile Include="Models\EboEwsSettings.cs" />
