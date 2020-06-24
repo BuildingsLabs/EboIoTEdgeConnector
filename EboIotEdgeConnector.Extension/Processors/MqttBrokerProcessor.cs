@@ -62,22 +62,31 @@ namespace EboIotEdgeConnector.Extension
         #region Execute_Subclass - Override
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
-            // Sets up ALL MQTT logging
-            MqttNetGlobalLogger.LogMessagePublished += (s, e) =>
-            {
-                if (e.TraceMessage.Exception != null)
-                { 
-                    Logger.LogError(LogCategory.Processor, this.Name, e.LogMessage.Source, e.LogMessage.Message);
-                    Logger.LogError(LogCategory.Processor, this.Name, e.LogMessage.Source, e.LogMessage.Exception.ToJSON());
-                }
-                else
-                {
-                    Logger.LogTrace(LogCategory.Processor, this.Name, e.LogMessage.Source, e.LogMessage.Message.ToJSON());
-                }
-            };
+            ConfigureMqttLogging();
             StartMqttServer().Wait();
-            MainLoop().Wait();
-            return _prompts;
+
+            for (; ; )
+            {
+                try
+                {
+                    CheckCancellationToken();
+                    if (!_mqttServer.IsStarted)
+                    {
+                        Logger.LogError(LogCategory.Processor, this.Name, "Found that the MQTT Broker has stopped unexpectedly, restarting..");
+                        StartMqttServer().Wait();
+                    }
+                    Task.Delay(5 * 1000, CancellationToken).Wait();
+                }
+                catch (OperationCanceledException ex)
+                {
+                    Logger.LogError(LogCategory.Processor, this.Name, ex.ToString());
+                    return _prompts;
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError(LogCategory.Processor, this.Name, ex.ToString());
+                }
+            }
         }
         #endregion
         #region Validate - Override
@@ -99,30 +108,47 @@ namespace EboIotEdgeConnector.Extension
             }
         }
         #endregion
-
-        #region MainLoop
-        private async Task MainLoop()
+        #region CleanupBeforeCancellation - Override
+        protected override void CleanupBeforeCancellation()
         {
-            for (;;)
-            {
-                try
-                {
-                    if (IsCancellationRequested)
-                    {
-                        await _mqttServer.StopAsync();
-                        return;
-                    }
-                    await Task.Delay(5 * 1000, CancellationToken);
-                }
-                catch (Exception ex)
-                {
-                    Logger.LogError(LogCategory.Processor, this.Name, ex.ToString());
-                    return;
-                }
-            }
+            Logger.LogInfo(LogCategory.Processor, this.Name, "Shutting down MQTT Broker..");
+            _mqttServer.StopAsync().Wait();
+            base.CleanupBeforeCancellation();
         }
         #endregion
 
+        #region ConfigureMqttLogging
+        private static void ConfigureMqttLogging()
+        {
+            if (!MqttNetGlobalLogger.HasListeners)
+            {
+                MqttNetGlobalLogger.LogMessagePublished += (s, e) =>
+                {
+                    switch (e.LogMessage.Level)
+                    {
+                        case MqttNetLogLevel.Verbose:
+                            Logger.LogTrace("MQTT", "MQTTNet", e.LogMessage.Source, $"Thread: {e.LogMessage.ThreadId}", e.LogMessage.Message,
+                                e.LogMessage.Exception?.ToJSON());
+                            break;
+                        case MqttNetLogLevel.Info:
+                            Logger.LogInfo("MQTT", "MQTTNet", e.LogMessage.Source, $"Thread: {e.LogMessage.ThreadId}", e.LogMessage.Message,
+                                e.LogMessage.Exception?.ToJSON());
+                            break;
+                        case MqttNetLogLevel.Warning:
+                            Logger.LogStatus("MQTT", "MQTTNet", e.LogMessage.Source, $"Thread: {e.LogMessage.ThreadId}", e.LogMessage.Message,
+                                e.LogMessage.Exception?.ToJSON());
+                            break;
+                        case MqttNetLogLevel.Error:
+                            Logger.LogError("MQTT", "MQTTNet", e.LogMessage.Source, $"Thread: {e.LogMessage.ThreadId}", e.LogMessage.Message,
+                                e.LogMessage.Exception?.ToJSON());
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                };
+            }
+        }
+        #endregion
         #region StartMqttServer
         private async Task StartMqttServer()
         {
