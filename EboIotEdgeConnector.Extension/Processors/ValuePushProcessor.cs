@@ -16,7 +16,7 @@ namespace EboIotEdgeConnector.Extension
     [ConfigurationDefaults("Value Push Processor", "This processor gets runtime values from EBO, and pushes them to Azure as defined by the signal CSV file.")]
     public class ValuePushProcessor : EboIotEdgeConnectorProcessorWithMqttBase, ILongRunningProcess
     {
-        private const int MaxItemsPerSubscription = 500;
+        private const int MaxItemsPerSubscription = 100;
         private List<Signal> _tempSignals;
 
         #region Execute_Subclass - Override
