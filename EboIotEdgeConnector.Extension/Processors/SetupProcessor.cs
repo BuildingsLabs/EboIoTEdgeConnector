@@ -119,6 +119,8 @@ namespace EboIotEdgeConnector.Extension
         {
             try
             {
+                // We save this right away so we can execute this setup processor from the value push processor if it is not running
+                Cache.AddOrUpdateItem(this.ConfigurationId, "SetupProcessorConfigurationId", this.CacheTenantId, 0);
                 var response = ManagedEwsClient.GetWebServiceInformation(EboEwsSettings);
                 var eboVersion = new Version(response.GetWebServiceInformationSystem.Version);
                 if (eboVersion.Major > 1)

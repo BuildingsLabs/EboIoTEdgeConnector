@@ -1,0 +1,941 @@
+;;;;;; This is a comment ;
+Device Name;Point Name;Database Path;Description;Type;Value;Send On Update;Send Time
+Live Signal;360.015-RD400;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RD400;Filtervakt tilluft;io.point.VoltageInput;;TRUE;600
+Live Signal;360.015-RD500;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RD500;Filtervakt avtrekk;io.point.VoltageInput;;TRUE;600
+Live Signal;360.015-RD501;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RD501;Diff.trykk VVX;io.point.VoltageInput;;TRUE;600
+Live Signal;360.015-RF401;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RF401;Viftevakt tilluft;io.point.VoltageInput;;TRUE;600
+Live Signal;360.015-RF501;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RF501;Viftevakt avtrekk;io.point.VoltageInput;;TRUE;600
+Live Signal;360.015-RP401;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RP401;Trykkføler tilluft;io.point.VoltageInput;;TRUE;600
+Live Signal;360.015-RP501;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RP501;Trykkføler avtrekk;io.point.VoltageInput;;TRUE;600
+Live Signal;360.015-RT400;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT400;Inntaksføler;io.point.TemperatureInput;;TRUE;600
+Live Signal;360.015-RT401;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT401;Virkningsgradføler tilluft;io.point.TemperatureInput;;TRUE;600
+Live Signal;360.015-RT402;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT402;Tilluftsføler;io.point.TemperatureInput;;TRUE;600
+Live Signal;360.015-RT500;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT500;Returføler varmebatteri;io.point.TemperatureInput;;TRUE;600
+Live Signal;360.015-RT501;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT501;Avtrekksføler;io.point.TemperatureInput;;TRUE;600
+Live Signal;360.015-RT502;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT502;Avkastføler;io.point.TemperatureInput;;TRUE;600
+Live Signal;360.015-RT510;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT510;Returføler kjølebatteri;io.point.TemperatureInput;;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/Application/Test/BACnet Analog Input;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3106-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3106-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3106-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3106-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3107-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3107-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3107-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3107-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3108-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3108-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3108-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3108-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3109-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3109-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3109-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3109-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3214-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3214-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3214-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3214-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3215-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3215-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3215-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3215-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3217-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3217-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3217-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3217-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3218-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3218-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3218-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3218-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3219-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3219-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3219-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3219-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3224-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3224-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3224-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3224-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3225-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3225-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3225-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3225-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3226-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3226-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3226-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3226-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3227-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3227-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3227-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3227-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3228-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3228-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3228-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3228-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3244-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3244-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3244-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3244-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3245-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3245-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3245-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3245-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3248-Romtype_7/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3248-Romtype_7/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3248-Romtype_7/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT_RY3248-Romtype_7/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3216-Romtype_6/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3216-Romtype_6/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3216-Romtype_6/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3216-Romtype_6/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3220-Romtype_6/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3220-Romtype_6/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3220-Romtype_6/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3220-Romtype_6/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3222-Romtype_6/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3222-Romtype_6/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3222-Romtype_6/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3222-Romtype_6/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3229-Romtype_6/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3229-Romtype_6/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3229-Romtype_6/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3229-Romtype_6/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3242-Romtype_5/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3242-Romtype_5/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3242-Romtype_5/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1062/=563.RT3242-Romtype_5/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2108_1-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2108_1-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2108_1-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2108_1-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2108_2-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2108_2-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2108_2-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2108_2-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2109-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2109-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2109-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2109-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2229-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2229-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2229-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0301-OS001/BACnet Interface/MSTP Network_1063/=563.RT_RY2229-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4107-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4107-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4107-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4107-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4108-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4108-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4108-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4108-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4109-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4109-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4109-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4109-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4110-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4110-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4110-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4110-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4215-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4215-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4215-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4215-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4216-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4216-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4216-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4216-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4217-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4217-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4217-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4217-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4218-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4218-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4218-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4218-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4219-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4219-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4219-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4219-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4220-Romtype_7/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4220-Romtype_7/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4220-Romtype_7/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4220-Romtype_7/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4238-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4238-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4238-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT_RY4238-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT4223-Romtype_1/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT4223-Romtype_1/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT4223-Romtype_1/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0401-OS001/BACnet Interface/MSTP Network_1082/=563.RT4223-Romtype_1/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4101-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4101-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4101-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4101-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4102-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4102-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4102-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4102-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4103-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4103-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4103-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4103-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4104-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4104-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4104-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4104-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4105-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4105-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4105-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4105-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4106-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4106-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4106-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4106-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4214-Romtype_5/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4214-Romtype_5/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4214-Romtype_5/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1092/=563.RT_RY4214-Romtype_5/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4111-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4111-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4111-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4111-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4112-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4112-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4112-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4112-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4113-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4113-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4113-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4113-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4114-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4114-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4114-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT_RY4114-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT4202-Romtype_1/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT4202-Romtype_1/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT4202-Romtype_1/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0402-OS001/BACnet Interface/MSTP Network_1093/=563.RT4202-Romtype_1/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6111-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6111-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6111-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6111-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6112-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6112-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6112-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6112-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6220-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6220-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6220-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6220-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6221-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6221-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6221-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6221-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6222-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6222-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6222-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6222-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6223-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6223-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6223-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6223-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6225-Romtype_7/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6225-Romtype_7/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6225-Romtype_7/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6225-Romtype_7/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6228-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6228-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6228-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6228-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6231-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6231-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6231-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6231-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6232-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6232-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6232-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6232-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6233-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6233-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6233-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6233-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6242-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6242-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6242-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6242-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6244-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6244-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6244-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6244-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6246-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6246-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6246-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6246-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6247-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6247-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6247-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT_RY6247-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT6219-Romtype_6/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT6219-Romtype_6/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT6219-Romtype_6/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT6219-Romtype_6/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT6226-Romtype_6/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT6226-Romtype_6/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT6226-Romtype_6/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0601-OS001/BACnet Interface/MSTP Network_1122/=563.RT6226-Romtype_6/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6101-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6101-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6101-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6101-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6102-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6102-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6102-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6102-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6103-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6103-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6103-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6103-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6104-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6104-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6104-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6104-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6106-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6106-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6106-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6106-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6107-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6107-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6107-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6107-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6108-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6108-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6108-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6108-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6109-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6109-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6109-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6109-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6110_1-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6110_1-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6110_1-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6110_1-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6110_2-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6110_2-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6110_2-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6110_2-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6113-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6113-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6113-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6113-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6114-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6114-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6114-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6114-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6115-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6115-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6115-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6115-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6116-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6116-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6116-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6116-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6117-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6117-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6117-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6117-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6214-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6214-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6214-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6214-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6215-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6215-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6215-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6215-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6216-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6216-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6216-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6216-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6217-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6217-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6217-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6217-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6250-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6250-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6250-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6250-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6251-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6251-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6251-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT_RY6251-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT6105-Romtype_6/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT6105-Romtype_6/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT6105-Romtype_6/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT6105-Romtype_6/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT6204-Romtype_1/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT6204-Romtype_1/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT6204-Romtype_1/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0602-OS001/BACnet Interface/MSTP Network_1132/=563.RT6204-Romtype_1/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7101-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7101-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7101-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7101-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7102-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7102-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7102-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7102-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7103-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7103-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7103-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7103-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7104-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7104-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7104-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7104-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7105-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7105-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7105-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7105-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7106-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7106-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7106-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7106-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7107-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7107-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7107-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7107-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7108-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7108-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7108-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7108-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7122-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7122-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7122-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7122-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7123-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7123-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7123-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7123-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7124-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7124-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7124-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7124-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7125-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7125-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7125-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7125-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7126-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7126-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7126-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7126-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7127-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7127-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7127-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7127-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7128-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7128-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7128-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7128-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7129-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7129-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7129-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7129-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7130-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7130-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7130-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7130-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7131-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7131-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7131-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7131-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7132-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7132-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7132-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7132-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7133-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7133-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7133-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7133-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7134-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7134-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7134-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7134-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7135-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7135-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7135-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7135-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7250-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7250-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7250-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7250-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7251-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7251-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7251-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT_RY7251-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT7202-Romtype_8/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT7202-Romtype_8/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT7202-Romtype_8/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1142/=563.RT7202-Romtype_8/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7109-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7109-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7109-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7109-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7110-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7110-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7110-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7110-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7111-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7111-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7111-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7111-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7112-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7112-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7112-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7112-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7113-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7113-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7113-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7113-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7114-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7114-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7114-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7114-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7115-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7115-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7115-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7115-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7116-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7116-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7116-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7116-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7117-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7117-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7117-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7117-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7118-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7118-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7118-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7118-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7119-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7119-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7119-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7119-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7209-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7209-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7209-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7209-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7216-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7216-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7216-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7216-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7217-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7217-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7217-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT_RY7217-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT7208-Romtype_5/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT7208-Romtype_5/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT7208-Romtype_5/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT7208-Romtype_5/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT7214-Romtype_6/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT7214-Romtype_6/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT7214-Romtype_6/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS001/BACnet Interface/MSTP Network_1143/=563.RT7214-Romtype_6/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7120-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7120-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7120-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7120-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7121-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7121-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7121-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7121-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7219-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7219-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7219-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7219-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7220-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7220-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7220-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7220-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7222-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7222-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7222-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7222-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7223-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7223-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7223-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7223-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7224-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7224-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7224-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7224-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7225-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7225-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7225-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7225-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7226-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7226-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7226-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7226-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7227-Romtype_7/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7227-Romtype_7/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7227-Romtype_7/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7227-Romtype_7/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7230-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7230-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7230-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7230-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7231-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7231-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7231-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7231-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7232-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7232-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7232-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7232-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7233-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7233-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7233-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7233-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7234-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7234-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7234-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7234-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7235-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7235-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7235-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7235-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7237-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7237-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7237-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT_RY7237-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT7201-Romtype_6/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT7201-Romtype_6/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT7201-Romtype_6/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0701-OS002/BACnet Interface/MSTP Network_1152/=563.RT7201-Romtype_6/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8101-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8101-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8101-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8101-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8102-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8102-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8102-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8102-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8103-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8103-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8103-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8103-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8104-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8104-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8104-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8104-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8105-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8105-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8105-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8105-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8114-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8114-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8114-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8114-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8115-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8115-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8115-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8115-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8116-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8116-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8116-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8116-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8117-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8117-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8117-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8117-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8118-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8118-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8118-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8118-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8119-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8119-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8119-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8119-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8120-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8120-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8120-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8120-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8121-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8121-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8121-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8121-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8122-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8122-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8122-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8122-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8123-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8123-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8123-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8123-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8124-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8124-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8124-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8124-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8125-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8125-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8125-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8125-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8126-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8126-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8126-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8126-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8127-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8127-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8127-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8127-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8220-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8220-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8220-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT_RY8220-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT8218-Romtype_1/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT8218-Romtype_1/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT8218-Romtype_1/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT8218-Romtype_1/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT8221-Romtype_6/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT8221-Romtype_6/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT8221-Romtype_6/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1162/=563.RT8221-Romtype_6/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8106-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8106-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8106-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8106-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8107-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8107-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8107-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8107-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8108-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8108-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8108-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8108-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8109-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8109-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8109-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8109-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8110-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8110-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8110-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8110-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8111-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8111-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8111-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8111-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8112-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8112-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8112-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8112-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8113-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8113-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8113-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8113-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8209-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8209-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8209-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8209-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8214-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8214-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8214-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8214-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8215-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8215-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8215-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8215-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8216-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8216-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8216-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8216-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8217-Romtype_4/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8217-Romtype_4/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8217-Romtype_4/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT_RY8217-Romtype_4/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT8201-Romtype_6/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT8201-Romtype_6/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT8201-Romtype_6/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT8201-Romtype_6/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT8208-Romtype_6/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT8208-Romtype_6/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT8208-Romtype_6/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0801-OS001/BACnet Interface/MSTP Network_1163/=563.RT8208-Romtype_6/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9101-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9101-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9101-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9101-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9102-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9102-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9102-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9102-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9103-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9103-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9103-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9103-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9104-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9104-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9104-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9104-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9105-Romtype_7/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9105-Romtype_7/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9105-Romtype_7/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9105-Romtype_7/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9106-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9106-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9106-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9106-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9107-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9107-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9107-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9107-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9108-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9108-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9108-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9108-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9109-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9109-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9109-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9109-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9110-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9110-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9110-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9110-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9116_2-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9116_2-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9116_2-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9116_2-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9117-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9117-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9117-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9117-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9118-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9118-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9118-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9118-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9119-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9119-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9119-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9119-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9120-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9120-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9120-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9120-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9223-Romtype_1/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9223-Romtype_1/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9223-Romtype_1/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0901-OS001/BACnet Interface/MSTP Network_1202/=563.RT_RY9223-Romtype_1/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9111-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9111-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9111-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9111-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9112-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9112-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9112-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9112-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9113-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9113-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9113-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9113-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9114-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9114-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9114-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9114-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9115-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9115-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9115-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9115-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9116_1-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9116_1-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9116_1-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9116_1-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9213-Romtype_2/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9213-Romtype_2/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9213-Romtype_2/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9213-Romtype_2/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9214-Romtype_7/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9214-Romtype_7/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9214-Romtype_7/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9214-Romtype_7/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9215-Romtype_7/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9215-Romtype_7/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9215-Romtype_7/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9215-Romtype_7/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9216-Romtype_7/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9216-Romtype_7/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9216-Romtype_7/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9216-Romtype_7/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9217-Romtype_7/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9217-Romtype_7/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9217-Romtype_7/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.0902-OS001/BACnet Interface/MSTP Network_1212/=563.RT_RY9217-Romtype_7/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10101-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10101-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10101-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10101-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10102-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10102-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10102-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10102-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10103-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10103-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10103-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10103-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10105-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10105-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10105-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10105-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10106-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10106-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10106-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10106-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10107-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10107-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10107-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10107-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10108-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10108-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10108-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10108-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10109-Romtype_7/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10109-Romtype_7/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10109-Romtype_7/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10109-Romtype_7/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10110-Romtype_7/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10110-Romtype_7/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10110-Romtype_7/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10110-Romtype_7/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10111-Romtype_7/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10111-Romtype_7/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10111-Romtype_7/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10111-Romtype_7/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10112-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10112-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10112-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10112-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10113-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10113-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10113-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10113-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10114-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10114-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10114-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10114-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10115-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10115-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10115-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10115-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10116-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10116-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10116-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10116-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10117-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10117-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10117-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10117-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10118-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10118-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10118-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10118-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;CO2 Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10119-Romtype_3/Application/CO2 Level;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Light Sensor Level;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10119-Romtype_3/Application/Light Sensor Level;;BACnet Analog Input (Generic);;TRUE;600
+Live Signal;Room Humidity;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10119-Romtype_3/Application/Room Humidity;;BACnet Analog Value (Generic);;TRUE;600
+Live Signal;Room Temperature;/+001=434.1001-OS001/BACnet Interface/MSTP Network_1192/=563.RT_RY10119-Romtype_3/Application/Room Temperature;;BACnet Analog Value (Generic);;TRUE;600

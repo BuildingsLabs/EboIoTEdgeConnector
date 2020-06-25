@@ -137,7 +137,7 @@ namespace EboIotEdgeConnector.Extension
             ManagedMqttClient = new MqttFactory().CreateManagedMqttClient();
             ManagedMqttClient.ApplicationMessageProcessedHandler = this;
             ManagedMqttClient.ApplicationMessageReceivedHandler = this;
-            
+
             SubscribeToMqttTopics();
 
             await ManagedMqttClient.StartAsync(GetMqttClientOptions());

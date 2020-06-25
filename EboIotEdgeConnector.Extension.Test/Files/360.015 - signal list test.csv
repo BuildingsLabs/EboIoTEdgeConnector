@@ -1,0 +1,16 @@
+;;;;;; This is a comment ;
+Device Name;Point Name;Database Path;Description;Type;Value;Send On Update;Send Time
+Random;360.015-RD400;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RD400;Filtervakt tilluft;io.point.VoltageInput;;TRUE;600
+Random;360.015-RD500;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RD500;Filtervakt avtrekk;io.point.VoltageInput;;TRUE;600
+Random;360.015-RD501;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RD501;Diff.trykk VVX;io.point.VoltageInput;;TRUE;600
+Random;360.015-RF401;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RF401;Viftevakt tilluft;io.point.VoltageInput;;TRUE;600
+Random;360.015-RF501;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RF501;Viftevakt avtrekk;io.point.VoltageInput;;TRUE;600
+Random;360.015-RP401;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RP401;Trykkføler tilluft;io.point.VoltageInput;;TRUE;600
+Random;360.015-RP501;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RP501;Trykkføler avtrekk;io.point.VoltageInput;;TRUE;600
+Random;360.015-RT400;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT400;Inntaksføler;io.point.TemperatureInput;;TRUE;600
+Random;360.015-RT401;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT401;Virkningsgradføler tilluft;io.point.TemperatureInput;;TRUE;600
+Random;360.015-RT402;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT402;Tilluftsføler;io.point.TemperatureInput;;TRUE;600
+Random;360.015-RT500;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT500;Returføler varmebatteri;io.point.TemperatureInput;;TRUE;600
+Random;360.015-RT501;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT501;Avtrekksføler;io.point.TemperatureInput;;TRUE;600
+Random;360.015-RT502;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT502;Avkastføler;io.point.TemperatureInput;;TRUE;600
+Random;360.015-RT510;/+001=434.0701-OS001/IO Bus/M04_UI-16/360.015-RT510;Returføler kjølebatteri;io.point.TemperatureInput;;TRUE;600

@@ -17,10 +17,17 @@ namespace EboIotEdgeConnector.Extension
     public class ValuePushProcessor : EboIotEdgeConnectorProcessorWithMqttBase, ILongRunningProcess
     {
         private const int MaxItemsPerSubscription = 500;
+        private List<Signal> _tempSignals;
 
         #region Execute_Subclass - Override
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
+            if (Signals == null)
+            {
+                GetSignalNullReason();
+                return Prompts;
+            }
+
             try
             {
                 StartMqttClient().Wait();
@@ -32,26 +39,17 @@ namespace EboIotEdgeConnector.Extension
                 return Prompts;
             }
 
-            if (Signals == null)
-            {
-                Prompts.Add(new Prompt
-                {
-                    Message = "There are no signals in the cache, please run the SetupProcessor or verify that it has run successfully.",
-                    Severity = PromptSeverity.MayNotContinue
-                });
-                return Prompts;
-            }
-
+            _tempSignals = Signals.ToList();
             // Read existing subscriptions
-            if (!ReadExistingSubscriptions(Signals).Result)
+            if (!ReadExistingSubscriptions(_tempSignals).Result)
             {
-                Prompts.Add(new Prompt {Message = $"Did not successfully read all existing subscriptions."});
+                Prompts.Add(new Prompt { Message = $"Did not successfully read all existing subscriptions." });
             }
 
             // Subscribe and read new subscriptions
-            if (!SubscribeAndReadNew(Signals).Result)
+            if (!SubscribeAndReadNew(_tempSignals).Result)
             {
-                Prompts.Add(new Prompt {Message = $"Did not successfully read all new subscriptions."});
+                Prompts.Add(new Prompt { Message = $"Did not successfully read all new subscriptions." });
             }
 
             Logger.LogTrace(LogCategory.Processor, this.Name, "Waiting for all messages be be published...");
@@ -64,14 +62,69 @@ namespace EboIotEdgeConnector.Extension
 
             Logger.LogTrace(LogCategory.Processor, this.Name, "Stopping Managed MQTT Client..");
             ManagedMqttClient.StopAsync().Wait();
+            while (ManagedMqttClient.IsStarted)
+            {
+                Logger.LogTrace(LogCategory.Processor, this.Name, "Still waiting for MQTT Client to Stop...");
+                Task.Delay(1000).Wait();
+            }
             ManagedMqttClient.Dispose();
-    
+
             // Update the cache with new values..
-            Signals = Signals;
+            Signals = _tempSignals;
             return Prompts;
         }
         #endregion
 
+        #region GetSignalNullReason
+        /// <summary>
+        /// Tries to determine why the Signal cache is empty, and attempts to resolve it if possible
+        /// </summary>
+        private void GetSignalNullReason()
+        {
+            try
+            {
+                var setupProcessorId = Cache.RetrieveItem("SetupProcessorConfigurationId", tenantId: CacheTenantId);
+                if (setupProcessorId == null)
+                {
+                    Prompts.Add(new Prompt
+                    {
+                        Message = "The Setup Processor has not been run. Make sure the Setup Processor has been configured correctly and run it again.",
+                        Severity = PromptSeverity.MayNotContinue
+                    });
+                }
+                else
+                {
+                    if (ActionBroker.IsConfigurationRunning((int) setupProcessorId))
+                    {
+                        Prompts.Add(new Prompt
+                        {
+                            Message = "The Setup Processor is currently running, once it has completed this will run successfully.",
+                            Severity = PromptSeverity.MayNotContinue
+                        });
+                    }
+                    else
+                    {
+                        // For some reason the Setup Processor failed to run.. let's force it to run again, and hope it completes!
+                        Logger.LogInfo(LogCategory.Processor, this.Name, "Force starting the Setup Processor, as it has failed to run for some reason, please check the logs for additional information.");
+                        ActionBroker.StartConfiguration((int) setupProcessorId, DerivedFromConfigurationType.Processor);
+                        Prompts.Add(new Prompt
+                        {
+                            Message = "The Setup Processor processor has been forced to start, the Value Push Processor cannot run to completion until it has run successfully.",
+                            Severity = PromptSeverity.MayNotContinue
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Prompts.Add(new Prompt
+                {
+                    Message = ex.ToString(),
+                    Severity = PromptSeverity.MayNotContinue
+                });
+            }
+        }
+        #endregion
         #region ReadExistingSubscription
         private async Task<bool> ReadExistingSubscriptions(List<Signal> signals)
         {
@@ -81,9 +134,9 @@ namespace EboIotEdgeConnector.Extension
             var activeSubscriptionsToIterate = activeSubscriptions.ToList();
             foreach (var sub in activeSubscriptionsToIterate)
             {
+                Logger.LogDebug(LogCategory.Processor, $"Reading existing subscription: {sub}");
                 if (IsCancellationRequested) return false;
                 var subscription = Cache.RetrieveItem($"ActiveSubscriptions#{sub}", CacheTenantId);
-                Logger.LogDebug(LogCategory.Processor, $"Reading existing subscription: {sub}");
                 try
                 {
                     CheckCancellationToken();
@@ -121,6 +174,11 @@ namespace EboIotEdgeConnector.Extension
                     activeSubscriptions.Remove(sub);
                     Cache.DeleteItem($"ActiveSubscriptions#{sub}", CacheTenantId);
                 }
+                finally
+                {
+                    Logger.LogDebug(LogCategory.Processor, $"Finished handling {sub}");
+                }
+                
             }
 
             // Save any changes to cache
@@ -165,7 +223,6 @@ namespace EboIotEdgeConnector.Extension
                         SubscriptionEventType = EwsSubscriptionEventTypeEnum.ValueItemChanged,
                         Ids = idsToSubscribeTo
                     };
-
                     // Attempt to update the values by reading the subscription, if this fails return all false as this could go on forever.
                     var results = si.ReadData();
                     // If all the ids we subscribed to failed, just continue on.. nothing to see here..
@@ -187,7 +244,7 @@ namespace EboIotEdgeConnector.Extension
                 catch (Exception ex)
                 {
                     Prompts.Add(ex.ToPrompt());
-                    break;
+                    // We want to continue with the list even if we fail here
                 }
             }
 
@@ -211,7 +268,7 @@ namespace EboIotEdgeConnector.Extension
             }
 
             var signalChanges = results.DataRead.GroupBy(a => a.ValueItemChangeEvent.Id.Remove(a.ValueItemChangeEvent.Id.LastIndexOf('/')).Remove(0,2)).ToList();
-            var devices = Signals.GroupBy(a => a.DatabasePath.Remove(a.DatabasePath.LastIndexOf('/')));
+            var devices = _tempSignals.GroupBy(a => a.DatabasePath.Remove(a.DatabasePath.LastIndexOf('/')));
 
             foreach (var device in devices)
             {
@@ -243,7 +300,7 @@ namespace EboIotEdgeConnector.Extension
         {
             foreach (var eventz in pointsToAdd)
             {
-                var signal = Signals.FirstOrDefault(a => a.EwsId == eventz.ValueItemChangeEvent.Id);
+                var signal = _tempSignals.FirstOrDefault(a => a.EwsId == eventz.ValueItemChangeEvent.Id);
                 if (signal == null)
                 {
                     Logger.LogInfo(LogCategory.Processor, this.Name, $"Signal with EWS ID of {eventz.ValueItemChangeEvent.Id} does not exist.. Skipping this..");
@@ -260,9 +317,9 @@ namespace EboIotEdgeConnector.Extension
                 }
             }
 
-            Signals = Signals;
+            //Signals = Signals;
 
-            foreach (var signal in Signals.Where(a => pointsMonitoredBySub.Contains(a.EwsId) && a.DatabasePath.Remove(a.DatabasePath.LastIndexOf('/')) == devicePath))
+            foreach (var signal in _tempSignals.Where(a => pointsMonitoredBySub.Contains(a.EwsId) && a.DatabasePath.Remove(a.DatabasePath.LastIndexOf('/')) == devicePath))
             {
                 if (signal.LastSendTime != null && signal.LastSendTime.Value.AddSeconds(signal.SendTime) > DateTime.UtcNow) continue;
                 if (observations.All(a => $"{devicePath}/{a.SensorId}" != signal.DatabasePath))
@@ -272,7 +329,7 @@ namespace EboIotEdgeConnector.Extension
                 }
             }
 
-            Signals = Signals;
+            //Signals = Signals;
         }
         #endregion
 
