@@ -67,7 +67,6 @@ namespace EboIotEdgeConnector.Extension
                 Logger.LogTrace(LogCategory.Processor, this.Name, "Still waiting for MQTT Client to Stop...");
                 Task.Delay(1000).Wait();
             }
-            ManagedMqttClient.Dispose();
 
             // Update the cache with new values..
             Signals = _tempSignals;
@@ -236,7 +235,7 @@ namespace EboIotEdgeConnector.Extension
                     Cache.AddOrUpdateItem(activeSubscriptions, $"ActiveSubscriptions", CacheTenantId, 0);
 
                     // Add any prompts generated from reader to the list of prompts
-                    Prompts.AddRange(si.ReadData().Prompts);
+                    Prompts.AddRange(results.Prompts);
 
                     if (si.FailedSubscribedItems.Any()) Logger.LogInfo(LogCategory.Processor, this.Name, $"Some items failed to be subscribed to: {si.FailedSubscribedItems.ToJSON()}");
                 }
@@ -266,6 +265,8 @@ namespace EboIotEdgeConnector.Extension
                 Prompts.AddRange(results.Prompts);
                 return false;
             }
+
+            if (results.DataRead.Any(a => a.ValueItemChangeEvent.State == EwsValueStateEnum.Error)) CheckAndRetryValuesWithError(si, results);
 
             var signalChanges = results.DataRead.GroupBy(a => a.ValueItemChangeEvent.Id.Remove(a.ValueItemChangeEvent.Id.LastIndexOf('/')).Remove(0,2)).ToList();
             var devices = _tempSignals.GroupBy(a => a.DatabasePath.Remove(a.DatabasePath.LastIndexOf('/')));
@@ -330,6 +331,36 @@ namespace EboIotEdgeConnector.Extension
             }
 
             //Signals = Signals;
+        }
+        #endregion
+        #region CheckAndRetryValuesWithError
+        /// <summary>
+        /// It is possible that if there is an internal timeout on the Subscription in EBO, that subscription read requests will end up returned with errors and
+        /// an empty value. This attempts to resolve this, by manually getting the value of those points.
+        /// </summary>
+        /// <param name="si"></param>
+        /// <param name="results"></param>
+        private void CheckAndRetryValuesWithError(SubscriptionReader si, ReadResult<SubscriptionResultItem> results)
+        {
+            try
+            {
+                var erroredValuesToRetry = results.DataRead.Where(a => a.ValueItemChangeEvent.State == EwsValueStateEnum.Error);
+                Logger.LogInfo(LogCategory.Processor, this.Name, $"Manually fetching values for {erroredValuesToRetry.Count()} objects.");
+                var getValuesResponse = si.EwsConnection.GetValues(si, erroredValuesToRetry.Select(a => a.ValueItemChangeEvent.Id).ToArray());
+                foreach (var value in getValuesResponse.GetValuesItems)
+                {
+                    var resultToEdit = results.DataRead.FirstOrDefault(a => a.ValueItemChangeEvent.Id == value.Id);
+                    if (resultToEdit == null) continue;
+                    var stateCorrect = Enum.TryParse(value.State, out EwsValueStateEnum ewsValueStateEnum);
+                    resultToEdit.ValueItemChangeEvent.State = stateCorrect ? ewsValueStateEnum : EwsValueStateEnum.Error;
+                    resultToEdit.ValueItemChangeEvent.Value = value.Value;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(LogCategory.Processor, this.Name, ex.ToJSON());
+                // Intentionally doing nothing here, we don't wanna stop the processor, let's just continue.
+            }
         }
         #endregion
 
