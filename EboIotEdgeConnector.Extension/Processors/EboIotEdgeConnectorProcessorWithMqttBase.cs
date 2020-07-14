@@ -133,7 +133,7 @@ namespace EboIotEdgeConnector.Extension
         #region StartMqttClient - Virtual
         public virtual async Task StartMqttClient()
         {
-            Logger.LogInfo(LogCategory.Processor, this.Name, "Starting MQTT client..");
+            Logger.LogDebug(LogCategory.Processor, this.Name, "Starting MQTT client..");
             ManagedMqttClient = new MqttFactory().CreateManagedMqttClient();
             ManagedMqttClient.ApplicationMessageProcessedHandler = this;
             ManagedMqttClient.ApplicationMessageReceivedHandler = this;

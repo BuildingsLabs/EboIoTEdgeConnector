@@ -12,15 +12,7 @@ namespace EboIotEdgeConnector.Extension
 {
     public abstract class EboIotEdgeConnectorProcessorBase : Processor
     {
-        internal List<Prompt> Prompts = new List<Prompt>();
         internal IManagedEwsClient ManagedEwsClient = MongooseObjectFactory.Current.GetInstance<IManagedEwsClient>();
-
-        #region EboEwsSettings
-        protected EboIotEdgeConnectorProcessorBase()
-        {
-            EboEwsSettings = new EboEwsSettings();
-        } 
-        #endregion
 
         #region Signals
         private List<Signal> _signals;
@@ -53,7 +45,10 @@ namespace EboIotEdgeConnector.Extension
             }
         }
         #endregion
-
+        #region Prompts
+        [ConfigurationIgnore]
+        protected List<Prompt> Prompts { get; set; }
+        #endregion
         #region IsLicensed
         #if DEBUG
         public override bool IsLicensed => false;
@@ -65,7 +60,15 @@ namespace EboIotEdgeConnector.Extension
         #endregion
         #region CacheTenantId
         [Required, DefaultValue("DefaultValueForEboIotEdgeConnectorExtensionCacheTenantId"), Tooltip("The cache tenant ID specifies the container that all the processors working together need in order to share data between each other. This needs to be the same for the SetupProcessor, ValuePushProcessor, and RequestReceiveProcessor")]
-        public string CacheTenantId { get; set; } 
+        public string CacheTenantId { get; set; }
+        #endregion
+
+        #region Constructor
+        protected EboIotEdgeConnectorProcessorBase()
+        {
+            EboEwsSettings = new EboEwsSettings();
+            Prompts = new List<Prompt>();
+        } 
         #endregion
     }
 }
