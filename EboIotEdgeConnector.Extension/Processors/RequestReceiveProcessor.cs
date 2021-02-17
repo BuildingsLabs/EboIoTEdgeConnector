@@ -161,6 +161,7 @@ namespace EboIotEdgeConnector.Extension
                     var valueTypeStateless = toSet.FirstOrDefault(a => a.valueTypeStateless.Id == signal.EwsIdForWrite).valueTypeStateless;
                     signal.Value = valueTypeStateless.Value;
                     signal.LastUpdateTime = DateTime.UtcNow.ToUniversalTime();
+                    signal.OriginalLastUpdateSent = false;
                     if (iotEdgeMessage.Observations == null) iotEdgeMessage.Observations = new List<Observation>();
                     HandleAddingToObservationsList(iotEdgeMessage.Observations, signal);
                 }

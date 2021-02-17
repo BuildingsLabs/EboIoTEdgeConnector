@@ -112,14 +112,25 @@ namespace EboIotEdgeConnector.Extension
             var (wasValidValue, value) = ToConvertedTypeValue(signal);
             if (wasValidValue)
             {
-                observations.Add(new Observation
+                var observation = new Observation
                 {
                     SensorId = signal.PointName,
                     ObservationTime = signal.LastUpdateTime.Value.ToUniversalTime(),
                     Value = value,
                     Writeable = sendAdditionalProperties ? signal.IsWriteable : null,
                     Forceable = sendAdditionalProperties ? signal.IsForceable : null
-                });
+                };
+
+                if (signal.OriginalLastUpdateSent)
+                {
+                    observation.ObservationTime = DateTimeOffset.UtcNow;
+                }
+                else
+                {
+                    signal.OriginalLastUpdateSent = true;
+                }
+
+                observations.Add(observation);
                 signal.LastSendTime = DateTime.UtcNow;
             }
             else

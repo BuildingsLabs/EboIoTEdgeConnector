@@ -310,6 +310,7 @@ namespace EboIotEdgeConnector.Extension
 
                 signal.Value = eventz.ValueItemChangeEvent.Value;
                 signal.LastUpdateTime = eventz.ValueItemChangeEvent.TimeStamp.ToUniversalTime();
+                signal.OriginalLastUpdateSent = false;
                 // TODO: What to do if State is Error?
                 if (signal.SendOnUpdate)
                 {

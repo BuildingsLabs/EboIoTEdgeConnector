@@ -27,6 +27,9 @@ namespace EboIotEdgeConnector.Extension
         #region LastSendTime
         public DateTime? LastSendTime { get; set; }
         #endregion
+        #region OriginalLastUpdateSent
+        public bool OriginalLastUpdateSent { get; set; } 
+        #endregion
         #region LastUpdateTime
         public DateTime? LastUpdateTime { get; set; }
         #endregion
