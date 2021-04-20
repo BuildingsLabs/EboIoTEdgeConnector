@@ -30,7 +30,7 @@ namespace EboIotEdgeConnector.Extension.Test
         public SetupProcessor CreateTestableProcessor()
         {
             var processor = this.CreateProccessorInstanceWithDefaultValues();
-            processor.SignalFileLocation = $"{Assembly.GetExecutingAssembly().Location.Replace("\\bin\\Debug\\EboIotEdgeConnector.Extension.Test.dll", string.Empty)}\\Files\\test_object_config_extended.csv";
+            processor.SignalFileLocation = $"{Assembly.GetExecutingAssembly().Location.Replace("\\bin\\Debug\\EboIotEdgeConnector.Extension.Test.dll", string.Empty)}\\Files\\test_object_config.csv";
             processor.EboEwsSettings = new EboEwsSettings
             {
                 Address = "http://localhost:8020/EcoStruxure/DataExchange",

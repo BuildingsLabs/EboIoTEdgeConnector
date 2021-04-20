@@ -77,7 +77,7 @@ namespace EboIotEdgeConnector.Extension
             Logger.LogTrace(LogCategory.Processor, this.Name, $"Starting to write values sent from ");
             try
             {
-                if (Signals == null)
+                if (Signals == null || !Signals.Any())
                 {
                     Logger.LogInfo(LogCategory.Processor, this.Name, $"There are no Signals in the in-memory cache. Please check that the Setup Processor has been run.");
                     return;

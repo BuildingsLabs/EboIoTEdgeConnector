@@ -6,6 +6,7 @@ using Ews.Client;
 using Ews.Common;
 using Mongoose.Common;
 using Mongoose.Common.Attributes;
+using Mongoose.Common.Data;
 using Mongoose.Process;
 using SxL.Common;
 
@@ -24,7 +25,7 @@ namespace EboIotEdgeConnector.Extension
         #region Execute_Subclass - Override
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
-            ResetCache();
+            ResetSubscriptionCache();
             var signals = SignalFileParser.Parse(SignalFileLocation);
 
             try
@@ -51,16 +52,12 @@ namespace EboIotEdgeConnector.Extension
         }
         #endregion
 
-        #region ResetCache
+        #region ResetSubscriptionCache
         /// <summary>
         /// Resets the in-memory cache, so that old subscriptions don't continue to be read
         /// </summary>
-        private void ResetCache()
+        private void ResetSubscriptionCache()
         {
-            Signals = null;
-            //var savedSettings = this.FindOrCreateProcessorValue("SavedSignalSettings", "EboIotEdgeConnectorGroup");
-            //ProcessorValueSource.Delete(savedSettings);
-            //ProcessorValueSource.Save();
             var cacheKeys = Cache.Keys(CacheTenantId);
             foreach (var key in cacheKeys.Where(a => a.StartsWith("ActiveSubscriptions")))
             {
@@ -72,15 +69,28 @@ namespace EboIotEdgeConnector.Extension
         private void GetAndUpdateInitialPropertiesForSignals(List<Signal> signals)
         {
             var newSignals = new List<Signal>();
-            Logger.LogTrace(LogCategory.Processor, this.Name, "Getting units for all signals..");
-            while (signals.Any())
+            Logger.LogTrace(LogCategory.Processor, this.Name, $"Getting units for all signals.. {signals.Count} total.");
+            // Get list of signals that have not been previously discovered
+            var newSignalsLeftToAdd = signals.Where(a => !Signals.Select(b => b.EwsId).Contains(a.EwsId)).ToList();
+            Logger.LogTrace(LogCategory.Processor, this.Name, $"Found, {newSignalsLeftToAdd.Count} total to add.");
+            while (newSignalsLeftToAdd.Any())
             {
+                Logger.LogTrace(LogCategory.Processor, this.Name, $"Found, {newSignalsLeftToAdd.Count} left to add.");
                 if (IsCancellationRequested) return;
                 try
                 {
-                    var response = ManagedEwsClient.GetItems(EboEwsSettings, signals.Take(500).Select(a => a.EwsId).ToArray());
+                    var response = ManagedEwsClient.GetItems(EboEwsSettings, newSignalsLeftToAdd.Take(100).Select(a => a.EwsId).ToArray());
                     var successfulValues = response.GetItemsItems.ValueItems?.ToList();
                     AddSuccessfulSignalsToCache(signals, successfulValues, newSignals);
+
+                    // The below code is a workaround for EBO timing out on GetItems for many values, and returning either an INVALID_ID or TIMEOUT error when the values are in fact valid. We need to make sure we discover as many as possible, so let's loop until we do.
+                    // We will do this as long as at least 1 value from the request was successful.
+                    while (successfulValues != null && successfulValues.Any() && response.GetItemsErrorResults != null && response.GetItemsErrorResults.Any(a => a.Message == "INVALID_ID" || a.Message == "TIMEOUT"))
+                    {
+                        response = ManagedEwsClient.GetItems(EboEwsSettings, response.GetItemsErrorResults.Where(a => a.Message == "INVALID_ID" || a.Message == "TIMEOUT").Select(a => a.Id).ToArray());
+                        successfulValues = response.GetItemsItems.ValueItems?.ToList();
+                        AddSuccessfulSignalsToCache(signals, successfulValues, newSignals);
+                    }
 
                     var valuesToRetry = UpdateInvalidEwsIdsForRetry(signals, response);
 
@@ -100,13 +110,13 @@ namespace EboIotEdgeConnector.Extension
                     // We will let it continue and see if everything else fails... Maybe some will work..
                 }
 
-                signals = signals.Skip(500).ToList();
+                newSignalsLeftToAdd = newSignalsLeftToAdd.Skip(100).ToList();
             }
 
-            Signals = newSignals;
-            //var savedSettings = this.FindOrCreateProcessorValue("SavedSignalSettings", "EboIotEdgeConnectorGroup");
-            //savedSettings.Value = newSignals.ToJSON();
-            //ProcessorValueSource.Save();
+            signals.AddRange(newSignals);
+            Signals = signals;
+
+            SeedProcessorValues(signals);
         }
         #endregion
         #region EvaluatePerformanceImpact
@@ -197,6 +207,26 @@ namespace EboIotEdgeConnector.Extension
                     newSignals.Add(deviceSignal);
                 }
             }
+        }
+        #endregion
+
+        #region SeedProcessorValues
+        /// <summary>
+        /// Seeds processor values with all the discovered Signals, this is to improve performance on startup if these have already been discovered
+        /// </summary>
+        private void SeedProcessorValues(List<Signal> signals)
+        {
+            ProcessorValueSource.Delete(ProcessorValueSource.Items.Where(a => a.Key == "Signals" && a.Group == CacheTenantId).ToList());
+            int i = 1;
+            while (signals.Any())
+            {
+                var pv = this.FindOrCreateProcessorValue("Signals", CacheTenantId, i.ToString());
+                pv.Value = signals.Take(500).ToJSON();
+                signals = signals.Skip(500).ToList();
+                i++;
+            }
+
+            ProcessorValueSource.Save();
         }
         #endregion
     }

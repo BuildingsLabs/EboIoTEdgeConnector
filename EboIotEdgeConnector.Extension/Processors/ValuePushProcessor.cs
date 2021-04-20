@@ -22,7 +22,7 @@ namespace EboIotEdgeConnector.Extension
         #region Execute_Subclass - Override
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
-            if (Signals == null)
+            if (Signals == null || !Signals.Any())
             {
                 GetSignalNullReason();
                 return Prompts;
@@ -243,7 +243,8 @@ namespace EboIotEdgeConnector.Extension
                 catch (Exception ex)
                 {
                     Prompts.Add(ex.ToPrompt());
-                    // We want to continue with the list even if we fail here
+                    // We want to continue with the list even if we fail here, so we don't end up in an infinite loop of the same sub failing over and over, these will be subscribed to on the next time through.
+                    unsubscribedIds = unsubscribedIds.Skip(MaxItemsPerSubscription).ToList();
                 }
             }
 
