@@ -22,7 +22,8 @@ namespace EboIotEdgeConnector.Extension
         #region Execute_Subclass - Override
         protected override IEnumerable<Prompt> Execute_Subclass()
         {
-            if (Signals == null || !Signals.Any())
+            //Signals == null means processor has not ben run, but setupprocessor might still be running so we have to check for that.
+            if (Signals == null || !Signals.Any() || IsSetupProcessorRunning())
             {
                 GetSignalNullReason();
                 return Prompts;
@@ -74,6 +75,14 @@ namespace EboIotEdgeConnector.Extension
         }
         #endregion
 
+        #region IsSetupProcessorRunning
+        private bool IsSetupProcessorRunning()
+        {
+            var setupProcessorId = Cache.RetrieveItem("SetupProcessorConfigurationId", tenantId: CacheTenantId);
+            return ActionBroker.IsConfigurationRunning((int) setupProcessorId);
+        } 
+        #endregion
+        
         #region GetSignalNullReason
         /// <summary>
         /// Tries to determine why the Signal cache is empty, and attempts to resolve it if possible
